@@ -75,7 +75,7 @@ export default function HomePage() {
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-32 bg-black">
+      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-32 bg-gradient-to-b from-slate-950 via-slate-900/50 to-black">
         
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-0 -right-40 w-96 h-96 bg-gradient-to-br from-emerald-600/15 to-cyan-600/8 rounded-full blur-3xl animate-blob-1"></div>
@@ -224,7 +224,8 @@ export default function HomePage() {
       </section>
 
       {/* VALUE PROPS */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-black via-slate-950/30 to-black">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/30 to-black">
+
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16" id="value-props" data-observe>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['value-props'] ? 1 : 0, transform: isVisible['value-props'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
@@ -276,10 +277,10 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-20 bg-gradient-to-b from-slate-950/30 via-black/50 to-slate-950"></div>
-
+     <div className="h-20 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
+      
       {/* GALLERY CAROUSEL */}
-      <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-slate-950 via-slate-900/20 to-black relative">
+     <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20" id="gallery-header" data-observe>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['gallery-header'] ? 1 : 0, transform: isVisible['gallery-header'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
@@ -346,10 +347,10 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-20 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
+      <div className="h-20 bg-gradient-to-b from-black via-slate-950/30 to-black"></div>
 
       {/* FAQ */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
+      <section className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-slate-950 via-slate-900/30 to-black relative overflow-hidden">
         {/* Animated background */}
         <div className="absolute inset-0 -z-10">
           <div className="absolute -top-40 left-1/3 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl animate-float-1"></div>
@@ -416,7 +417,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-20 bg-gradient-to-b from-black to-black"></div>
+      <div className="h-20 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
 
       {/* CTA */}
       <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
@@ -626,3 +627,4 @@ export default function HomePage() {
     </div>
   );
 }
+
