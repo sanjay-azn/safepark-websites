@@ -1,9 +1,12 @@
 'use client';
 
-import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play } from 'lucide-react';
-import { useEffect } from 'react';
+import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play, ChevronLeft, ChevronRight, Plus, Minus } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function HomePage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [expandedFaq, setExpandedFaq] = useState(0);
+
   useEffect(() => {
     const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -80px 0px' };
     const observer = new IntersectionObserver((entries) => {
@@ -32,16 +35,42 @@ export default function HomePage() {
     };
   }, []);
 
+  const galleryImages = [
+    { src: "/gallery/hero-car.jpeg", alt: "Premium SafePark Installation", title: "Professional Installation" },
+    { src: "/gallery/gallery1.jpg", alt: "Luxury Car Protection", title: "Luxury Protection" },
+    { src: "/gallery/gallery2.jpg", alt: "All-Weather Setup", title: "All-Weather Ready" },
+    { src: "/gallery/gallery3.jpg", alt: "Quick Setup Demo", title: "Fast Setup" },
+  ];
+
+  const faqItems = [
+    {
+      question: "Will it fit my exact car model?",
+      answer: "Yes. We size by segment and confirm model before delivery so the foldable shelter fits your car comfortably."
+    },
+    {
+      question: "Do you install at home?",
+      answer: "Delivery & on-site anchoring are available across Tamil Nadu and nearby regions. Share your pin & surface details for scheduling."
+    },
+    {
+      question: "How does it handle wind?",
+      answer: "Anchors at ground level with tie-downs for stability. In extreme weather, keep the shed closed and secured."
+    },
+    {
+      question: "Any maintenance?",
+      answer: "Occasional wipe-down. Avoid sharp edges and ensure anchors remain tight."
+    }
+  ];
+
   return (
-    <div className="scroll-smooth bg-gradient-to-br from-[#0f172a] via-[#0f2d2a] to-[#052e16] min-h-screen overflow-x-hidden">
+    <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
       {/* HERO SECTION */}
       <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-16">
         
-        {/* Animated Background Orbs */}
+        {/* Animated Background Orbs - Very Subtle */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute top-0 -right-40 w-80 h-80 bg-gradient-to-br from-emerald-500/10 to-cyan-500/5 rounded-full blur-3xl animate-blob-1" style={{ animationDelay: '0s' }}></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-cyan-500/10 to-emerald-500/5 rounded-full blur-3xl animate-blob-2" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-0 -right-40 w-80 h-80 bg-gradient-to-br from-emerald-500/5 to-cyan-500/3 rounded-full blur-3xl animate-blob-1" style={{ animationDelay: '0s' }}></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-cyan-500/5 to-emerald-500/3 rounded-full blur-3xl animate-blob-2" style={{ animationDelay: '2s' }}></div>
         </div>
 
         <div className="max-w-7xl mx-auto w-full relative">
@@ -95,7 +124,7 @@ export default function HomePage() {
                   </div>
                   <span className="text-gray-300 text-sm font-medium">2,000+ Protected Cars</span>
                 </div>
-                <div className="h-6 w-px bg-gray-600 hidden sm:block"></div>
+                <div className="h-6 w-px bg-gray-700 hidden sm:block"></div>
                 <div className="flex items-center gap-2 card-float">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                   <span className="text-gray-300 text-sm">2-Year Warranty</span>
@@ -115,13 +144,12 @@ export default function HomePage() {
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end order-first lg:order-last parallax fade-in-image">
               <div className="relative w-full max-w-[500px] group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/20 to-emerald-500/20 rounded-3xl blur-3xl group-hover:opacity-100 opacity-70 transition-opacity duration-500 animate-glow"></div>
-                <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-50"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-cyan-500/10 to-emerald-500/10 rounded-3xl blur-3xl group-hover:opacity-100 opacity-60 transition-opacity duration-500 animate-glow"></div>
                 
                 <img 
                   src="/gallery/hero-car.jpeg" 
                   alt="Premium car protected by SafePark"
-                  className="relative w-full h-[350px] md:h-[420px] object-cover rounded-3xl shadow-2xl border border-white/10 group-hover:border-emerald-500/30 group-hover:shadow-emerald-500/20 transition-all duration-500 img-zoom"
+                  className="relative w-full h-[350px] md:h-[420px] object-cover rounded-3xl shadow-2xl border border-emerald-500/20 group-hover:border-emerald-500/40 group-hover:shadow-emerald-500/20 transition-all duration-500 img-zoom"
                   loading="eager"
                 />
                 
@@ -135,8 +163,7 @@ export default function HomePage() {
       </section>
 
       {/* FEATURES */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-cyan-500/5 -z-10"></div>
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
         
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 scroll-observe space-y-4">
@@ -148,20 +175,18 @@ export default function HomePage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: <Shield className="w-12 h-12 text-red-400" />, title: "Fire Protection", desc: "Heat & flame resistant", gradient: "from-red-500/15 to-orange-500/5" },
-              { icon: <Umbrella className="w-12 h-12 text-blue-400" />, title: "Rain Protection", desc: "100% waterproof coating", gradient: "from-blue-500/15 to-cyan-500/5" },
-              { icon: <Zap className="w-12 h-12 text-yellow-400" />, title: "Scratch-Proof", desc: "Military-grade fabric", gradient: "from-yellow-500/15 to-amber-500/5" },
-              { icon: <UserCheck className="w-12 h-12 text-green-400" />, title: "Safe for Kids", desc: "Family-friendly design", gradient: "from-green-500/15 to-emerald-500/5" }
+              { icon: <Shield className="w-12 h-12 text-red-400" />, title: "Fire Protection", desc: "Heat & flame resistant" },
+              { icon: <Umbrella className="w-12 h-12 text-blue-400" />, title: "Rain Protection", desc: "100% waterproof coating" },
+              { icon: <Zap className="w-12 h-12 text-yellow-400" />, title: "Scratch-Proof", desc: "Military-grade fabric" },
+              { icon: <UserCheck className="w-12 h-12 text-green-400" />, title: "Safe for Kids", desc: "Family-friendly design" }
             ].map((feature, idx) => (
               <div 
                 key={idx}
-                className="scroll-observe group relative p-6 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.08] hover:-translate-y-2 hover:shadow-2xl card-stagger"
+                className="scroll-observe group relative p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-2 hover:shadow-xl card-stagger"
                 style={{ animationDelay: `${idx * 120}ms` }}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                
                 <div className="flex flex-col items-center text-center space-y-3">
-                  <div className="p-3 rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors duration-300 icon-bounce" style={{ animationDelay: `${idx * 150}ms` }}>
+                  <div className="p-3 rounded-xl bg-white/5 group-hover:bg-white/8 transition-colors duration-300 icon-bounce" style={{ animationDelay: `${idx * 150}ms` }}>
                     {feature.icon}
                   </div>
                   <h3 className="text-lg font-bold text-white">{feature.title}</h3>
@@ -174,7 +199,7 @@ export default function HomePage() {
       </section>
 
       {/* VALUE PROPS */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 scroll-observe space-y-4">
             <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Why Choose SafePark?</h2>
@@ -191,7 +216,7 @@ export default function HomePage() {
             ].map((item, idx) => (
               <div 
                 key={idx}
-                className="scroll-observe group relative p-8 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.08] hover:-translate-y-2 card-slide"
+                className="scroll-observe group relative p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-2 card-slide"
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
                 <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold badge-scale">
@@ -199,7 +224,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300 icon-spin">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/15 transition-all duration-300 icon-spin">
                     {item.icon}
                   </div>
                   <h3 className="text-xl font-bold text-white">{item.title}</h3>
@@ -211,91 +236,100 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* GALLERY */}
-      <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-white/[0.02] relative">
+      {/* GALLERY CAROUSEL - PROFESSIONAL */}
+      <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">See SafePark in Action</h2>
+          <div className="text-center mb-20 scroll-observe space-y-4">
+            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">SafePark Installation</h2>
             <p className="text-lg text-gray-400 font-light text-reveal">Real installations, real results</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { src: "/gallery/gallery1.jpg", caption: "Luxury Car Protection", tag: "Premium" },
-              { src: "/gallery/gallery2.jpg", caption: "All-Weather Installation", tag: "Weatherproof" },
-              { src: "/gallery/gallery3.jpg", caption: "Quick Setup Demo", tag: "Fast Setup" },
-              { src: "/gallery/gallery4.jpg", caption: "Urban Protection", tag: "City Ready" },
-              { src: "/gallery/gallery5.jpg", caption: "Family Vehicle Care", tag: "Family Safe" },
-              { src: "/gallery/gallery-video.mp4", caption: "Installation Process", tag: "Professional", type: "video" }
-            ].map((item, idx) => (
-              <div 
-                key={idx}
-                className="scroll-observe group relative rounded-2xl overflow-hidden bg-white/[0.05] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2 gallery-item"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <div className="relative h-48 overflow-hidden">
-                  {item.type === "video" ? (
-                    <video 
-                      src={item.src} 
-                      controls 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                      poster="/gallery/gallery1.jpg" 
-                      preload="metadata" 
-                    />
-                  ) : (
-                    <img 
-                      src={item.src} 
-                      alt={item.caption} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                      loading="lazy" 
-                    />
-                  )}
-                  
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-3 right-3 px-2 py-1 bg-emerald-500/80 text-white text-xs font-bold rounded-lg tag-pop">{item.tag}</div>
-                </div>
-                
-                <div className="p-4">
-                  <h3 className="text-white font-bold text-sm group-hover:text-emerald-400 transition-colors">{item.caption}</h3>
-                  <p className="text-emerald-400/70 text-xs mt-1">Professional Installation</p>
-                </div>
+          {/* Main Carousel */}
+          <div className="relative scroll-observe">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02]">
+              <div className="relative h-[400px] md:h-[500px] overflow-hidden">
+                <img 
+                  src={galleryImages[currentSlide].src}
+                  alt={galleryImages[currentSlide].alt}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
               </div>
-            ))}
+
+              {/* Carousel Controls */}
+              <button
+                onClick={() => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
+                className="absolute left-6 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all z-10"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+
+              <button
+                onClick={() => setCurrentSlide((prev) => (prev + 1) % galleryImages.length)}
+                className="absolute right-6 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all z-10"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+
+              {/* Title Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
+                <h3 className="text-xl md:text-2xl font-bold text-white">{galleryImages[currentSlide].title}</h3>
+              </div>
+            </div>
+
+            {/* Thumbnail Strip */}
+            <div className="flex gap-4 mt-8 overflow-x-auto pb-2">
+              {galleryImages.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`relative flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all ${
+                    currentSlide === idx ? 'border-emerald-500 scale-105' : 'border-white/20 hover:border-white/40'
+                  }`}
+                >
+                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover" loading="lazy" />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative">
-        <div className="max-w-6xl mx-auto">
+      {/* FAQ SECTION */}
+      <section className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
+        <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Trusted by Thousands</h2>
-            <p className="text-lg text-gray-400 font-light text-reveal">Real satisfaction from real customers</p>
+            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-400 font-light text-reveal">Everything you need to know about SafePark</p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { name: "Rajesh Kumar", role: "BMW Owner", location: "Coimbatore", text: "SafePark completely transformed how I protect my BMW. Exceptional quality." },
-              { name: "Priya Sharma", role: "Entrepreneur", location: "Tamil Nadu", text: "The retractable design is genius. No more weather worries. Highly recommended." },
-              { name: "Arjun Patel", role: "Business Owner", location: "Gujarat", text: "Professional installation and premium materials. SafePark exceeds expectations." }
-            ].map((review, idx) => (
-              <div 
+
+          <div className="space-y-4 scroll-observe">
+            {faqItems.map((item, idx) => (
+              <div
                 key={idx}
-                className="scroll-observe group p-6 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.08] hover:-translate-y-2 testimonial-flip"
-                style={{ animationDelay: `${idx * 150}ms` }}
+                className="group border border-white/10 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 overflow-hidden"
+                style={{ animationDelay: `${idx * 100}ms` }}
               >
-                <div className="flex gap-1 mb-4 star-stagger">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" style={{ animationDelay: `${i * 60}ms` }} />
-                  ))}
-                </div>
-                
-                <p className="text-gray-300 text-sm leading-relaxed mb-4 italic text-fade">"{review.text}"</p>
-                
-                <div className="border-t border-white/10 pt-4">
-                  <p className="font-bold text-white text-sm">{review.name}</p>
-                  <p className="text-xs text-gray-400">{review.role} • {review.location}</p>
-                </div>
+                <button
+                  onClick={() => setExpandedFaq(expandedFaq === idx ? -1 : idx)}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/[0.03] transition-all"
+                >
+                  <h3 className="text-lg font-bold text-white flex-1">{item.question}</h3>
+                  <div className="ml-4 flex-shrink-0 text-emerald-400">
+                    {expandedFaq === idx ? (
+                      <Minus className="w-5 h-5" />
+                    ) : (
+                      <Plus className="w-5 h-5" />
+                    )}
+                  </div>
+                </button>
+
+                {expandedFaq === idx && (
+                  <div className="px-6 pb-5 text-gray-300 leading-relaxed animate-fade-up">
+                    {item.answer}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -303,12 +337,12 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
         <div className="max-w-4xl mx-auto">
           <div className="relative scroll-observe cta-scale">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-cyan-500/10 to-emerald-500/10 rounded-3xl blur-2xl opacity-60"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-cyan-500/5 to-emerald-500/5 rounded-3xl blur-2xl opacity-40"></div>
             
-            <div className="relative bg-white/[0.06] backdrop-blur-2xl rounded-3xl p-12 border border-white/10 text-center space-y-6">
+            <div className="relative bg-white/[0.03] backdrop-blur-xl rounded-3xl p-12 border border-white/10 text-center space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-white heading-reveal">Ready to Protect Your Vehicle?</h2>
               <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light text-reveal">
                 Join thousands who chose SafePark. Get started in minutes.
@@ -357,7 +391,7 @@ export default function HomePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/5 bg-black/20 py-16 px-6 md:px-12 lg:px-20">
+      <footer className="border-t border-white/5 bg-black py-16 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 mb-12">
             <div>
@@ -401,7 +435,7 @@ export default function HomePage() {
         </div>
       </footer>
 
-      {/* GSAP-STYLE ANIMATIONS */}
+      {/* ANIMATIONS */}
       <style jsx>{`
         @keyframes blob-1 {
           0%, 100% { transform: translate(0, 0) scale(1); }
@@ -453,8 +487,8 @@ export default function HomePage() {
         .img-zoom { animation: image-zoom 4s ease-in-out infinite; }
 
         @keyframes glow-pulse {
-          0%, 100% { opacity: 0.7; }
-          50% { opacity: 0.9; }
+          0%, 100% { opacity: 0.6; }
+          50% { opacity: 0.8; }
         }
 
         .animate-glow { animation: glow-pulse 3s ease-in-out infinite; }
@@ -532,47 +566,12 @@ export default function HomePage() {
 
         .badge-slide { animation: badge-slide 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
-        @keyframes gallery-pop {
-          from { opacity: 0; transform: scale(0.8) rotate(-5deg); }
-          to { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
-
-        .gallery-item { animation: gallery-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes tag-pop {
-          from { opacity: 0; transform: scale(0) rotate(45deg); }
-          to { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
-
-        .tag-pop { animation: tag-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
         @keyframes star-twinkle {
           from { opacity: 0; transform: scale(0) rotate(-180deg); }
           to { opacity: 1; transform: scale(1) rotate(0deg); }
         }
 
         .star-pop { animation: star-twinkle 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes star-stagger {
-          from { opacity: 0; transform: scale(0) translateY(-10px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .star-stagger { animation: star-stagger 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes testimonial-flip {
-          from { opacity: 0; transform: rotateX(90deg) rotateY(-20deg) translateY(20px); perspective: 1000px; }
-          to { opacity: 1; transform: rotateX(0deg) rotateY(0deg) translateY(0); }
-        }
-
-        .testimonial-flip { animation: testimonial-flip 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes text-fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        .text-fade { animation: text-fade-in 0.8s ease-in 0.3s forwards; }
 
         @keyframes contact-pop {
           from { opacity: 0; transform: scale(0) translateY(20px); }
