@@ -65,74 +65,74 @@ export default function HomePage() {
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-16">
+      <section className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-20 py-20 overflow-hidden">
         
         {/* Animated Background Orbs - Very Subtle */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute top-0 -right-40 w-80 h-80 bg-gradient-to-br from-emerald-500/5 to-cyan-500/3 rounded-full blur-3xl animate-blob-1" style={{ animationDelay: '0s' }}></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-cyan-500/5 to-emerald-500/3 rounded-full blur-3xl animate-blob-2" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-10 -right-40 w-80 h-80 bg-gradient-to-br from-emerald-500/5 to-cyan-500/3 rounded-full blur-3xl animate-blob-1"></div>
+          <div className="absolute bottom-10 -left-40 w-80 h-80 bg-gradient-to-tr from-cyan-500/5 to-emerald-500/3 rounded-full blur-3xl animate-blob-2"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto w-full relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
             {/* LEFT CONTENT */}
-            <div className="text-center lg:text-left space-y-6">
+            <div className="text-center lg:text-left space-y-6 order-2 lg:order-1">
               
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium text-sm hover:bg-emerald-500/20 transition-all duration-300 w-fit fade-in-1">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                 Made in India • Premium Quality
               </div>
 
-              <div className="space-y-3">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white fade-in-2">
+              <div className="space-y-2">
+                <h1 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-none text-white fade-in-2">
                   Everyday Risks.
                 </h1>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 bg-clip-text text-transparent fade-in-3">
+                <h2 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-none bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 bg-clip-text text-transparent fade-in-3">
                   Lasting Protection.
                 </h2>
               </div>
               
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl font-light fade-in-4">
+              <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-md font-light fade-in-4 pt-2">
                 Your car faces <span className="text-white font-semibold">hidden threats every day</span>. From unexpected weather to kids playing nearby, give yourself <span className="text-emerald-400 font-medium">complete peace of mind</span>.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 fade-in-5">
+              <div className="flex flex-col sm:flex-row gap-3 pt-6 fade-in-5">
                 <a 
                   href="tel:+919600840058"
-                  className="group px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-base hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 btn-lift"
+                  className="group px-7 py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-sm hover:shadow-xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 btn-lift"
                 >
                   <Shield className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                  Protect My Car Now
+                  Protect My Car
                 </a>
                 
                 <a 
                   href="#gallery"
-                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/50 text-emerald-400 font-bold text-base hover:bg-emerald-500/10 hover:border-emerald-400 transition-all duration-300 inline-flex items-center justify-center gap-2 group btn-lift"
+                  className="px-7 py-3 rounded-lg border-2 border-emerald-500/50 text-emerald-400 font-bold text-sm hover:bg-emerald-500/10 hover:border-emerald-400 transition-all duration-300 inline-flex items-center justify-center gap-2 group btn-lift"
                 >
                   <Play className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  View Gallery
+                  Gallery
                 </a>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 fade-in-6">
-                <div className="flex items-center gap-3 card-float">
-                  <div className="flex gap-1">
+              <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 fade-in-6 flex-wrap">
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current star-pop" style={{ animationDelay: `${i * 50}ms` }} />
+                      <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <span className="text-gray-300 text-sm font-medium">2,000+ Protected Cars</span>
+                  <span className="text-gray-300 text-xs font-medium">2,000+ Protected</span>
                 </div>
-                <div className="h-6 w-px bg-gray-700 hidden sm:block"></div>
-                <div className="flex items-center gap-2 card-float">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                  <span className="text-gray-300 text-sm">2-Year Warranty</span>
+                <div className="h-5 w-px bg-gray-700"></div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span className="text-gray-300 text-xs">2-Year Warranty</span>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 pt-4 text-xs text-gray-400 fade-in-7">
-                {['Free Installation', '2-4 Hour Setup', 'No Hidden Costs'].map((item, i) => (
+              <div className="flex flex-wrap gap-3 pt-4 text-xs text-gray-400 fade-in-7">
+                {['Free Install', '2-4 Hrs Setup', 'No Hidden Costs'].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 badge-pop" style={{ animationDelay: `${i * 80}ms` }}>
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
                     {item}
@@ -142,19 +142,19 @@ export default function HomePage() {
             </div>
 
             {/* RIGHT IMAGE */}
-            <div className="flex justify-center lg:justify-end order-first lg:order-last parallax fade-in-image">
-              <div className="relative w-full max-w-[500px] group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-cyan-500/10 to-emerald-500/10 rounded-3xl blur-3xl group-hover:opacity-100 opacity-60 transition-opacity duration-500 animate-glow"></div>
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2 parallax fade-in-image">
+              <div className="relative w-full max-w-[450px]">
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-cyan-500/10 to-emerald-500/10 rounded-2xl blur-2xl opacity-60"></div>
                 
                 <img 
                   src="/gallery/hero-car.jpeg" 
                   alt="Premium car protected by SafePark"
-                  className="relative w-full h-[350px] md:h-[420px] object-cover rounded-3xl shadow-2xl border border-emerald-500/20 group-hover:border-emerald-500/40 group-hover:shadow-emerald-500/20 transition-all duration-500 img-zoom"
+                  className="relative w-full h-auto object-contain rounded-2xl shadow-2xl border border-emerald-500/20"
                   loading="eager"
                 />
                 
-                <div className="absolute top-6 left-6 bg-gradient-to-r from-emerald-500/90 to-cyan-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg group-hover:scale-110 transition-transform duration-300 badge-slide">
-                  Premium Protection
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-emerald-500/90 to-cyan-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-lg text-xs font-bold shadow-lg">
+                  Premium
                 </div>
               </div>
             </div>
@@ -163,34 +163,36 @@ export default function HomePage() {
       </section>
 
       {/* FEATURES */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
+      <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
         
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Complete Protection</h2>
-            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto text-reveal">
-              Four layers of engineered defense for every risk
+          <div className="text-center mb-14 scroll-observe space-y-3">
+            <h2 className="text-4xl md:text-5xl font-bold text-white heading-reveal">Complete Protection</h2>
+            <p className="text-sm md:text-base text-gray-400 font-light max-w-xl mx-auto">
+              Four layers of engineered defense
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: <Shield className="w-12 h-12 text-red-400" />, title: "Fire Protection", desc: "Heat & flame resistant" },
-              { icon: <Umbrella className="w-12 h-12 text-blue-400" />, title: "Rain Protection", desc: "100% waterproof coating" },
-              { icon: <Zap className="w-12 h-12 text-yellow-400" />, title: "Scratch-Proof", desc: "Military-grade fabric" },
-              { icon: <UserCheck className="w-12 h-12 text-green-400" />, title: "Safe for Kids", desc: "Family-friendly design" }
+              { icon: <Shield className="w-10 h-10 text-red-400" />, title: "Fire Protection", desc: "Heat & flame resistant" },
+              { icon: <Umbrella className="w-10 h-10 text-blue-400" />, title: "Rain Protection", desc: "100% waterproof" },
+              { icon: <Zap className="w-10 h-10 text-yellow-400" />, title: "Scratch-Proof", desc: "Military-grade" },
+              { icon: <UserCheck className="w-10 h-10 text-green-400" />, title: "Safe Kids", desc: "Family-friendly" }
             ].map((feature, idx) => (
               <div 
                 key={idx}
-                className="scroll-observe group relative p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-2 hover:shadow-xl card-stagger"
+                className="scroll-observe group relative p-5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-1 card-stagger"
                 style={{ animationDelay: `${idx * 120}ms` }}
               >
-                <div className="flex flex-col items-center text-center space-y-3">
-                  <div className="p-3 rounded-xl bg-white/5 group-hover:bg-white/8 transition-colors duration-300 icon-bounce" style={{ animationDelay: `${idx * 150}ms` }}>
+                <div className="flex flex-col items-start space-y-3">
+                  <div className="p-2 rounded-lg bg-white/5 group-hover:bg-white/8 transition-colors">
                     {feature.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-white">{feature.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{feature.desc}</p>
+                  <div>
+                    <h3 className="text-sm font-bold text-white">{feature.title}</h3>
+                    <p className="text-xs text-gray-400 mt-1">{feature.desc}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -199,36 +201,34 @@ export default function HomePage() {
       </section>
 
       {/* VALUE PROPS */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
+      <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Why Choose SafePark?</h2>
-            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto text-reveal">
-              Premium protection engineered for modern vehicles
-            </p>
+          <div className="text-center mb-14 scroll-observe space-y-3">
+            <h2 className="text-4xl md:text-5xl font-bold text-white heading-reveal">Why SafePark?</h2>
+            <p className="text-sm md:text-base text-gray-400 font-light">Premium engineered for you</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: <Shield className="w-10 h-10" />, title: "Weather Protection", desc: "Advanced weather-resistant fabric with 100% UV protection", badge: "100% Waterproof" },
-              { icon: <Zap className="w-10 h-10" />, title: "Scratch & Damage Cover", desc: "Revolutionary retractable design prevents all surface damage", badge: "Military Grade" },
-              { icon: <Award className="w-10 h-10" />, title: "Peace of Mind Warranty", desc: "2-year comprehensive warranty with premium support", badge: "2-Year Coverage" }
+              { icon: <Shield className="w-8 h-8" />, title: "Weather Protection", desc: "100% UV protection", badge: "Waterproof" },
+              { icon: <Zap className="w-8 h-8" />, title: "Damage Cover", desc: "Retractable design", badge: "Military" },
+              { icon: <Award className="w-8 h-8" />, title: "Warranty", desc: "2-year coverage", badge: "Premium" }
             ].map((item, idx) => (
               <div 
                 key={idx}
-                className="scroll-observe group relative p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-2 card-slide"
+                className="scroll-observe group relative p-6 rounded-xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.06] card-slide"
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
-                <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold badge-scale">
+                <div className="absolute -top-3 right-4 px-2 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold">
                   {item.badge}
                 </div>
 
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/15 transition-all duration-300 icon-spin">
+                <div className="space-y-3 pt-2">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/15 transition-all">
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
+                  <h3 className="text-base font-bold text-white">{item.title}</h3>
+                  <p className="text-xs text-gray-400">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -236,56 +236,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* GALLERY CAROUSEL - PROFESSIONAL */}
-      <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
+      {/* GALLERY CAROUSEL */}
+      <section id="gallery" className="py-20 px-6 md:px-12 lg:px-20 bg-black">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">SafePark Installation</h2>
-            <p className="text-lg text-gray-400 font-light text-reveal">Real installations, real results</p>
+          <div className="text-center mb-14 scroll-observe space-y-3">
+            <h2 className="text-4xl md:text-5xl font-bold text-white heading-reveal">Installation Gallery</h2>
+            <p className="text-sm md:text-base text-gray-400 font-light">Real installations, real results</p>
           </div>
           
           {/* Main Carousel */}
           <div className="relative scroll-observe">
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02]">
-              <div className="relative h-[400px] md:h-[500px] overflow-hidden">
+            <div className="relative rounded-xl overflow-hidden border border-white/10 bg-white/[0.02]">
+              <div className="relative h-80 md:h-[420px] w-full bg-gray-900">
                 <img 
                   src={galleryImages[currentSlide].src}
                   alt={galleryImages[currentSlide].alt}
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               </div>
 
-              {/* Carousel Controls */}
+              {/* Controls */}
               <button
                 onClick={() => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
-                className="absolute left-6 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all z-10"
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-all z-10"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5" />
               </button>
 
               <button
                 onClick={() => setCurrentSlide((prev) => (prev + 1) % galleryImages.length)}
-                className="absolute right-6 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all z-10"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-all z-10"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5" />
               </button>
 
-              {/* Title Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
-                <h3 className="text-xl md:text-2xl font-bold text-white">{galleryImages[currentSlide].title}</h3>
+              {/* Title */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                <h3 className="text-lg md:text-xl font-bold text-white">{galleryImages[currentSlide].title}</h3>
               </div>
             </div>
 
-            {/* Thumbnail Strip */}
-            <div className="flex gap-4 mt-8 overflow-x-auto pb-2">
+            {/* Thumbnails */}
+            <div className="flex gap-3 mt-6 overflow-x-auto pb-2 snap-x">
               {galleryImages.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentSlide(idx)}
-                  className={`relative flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all ${
-                    currentSlide === idx ? 'border-emerald-500 scale-105' : 'border-white/20 hover:border-white/40'
+                  className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all snap-start ${
+                    currentSlide === idx ? 'border-emerald-500 ring-2 ring-emerald-500/30' : 'border-white/20 hover:border-white/40'
                   }`}
                 >
                   <img src={img.src} alt={img.alt} className="w-full h-full object-cover" loading="lazy" />
@@ -297,26 +297,26 @@ export default function HomePage() {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-400 font-light text-reveal">Everything you need to know about SafePark</p>
+      <section className="py-20 px-6 md:px-12 lg:px-20 bg-black">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-12 scroll-observe space-y-3">
+            <h2 className="text-4xl md:text-5xl font-bold text-white heading-reveal">FAQ</h2>
+            <p className="text-sm md:text-base text-gray-400 font-light">Common questions answered</p>
           </div>
 
-          <div className="space-y-4 scroll-observe">
+          <div className="space-y-3 scroll-observe">
             {faqItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group border border-white/10 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 overflow-hidden"
+                className="border border-white/10 rounded-lg bg-white/[0.03] hover:bg-white/[0.05] transition-all overflow-hidden"
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === idx ? -1 : idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/[0.03] transition-all"
+                  className="w-full px-5 py-4 flex items-center justify-between text-left hover:bg-white/[0.02] transition-all"
                 >
-                  <h3 className="text-lg font-bold text-white flex-1">{item.question}</h3>
-                  <div className="ml-4 flex-shrink-0 text-emerald-400">
+                  <h3 className="text-sm md:text-base font-bold text-white flex-1 pr-4">{item.question}</h3>
+                  <div className="flex-shrink-0 text-emerald-400">
                     {expandedFaq === idx ? (
                       <Minus className="w-5 h-5" />
                     ) : (
@@ -326,7 +326,7 @@ export default function HomePage() {
                 </button>
 
                 {expandedFaq === idx && (
-                  <div className="px-6 pb-5 text-gray-300 leading-relaxed animate-fade-up">
+                  <div className="px-5 pb-4 text-sm text-gray-300 leading-relaxed border-t border-white/5 animate-fade-up">
                     {item.answer}
                   </div>
                 )}
@@ -336,53 +336,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
-        <div className="max-w-4xl mx-auto">
+      {/* CTA - COMPACT */}
+      <section className="py-16 px-6 md:px-12 lg:px-20 relative bg-black">
+        <div className="max-w-3xl mx-auto">
           <div className="relative scroll-observe cta-scale">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-cyan-500/5 to-emerald-500/5 rounded-3xl blur-2xl opacity-40"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 to-cyan-500/8 rounded-xl blur-xl opacity-50"></div>
             
-            <div className="relative bg-white/[0.03] backdrop-blur-xl rounded-3xl p-12 border border-white/10 text-center space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-white heading-reveal">Ready to Protect Your Vehicle?</h2>
-              <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light text-reveal">
-                Join thousands who chose SafePark. Get started in minutes.
+            <div className="relative bg-white/[0.04] backdrop-blur-sm rounded-xl p-8 md:p-10 border border-white/10 text-center space-y-5">
+              <h2 className="text-3xl md:text-4xl font-bold text-white heading-reveal">Ready to Protect?</h2>
+              <p className="text-sm md:text-base text-gray-300 max-w-xl mx-auto font-light">
+                Join 2,000+ happy customers. Get started in minutes.
               </p>
 
-              <div className="grid md:grid-cols-3 gap-8 py-8 border-y border-white/10">
+              {/* Contact Grid */}
+              <div className="grid md:grid-cols-3 gap-6 py-6 border-y border-white/10">
                 {[
-                  { icon: <Phone className="w-6 h-6" />, title: "Phone", content: "+91 9600840058", href: "tel:+919600840058" },
-                  { icon: <MessageCircle className="w-6 h-6" />, title: "WhatsApp", content: "Message Us", href: "https://wa.me/919600840058" },
-                  { icon: <MapPin className="w-6 h-6" />, title: "Location", content: "Coimbatore, Tamil Nadu", href: null }
+                  { icon: <Phone className="w-5 h-5" />, title: "Call", content: "+91 9600840058", href: "tel:+919600840058" },
+                  { icon: <MessageCircle className="w-5 h-5" />, title: "WhatsApp", content: "Message", href: "https://wa.me/919600840058" },
+                  { icon: <MapPin className="w-5 h-5" />, title: "Visit", content: "Coimbatore", href: null }
                 ].map((contact, i) => (
                   <div key={i} className="group/contact contact-pop" style={{ animationDelay: `${i * 100}ms` }}>
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-3 text-emerald-400 group-hover/contact:bg-emerald-500/20 transition-colors">
+                    <div className="w-10 h-10 rounded-full bg-emerald-500/15 flex items-center justify-center mx-auto mb-2 text-emerald-400 group-hover/contact:bg-emerald-500/25 transition-colors">
                       {contact.icon}
                     </div>
-                    <p className="text-sm text-gray-400 mb-1">{contact.title}</p>
+                    <p className="text-xs text-gray-400 mb-1">{contact.title}</p>
                     {contact.href ? (
-                      <a href={contact.href} className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+                      <a href={contact.href} className="text-emerald-400 hover:text-emerald-300 font-semibold text-xs transition-colors">
                         {contact.content}
                       </a>
                     ) : (
-                      <p className="text-emerald-300 font-semibold">{contact.content}</p>
+                      <p className="text-emerald-300 font-semibold text-xs">{contact.content}</p>
                     )}
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 fade-in-buttons">
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                 <a 
                   href="tel:+919600840058"
-                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500 btn-pulse"
+                  className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-sm hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-105 transition-all btn-pulse"
                 >
-                  Call for Free Quote
+                  Call Now
                 </a>
                 <a 
                   href="https://wa.me/919600840058"
-                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/50 text-emerald-400 font-bold hover:bg-emerald-500/10 hover:border-emerald-400 transition-all duration-300 btn-pulse"
+                  className="px-6 py-2.5 rounded-lg border border-emerald-500/50 text-emerald-400 font-bold text-sm hover:bg-emerald-500/10 transition-all btn-pulse"
                   style={{ animationDelay: '100ms' }}
                 >
-                  WhatsApp Now
+                  WhatsApp
                 </a>
               </div>
             </div>
@@ -391,46 +393,46 @@ export default function HomePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/5 bg-black py-16 px-6 md:px-12 lg:px-20">
+      <footer className="border-t border-white/5 bg-black py-12 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 mb-12">
+          <div className="grid md:grid-cols-2 gap-12 mb-8">
             <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold">S</div>
-                <span className="text-2xl font-bold text-white">SafePark</span>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">S</div>
+                <span className="text-xl font-bold text-white">SafePark</span>
               </div>
-              <p className="text-gray-400 leading-relaxed mb-6 font-light">
-                Premium car protection engineered for the modern world. Trusted by thousands across India.
+              <p className="text-gray-400 leading-relaxed text-sm mb-4 font-light">
+                Premium car protection engineered for India. Trusted by thousands.
               </p>
-              <div className="flex gap-1 mb-3">
+              <div className="flex gap-1 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <p className="text-sm text-gray-400">2,000+ Happy Customers</p>
+              <p className="text-xs text-gray-400">2,000+ Happy Customers</p>
             </div>
 
             <div>
-              <h4 className="font-bold text-white mb-8 text-lg">Contact</h4>
-              <div className="space-y-4">
-                <a href="tel:+919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-400 transition-colors">
+              <h4 className="font-bold text-white mb-4 text-sm">Contact</h4>
+              <div className="space-y-2 text-sm">
+                <a href="tel:+919600840058" className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition-colors">
                   <Phone className="w-4 h-4" />
                   +91 9600840058
                 </a>
-                <a href="https://wa.me/919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-400 transition-colors">
+                <a href="https://wa.me/919600840058" className="flex items-center gap-2 text-gray-400 hover:text-emerald-400 transition-colors">
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp
                 </a>
-                <div className="flex items-center gap-3 text-gray-400">
+                <div className="flex items-center gap-2 text-gray-400">
                   <MapPin className="w-4 h-4" />
-                  Coimbatore, Tamil Nadu
+                  Coimbatore, TN
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 text-center text-gray-400 font-light">
-            <p>© 2025 SafePark. Engineered excellence from Coimbatore, Tamil Nadu</p>
+          <div className="border-t border-white/10 pt-8 text-center text-xs text-gray-400 font-light">
+            <p>© 2025 SafePark. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -478,21 +480,6 @@ export default function HomePage() {
 
         .fade-in-image { animation: zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both; }
 
-        @keyframes image-zoom {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.02); }
-          100% { transform: scale(1); }
-        }
-
-        .img-zoom { animation: image-zoom 4s ease-in-out infinite; }
-
-        @keyframes glow-pulse {
-          0%, 100% { opacity: 0.6; }
-          50% { opacity: 0.8; }
-        }
-
-        .animate-glow { animation: glow-pulse 3s ease-in-out infinite; }
-
         @keyframes scroll-fade-up {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
@@ -504,7 +491,7 @@ export default function HomePage() {
         }
 
         @keyframes heading-reveal {
-          from { opacity: 0; transform: translateY(-30px) scaleY(0.8); }
+          from { opacity: 0; transform: translateY(-20px) scaleY(0.8); }
           to { opacity: 1; transform: translateY(0) scaleY(1); }
         }
 
@@ -531,48 +518,6 @@ export default function HomePage() {
 
         .card-slide { animation: card-slide-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
-        @keyframes icon-bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-
-        .icon-bounce { animation: icon-bounce 2s ease-in-out infinite; }
-
-        @keyframes icon-spin {
-          from { transform: rotate(-180deg); opacity: 0; }
-          to { transform: rotate(0deg); opacity: 1; }
-        }
-
-        .icon-spin { animation: icon-spin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes badge-pop {
-          from { opacity: 0; transform: scale(0) translateY(10px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .badge-pop { animation: badge-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes badge-scale {
-          from { transform: scale(0.8); }
-          to { transform: scale(1); }
-        }
-
-        .badge-scale { animation: badge-scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes badge-slide {
-          from { opacity: 0; transform: translateX(-10px) translateY(10px); }
-          to { opacity: 1; transform: translateX(0) translateY(0); }
-        }
-
-        .badge-slide { animation: badge-slide 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes star-twinkle {
-          from { opacity: 0; transform: scale(0) rotate(-180deg); }
-          to { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
-
-        .star-pop { animation: star-twinkle 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
         @keyframes contact-pop {
           from { opacity: 0; transform: scale(0) translateY(20px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
@@ -593,22 +538,6 @@ export default function HomePage() {
         }
 
         .btn-pulse { animation: button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        .fade-in-buttons .btn-pulse:nth-child(2) { animation-delay: 0.1s; }
-
-        @keyframes card-float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-5px); }
-        }
-
-        .card-float { animation: card-float 2s ease-in-out infinite; }
-
-        @keyframes btn-lift {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn-lift { animation: btn-lift 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
         .in-view { opacity: 1 !important; }
 
