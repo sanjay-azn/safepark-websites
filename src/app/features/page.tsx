@@ -3,8 +3,12 @@
 import { Shield, Umbrella, Zap, CheckCircle2, Star, Phone, MessageCircle, Award, Clock, Sparkles, Lightbulb, Flame, Droplets, Bolt, Wind, Wrench, Zap as Speed } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
+interface VisibilityState {
+  [key: string]: boolean;
+}
+
 export default function FeaturesPage() {
-  const [isVisible, setIsVisible] = useState({});
+  const [isVisible, setIsVisible] = useState<VisibilityState>({});
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -12,13 +16,15 @@ export default function FeaturesPage() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setIsVisible(prev => ({ ...prev, [entry.target.id]: true }));
+          const id = (entry.target as HTMLElement).id;
+          setIsVisible((prev) => ({ ...prev, [id]: true }));
         }
       });
     }, observerOptions);
 
     document.querySelectorAll('[data-animate]').forEach((el) => {
-      el.id = el.id || `element-${Math.random()}`;
+      const element = el as HTMLElement;
+      element.id = element.id || `element-${Math.random().toString(36).substr(2, 9)}`;
       observer.observe(el);
     });
 
@@ -89,37 +95,42 @@ export default function FeaturesPage() {
                 desc: "Rounded edges and non-toxic materials for complete peace of mind.",
                 features: ["Child safe design", "Stable frame", "Non-toxic"]
               }
-            ].map((feature, idx) => (
-              <div 
-                key={idx}
-                id={`feature-${idx}`}
-                data-animate
-                className="group relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 rounded-xl p-6 transition-all duration-500 h-full flex flex-col group-hover:border-emerald-500/30 group-hover:bg-gradient-to-br group-hover:from-white/[0.12] group-hover:to-white/[0.05] group-hover:-translate-y-1"
-                style={{
-                  opacity: isVisible[`feature-${idx}`] ? 1 : 0,
-                  transform: isVisible[`feature-${idx}`] ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
-                  transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`
-                }}
-              >
-                
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center mb-4 group-hover:from-white/30 group-hover:to-white/10 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-                  {feature.icon}
+            ].map((feature, idx) => {
+              const featureId = `feature-${idx}`;
+              const isElementVisible = isVisible[featureId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={featureId}
+                  data-animate="true"
+                  className="group relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 rounded-xl p-6 transition-all duration-500 h-full flex flex-col group-hover:border-emerald-500/30 group-hover:bg-gradient-to-br group-hover:from-white/[0.12] group-hover:to-white/[0.05] group-hover:-translate-y-1"
+                  style={{
+                    opacity: isElementVisible ? 1 : 0,
+                    transform: isElementVisible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
+                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`
+                  }}
+                >
+                  
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center mb-4 group-hover:from-white/30 group-hover:to-white/10 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                    {feature.icon}
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-white mb-1">{feature.title}</h3>
+                  <p className="text-sm text-gray-400 mb-3">{feature.subtitle}</p>
+                  <p className="text-sm text-gray-300 leading-relaxed mb-5 flex-grow">{feature.desc}</p>
+                  
+                  <div className="space-y-2 pt-4 border-t border-white/10">
+                    {feature.features.map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-gray-300 group-hover:text-gray-200 transition-colors">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                
-                <h3 className="text-xl font-bold text-white mb-1">{feature.title}</h3>
-                <p className="text-sm text-gray-400 mb-3">{feature.subtitle}</p>
-                <p className="text-sm text-gray-300 leading-relaxed mb-5 flex-grow">{feature.desc}</p>
-                
-                <div className="space-y-2 pt-4 border-t border-white/10">
-                  {feature.features.map((item, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-gray-300 group-hover:text-gray-200 transition-colors">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-400 flex-shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -140,7 +151,7 @@ export default function FeaturesPage() {
           
           <div 
             id="comparison-header"
-            data-animate
+            data-animate="true"
             className="text-center mb-16"
             style={{
               opacity: isVisible['comparison-header'] ? 1 : 0,
@@ -161,29 +172,34 @@ export default function FeaturesPage() {
               { feature: "Material Quality", traditional: "Low-grade", safepark: "Military-Grade" },
               { feature: "Weather Protection", traditional: "Limited", safepark: "Complete Coverage" },
               { feature: "Space Usage", traditional: "Permanent", safepark: "Collapsible" }
-            ].map((item, idx) => (
-              <div 
-                key={idx}
-                id={`comparison-${idx}`}
-                data-animate
-                className="grid grid-cols-3 gap-4 p-5 rounded-lg bg-gradient-to-r from-white/[0.04] to-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all hover:from-white/[0.08] hover:to-white/[0.04] group/row"
-                style={{
-                  opacity: isVisible[`comparison-${idx}`] ? 1 : 0,
-                  transform: isVisible[`comparison-${idx}`] ? 'translateX(0)' : 'translateX(-30px)',
-                  transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.08}s`
-                }}
-              >
-                <div className="font-semibold text-white text-sm md:text-base group-hover/row:text-emerald-300 transition-colors">{item.feature}</div>
-                <div className="text-gray-400 flex items-center gap-2 justify-center text-xs md:text-sm">
-                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-500/20 text-red-400 font-bold text-xs flex-shrink-0 group-hover/row:bg-red-500/40 transition-colors">✕</span> 
-                  <span className="group-hover/row:line-through transition-all">{item.traditional}</span>
+            ].map((item, idx) => {
+              const comparisonId = `comparison-${idx}`;
+              const isComparisonVisible = isVisible[comparisonId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={comparisonId}
+                  data-animate="true"
+                  className="grid grid-cols-3 gap-4 p-5 rounded-lg bg-gradient-to-r from-white/[0.04] to-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all hover:from-white/[0.08] hover:to-white/[0.04] group/row"
+                  style={{
+                    opacity: isComparisonVisible ? 1 : 0,
+                    transform: isComparisonVisible ? 'translateX(0)' : 'translateX(-30px)',
+                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.08}s`
+                  }}
+                >
+                  <div className="font-semibold text-white text-sm md:text-base group-hover/row:text-emerald-300 transition-colors">{item.feature}</div>
+                  <div className="text-gray-400 flex items-center gap-2 justify-center text-xs md:text-sm">
+                    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-500/20 text-red-400 font-bold text-xs flex-shrink-0 group-hover/row:bg-red-500/40 transition-colors">✕</span> 
+                    <span className="group-hover/row:line-through transition-all">{item.traditional}</span>
+                  </div>
+                  <div className="text-emerald-300 font-semibold flex items-center gap-2 justify-end text-xs md:text-sm">
+                    <span className="text-emerald-400 font-bold">✓</span> 
+                    <span className="group-hover/row:text-emerald-200 transition-colors">{item.safepark}</span>
+                  </div>
                 </div>
-                <div className="text-emerald-300 font-semibold flex items-center gap-2 justify-end text-xs md:text-sm">
-                  <span className="text-emerald-400 font-bold">✓</span> 
-                  <span className="group-hover/row:text-emerald-200 transition-colors">{item.safepark}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -204,7 +220,7 @@ export default function FeaturesPage() {
           
           <div 
             id="benefits-header"
-            data-animate
+            data-animate="true"
             className="text-center mb-16"
             style={{
               opacity: isVisible['benefits-header'] ? 1 : 0,
@@ -255,34 +271,39 @@ export default function FeaturesPage() {
                 icon: "⚙️",
                 color: "from-purple-500/20"
               }
-            ].map((benefit, idx) => (
-              <div 
-                key={idx}
-                id={`benefit-${idx}`}
-                data-animate
-                className="group relative p-6 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 hover:border-emerald-500/30 transition-all h-full hover:from-white/[0.12] hover:to-white/[0.04] cursor-pointer overflow-hidden"
-                style={{
-                  opacity: isVisible[`benefit-${idx}`] ? 1 : 0,
-                  transform: isVisible[`benefit-${idx}`] ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.9)',
-                  transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.12}s`
-                }}
-              >
-                {/* Animated background glow */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} to-transparent blur-2xl group-hover:blur-3xl transition-all duration-500`}></div>
-                </div>
+            ].map((benefit, idx) => {
+              const benefitId = `benefit-${idx}`;
+              const isBenefitVisible = isVisible[benefitId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={benefitId}
+                  data-animate="true"
+                  className="group relative p-6 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 hover:border-emerald-500/30 transition-all h-full hover:from-white/[0.12] hover:to-white/[0.04] cursor-pointer overflow-hidden"
+                  style={{
+                    opacity: isBenefitVisible ? 1 : 0,
+                    transform: isBenefitVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.9)',
+                    transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.12}s`
+                  }}
+                >
+                  {/* Animated background glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} to-transparent blur-2xl group-hover:blur-3xl transition-all duration-500`}></div>
+                  </div>
 
-                <div className="text-5xl mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12 origin-center inline-block">
-                  {benefit.icon}
-                </div>
-                
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">{benefit.title}</h3>
-                <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors">{benefit.desc}</p>
+                  <div className="text-5xl mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12 origin-center inline-block">
+                    {benefit.icon}
+                  </div>
+                  
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">{benefit.title}</h3>
+                  <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors">{benefit.desc}</p>
 
-                {/* Animated line on hover */}
-                <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 w-0 group-hover:w-full transition-all duration-500"></div>
-              </div>
-            ))}
+                  {/* Animated line on hover */}
+                  <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 w-0 group-hover:w-full transition-all duration-500"></div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -299,23 +320,28 @@ export default function FeaturesPage() {
               { icon: '🚗', value: '2000+', label: 'Cars Protected' },
               { icon: '🇮🇳', value: 'India', label: 'Made Locally' },
               { icon: '📞', value: '24/7', label: 'Support' }
-            ].map((stat, idx) => (
-              <div 
-                key={idx}
-                id={`stat-${idx}`}
-                data-animate
-                className="text-center p-6 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 hover:border-emerald-500/30 transition-all hover:from-white/[0.12] hover:to-white/[0.04] group"
-                style={{
-                  opacity: isVisible[`stat-${idx}`] ? 1 : 0,
-                  transform: isVisible[`stat-${idx}`] ? 'translateY(0)' : 'translateY(20px)',
-                  transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`
-                }}
-              >
-                <div className="text-3xl mb-2 group-hover:scale-125 transition-transform duration-300">{stat.icon}</div>
-                <div className="text-white font-bold text-xl group-hover:text-emerald-400 transition-colors">{stat.value}</div>
-                <div className="text-gray-400 text-sm">{stat.label}</div>
-              </div>
-            ))}
+            ].map((stat, idx) => {
+              const statId = `stat-${idx}`;
+              const isStatVisible = isVisible[statId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={statId}
+                  data-animate="true"
+                  className="text-center p-6 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 hover:border-emerald-500/30 transition-all hover:from-white/[0.12] hover:to-white/[0.04] group"
+                  style={{
+                    opacity: isStatVisible ? 1 : 0,
+                    transform: isStatVisible ? 'translateY(0)' : 'translateY(20px)',
+                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`
+                  }}
+                >
+                  <div className="text-3xl mb-2 group-hover:scale-125 transition-transform duration-300">{stat.icon}</div>
+                  <div className="text-white font-bold text-xl group-hover:text-emerald-400 transition-colors">{stat.value}</div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -323,7 +349,10 @@ export default function FeaturesPage() {
       {/* CTA */}
       <section className="pb-32 px-6 md:px-12 lg:px-20 bg-black">
         <div className="max-w-3xl mx-auto">
-          <div id="cta-section" data-animate className="relative bg-gradient-to-br from-emerald-500/10 via-cyan-500/5 to-emerald-500/10 rounded-2xl border border-white/15 p-8 md:p-10 text-center overflow-hidden group"
+          <div 
+            id="cta-section" 
+            data-animate="true"
+            className="relative bg-gradient-to-br from-emerald-500/10 via-cyan-500/5 to-emerald-500/10 rounded-2xl border border-white/15 p-8 md:p-10 text-center overflow-hidden group"
             style={{
               opacity: isVisible['cta-section'] ? 1 : 0,
               transform: isVisible['cta-section'] ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
@@ -399,11 +428,10 @@ export default function FeaturesPage() {
         html { scroll-behavior: smooth; }
 
         @media (max-width: 640px) {
-          .text-5xl { @apply text-3xl; }
-          .text-4xl { @apply text-2xl; }
+          .text-5xl { font-size: 1.875rem; }
+          .text-4xl { font-size: 1.5rem; }
         }
 
-        /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
           * {
             animation: none !important;
