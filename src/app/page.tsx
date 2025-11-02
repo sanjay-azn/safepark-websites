@@ -391,7 +391,6 @@ export default function HomePage() {
                         controls
                         className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-700"
                         poster="/gallery/gallery1.jpg"
-                        loading="lazy"
                         preload="metadata"
                       >
                         Your browser does not support the video tag.
@@ -653,7 +652,6 @@ export default function HomePage() {
         </footer>
       </main>
 
-      {/* Styles */}
       <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
