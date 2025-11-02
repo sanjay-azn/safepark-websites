@@ -1,6 +1,6 @@
 'use client';
 
-import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play } from 'lucide-react';
+import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, CheckCircle2, Play } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export default function HomePage() {
@@ -34,8 +34,9 @@ export default function HomePage() {
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
       const parallaxElements = document.querySelectorAll('.parallax');
-      parallaxElements.forEach((element) => {
-        const speed = element.dataset.speed || 0.5;
+      parallaxElements.forEach((el) => {
+        const element = el as HTMLElement;
+        const speed = parseFloat((element.dataset as any).speed || '0.5');
         element.style.transform = `translateY(${scrolled * speed}px)`;
       });
     };
@@ -51,9 +52,8 @@ export default function HomePage() {
   return (
     <div className="scroll-smooth bg-gradient-to-br from-[#0f172a] via-[#0f2d2a] to-[#052e16] min-h-screen overflow-x-hidden">
       
-      {/* SEO-optimized semantic structure */}
       <main>
-        {/* HERO SECTION - ENTERPRISE GRADE WITH GSAP-STYLE ANIMATIONS */}
+        {/* HERO SECTION */}
         <section 
           ref={heroRef}
           className={`pt-28 pb-16 px-6 md:px-12 lg:px-20 relative ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
@@ -69,7 +69,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               
-              {/* Left Content - Staggered entrance animations */}
+              {/* Left Content */}
               <div className="text-center lg:text-left">
                 <div 
                   className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100/10 border border-emerald-400/20 text-emerald-300 font-medium text-sm backdrop-blur-sm mb-6 hover:bg-emerald-100/20 hover:border-emerald-400/40 hover:scale-105 transition-all duration-500 cursor-default animate-slide-down"
@@ -96,7 +96,7 @@ export default function HomePage() {
                   Your car faces <span className="font-semibold text-white hover:text-emerald-400 transition-colors duration-300">hidden threats every day</span>. From unexpected weather to kids playing nearby, give yourself <span className="text-emerald-400 font-medium hover:text-emerald-300 transition-colors duration-300">complete peace of mind</span>.
                 </p>
 
-                {/* Social Proof with micro-interactions */}
+                {/* Social Proof */}
                 <div 
                   className="flex items-center justify-center lg:justify-start gap-8 mb-8 animate-slide-up"
                   style={{ animationDelay: '0.4s' }}
@@ -117,7 +117,7 @@ export default function HomePage() {
                   <span className="text-emerald-400 font-medium hover:text-emerald-300 transition-colors duration-300 cursor-default">2-Year Warranty</span>
                 </div>
 
-                {/* CTAs with magnetic hover effect */}
+                {/* CTAs */}
                 <div 
                   className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 animate-slide-up"
                   style={{ animationDelay: '0.5s' }}
@@ -145,7 +145,7 @@ export default function HomePage() {
                   </a>
                 </div>
 
-                {/* Trust Indicators with stagger */}
+                {/* Trust Indicators */}
                 <div 
                   className="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gray-400 animate-slide-up"
                   style={{ animationDelay: '0.6s' }}
@@ -167,13 +167,12 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right Image with parallax */}
+              {/* Right Image */}
               <div 
                 className="flex justify-center lg:justify-end order-first lg:order-last animate-slide-left"
                 style={{ animationDelay: '0.3s' }}
               >
                 <div className="relative w-full max-w-[600px] group">
-                  {/* Animated background effects */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-teal-400/20 to-cyan-300/30 rounded-3xl blur-3xl scale-110 opacity-60 group-hover:opacity-80 transition-opacity duration-700 animate-pulse-slow"></div>
                   <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
                   
@@ -187,7 +186,6 @@ export default function HomePage() {
                     height="400"
                   />
                   
-                  {/* Floating Badge with animation */}
                   <div className="absolute top-4 left-4 bg-emerald-500/90 backdrop-blur-sm text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-emerald-400 transition-all duration-300 hover:scale-110 cursor-default animate-bounce-subtle">
                     Premium Protection
                   </div>
@@ -197,18 +195,17 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* FEATURES SECTION - STRIPE STYLE WITH STAGGER ANIMATIONS */}
+        {/* FEATURES SECTION */}
         <section 
           ref={featuresRef}
           className="py-16 px-6 md:px-12 lg:px-20 relative observe-section opacity-0"
           aria-label="Product features"
         >
-          {/* Background Effects with animation */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-emerald-500/5 to-purple-500/5 backdrop-blur-3xl animate-gradient-slow"></div>
           
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4 hover:scale-105 transition-transform duration-500">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mb-4">
                 Complete Protection for Every Risk
               </h2>
               <p className="text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
@@ -222,43 +219,36 @@ export default function HomePage() {
                   icon: <Shield className="w-10 h-10 mb-4 text-red-400" />, 
                   title: "Fire Protection", 
                   desc: "Heat & flame resistant materials with advanced coating technology",
-                  gradient: "from-red-500/10 to-orange-500/10",
-                  hoverGradient: "group-hover:from-red-500/30 group-hover:to-orange-500/30"
+                  gradient: "from-red-500/10 to-orange-500/10"
                 },
                 { 
                   icon: <Umbrella className="w-10 h-10 mb-4 text-blue-400" />, 
                   title: "Rain Protection", 
                   desc: "100% waterproof coating ensures complete weather resistance",
-                  gradient: "from-blue-500/10 to-cyan-500/10",
-                  hoverGradient: "group-hover:from-blue-500/30 group-hover:to-cyan-500/30"
+                  gradient: "from-blue-500/10 to-cyan-500/10"
                 },
                 { 
                   icon: <Zap className="w-10 h-10 mb-4 text-yellow-400" />, 
                   title: "Scratch-Proof", 
                   desc: "Durable fabric protection prevents surface damage",
-                  gradient: "from-yellow-500/10 to-amber-500/10",
-                  hoverGradient: "group-hover:from-yellow-500/30 group-hover:to-amber-500/30"
+                  gradient: "from-yellow-500/10 to-amber-500/10"
                 },
                 { 
                   icon: <UserCheck className="w-10 h-10 mb-4 text-green-400" />, 
                   title: "Safe for Kids", 
                   desc: "Rounded edges and stable design prioritize safety",
-                  gradient: "from-green-500/10 to-emerald-500/10",
-                  hoverGradient: "group-hover:from-green-500/30 group-hover:to-emerald-500/30"
+                  gradient: "from-green-500/10 to-emerald-500/10"
                 }
               ].map((feature, idx) => (
                 <div 
                   key={idx}
-                  className="group relative feature-card"
+                  className="group relative"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
-                  {/* Enterprise Card with micro-interactions */}
                   <div className="relative bg-white/[0.06] backdrop-blur-xl rounded-2xl p-6 border border-white/20 shadow-xl text-center transition-all duration-500 hover:scale-105 hover:bg-white/[0.10] hover:shadow-2xl hover:shadow-white/10 h-[200px] flex flex-col justify-between overflow-hidden cursor-pointer hover:-translate-y-2">
                     
-                    {/* Hover Gradient with smooth transition */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} ${feature.hoverGradient} transition-all duration-500`}></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-all duration-500`}></div>
                     
-                    {/* Animated corner accent */}
                     <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-full"></div>
                     
                     <div className="relative z-10">
@@ -267,7 +257,6 @@ export default function HomePage() {
                     </div>
                     <p className="text-gray-400 leading-relaxed text-sm relative z-10 group-hover:text-gray-200 transition-colors duration-300">{feature.desc}</p>
                     
-                    {/* Hover indicator */}
                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                   </div>
                 </div>
@@ -276,9 +265,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* VALUE PROPS SECTION - ZENDESK STYLE */}
+        {/* VALUE PROPS SECTION */}
         <section className="py-16 px-6 md:px-12 lg:px-20 relative observe-section opacity-0" aria-label="Why choose SafePark">
-          {/* Background Effects */}
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-cyan-500/5 to-blue-500/5 backdrop-blur-3xl"></div>
           
           <div className="max-w-6xl mx-auto relative z-10">
@@ -314,19 +302,15 @@ export default function HomePage() {
               ].map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="group relative value-card"
+                  className="group relative"
                   style={{ animationDelay: `${idx * 0.15}s` }}
                 >
-                  {/* Enterprise Card */}
                   <div className="relative bg-white/[0.06] backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-xl text-center transition-all duration-700 hover:scale-105 hover:bg-white/[0.10] hover:shadow-2xl min-h-[280px] flex flex-col justify-between cursor-pointer hover:-translate-y-3">
                     
-                    {/* Hover Glow */}
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     
-                    {/* Animated ring */}
                     <div className="absolute inset-0 rounded-3xl border-2 border-emerald-400/0 group-hover:border-emerald-400/50 transition-all duration-700 scale-95 group-hover:scale-100"></div>
                     
-                    {/* Stats Badge */}
                     <div className="absolute -top-3 right-4 bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm group-hover:bg-emerald-500/40 group-hover:scale-110 transition-all duration-300">
                       {item.stats}
                     </div>
@@ -343,7 +327,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* GALLERY SECTION - SHOPIFY STYLE */}
+        {/* GALLERY SECTION */}
         <section id="gallery" className="py-16 px-6 md:px-12 lg:px-20 bg-slate-800/30 observe-section opacity-0" aria-label="Gallery">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -397,7 +381,7 @@ export default function HomePage() {
               ].map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="group relative p-4 rounded-2xl shadow-lg bg-gray-900/50 backdrop-blur border border-gray-800/50 hover:bg-gray-800/50 hover:scale-105 hover:-translate-y-2 transition-all duration-500 cursor-pointer gallery-item"
+                  className="group relative p-4 rounded-2xl shadow-lg bg-gray-900/50 backdrop-blur border border-gray-800/50 hover:bg-gray-800/50 hover:scale-105 hover:-translate-y-2 transition-all duration-500 cursor-pointer"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="relative overflow-hidden rounded-xl">
@@ -423,12 +407,10 @@ export default function HomePage() {
                       />
                     )}
                     
-                    {/* Tag with hover effect */}
                     <div className="absolute top-2 right-2 bg-emerald-500/90 backdrop-blur-sm text-white px-2 py-1 rounded text-xs font-bold group-hover:bg-emerald-400 group-hover:scale-110 transition-all duration-300">
                       {item.tag}
                     </div>
                     
-                    {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
                   
@@ -442,9 +424,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* TESTIMONIALS SECTION - STRIPE STYLE */}
+        {/* TESTIMONIALS SECTION */}
         <section className="py-16 px-6 md:px-12 lg:px-20 relative observe-section opacity-0" aria-label="Customer testimonials">
-          {/* Background Effects */}
           <div className="absolute inset-0 bg-gradient-to-bl from-purple-500/5 via-emerald-500/5 to-cyan-500/5"></div>
           
           <div className="max-w-6xl mx-auto relative z-10">
@@ -481,16 +462,13 @@ export default function HomePage() {
               ].map((review, idx) => (
                 <div 
                   key={idx} 
-                  className="group relative testimonial-card"
+                  className="group relative"
                   style={{ animationDelay: `${idx * 0.15}s` }}
                 >
-                  {/* Enterprise Testimonial Card */}
                   <div className="relative bg-white/[0.06] backdrop-blur-xl rounded-2xl p-6 border border-white/20 shadow-xl transition-all duration-700 hover:scale-[1.02] hover:bg-white/[0.10] h-[220px] flex flex-col justify-between cursor-pointer hover:-translate-y-2 hover:shadow-2xl hover:shadow-white/10">
                     
-                    {/* Subtle inner glow */}
                     <div className="absolute inset-1 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     
-                    {/* Quote mark decoration */}
                     <div className="absolute -top-2 -left-2 text-6xl text-emerald-400/20 font-serif group-hover:text-emerald-400/40 group-hover:scale-110 transition-all duration-500">"</div>
                     
                     <div className="relative z-10">
@@ -524,9 +502,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* CTA SECTION - ENTERPRISE STYLE */}
+        {/* CTA SECTION */}
         <section className="py-16 px-6 md:px-12 lg:px-20 relative observe-section opacity-0" aria-label="Call to action">
-          {/* Background Effects */}
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/8 via-cyan-500/8 to-purple-500/8"></div>
           
           <div className="max-w-4xl mx-auto relative z-10">
@@ -539,13 +516,10 @@ export default function HomePage() {
               </p>
             </div>
             
-            {/* Enterprise Glass Container */}
             <div className="relative bg-white/[0.06] backdrop-blur-2xl rounded-3xl border border-white/20 p-8 lg:p-12 shadow-2xl hover:shadow-3xl hover:border-white/30 transition-all duration-700 group">
               
-              {/* Animated background pulse */}
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-cyan-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               
-              {/* Contact Icons Row */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 relative z-10">
                 {[
                   {
@@ -594,7 +568,6 @@ export default function HomePage() {
                 ))}
               </div>
               
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
                 <a 
                   href="tel:+919600840058" 
@@ -619,7 +592,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* FOOTER - ENTERPRISE STYLE */}
+        {/* FOOTER */}
         <footer className="py-16 px-6 md:px-12 lg:px-20 bg-black/40 border-t border-white/10" role="contentinfo">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 mb-12">
@@ -680,7 +653,7 @@ export default function HomePage() {
         </footer>
       </main>
 
-      {/* Custom Styles for GSAP-style animations */}
+      {/* Styles */}
       <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
@@ -776,7 +749,6 @@ export default function HomePage() {
           animation: bounce-subtle 2s ease-in-out infinite;
         }
 
-        /* Scroll animations */
         .observe-section {
           transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), 
                       transform 1s cubic-bezier(0.16, 1, 0.3, 1);
@@ -788,44 +760,24 @@ export default function HomePage() {
           transform: translateY(0);
         }
 
-        /* Stagger animations for cards */
-        .feature-card,
-        .value-card,
-        .gallery-item,
-        .testimonial-card {
-          animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          opacity: 0;
-        }
-
-        .animate-in .feature-card,
-        .animate-in .value-card,
-        .animate-in .gallery-item,
-        .animate-in .testimonial-card {
-          opacity: 1;
-        }
-
-        /* Performance optimizations */
         * {
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Smooth scroll */
         html {
           scroll-behavior: smooth;
         }
 
-        /* GPU acceleration for transforms */
         .group,
         .transition-all,
-        .hover\\:scale-105,
-        .hover\\:scale-110,
-        .hover\\:-translate-y-2 {
+        .hover\:scale-105,
+        .hover\:scale-110,
+        .hover\:-translate-y-2 {
           will-change: transform;
           transform: translateZ(0);
         }
 
-        /* Reduce motion for accessibility */
         @media (prefers-reduced-motion: reduce) {
           *,
           *::before,
@@ -836,7 +788,6 @@ export default function HomePage() {
           }
         }
 
-        /* Enhanced focus states for accessibility */
         a:focus-visible,
         button:focus-visible {
           outline: 2px solid #10b981;
