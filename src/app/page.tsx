@@ -3,21 +3,31 @@
 import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play, ChevronLeft, ChevronRight, Plus, Minus } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+interface VisibilityState {
+  [key: string]: boolean;
+}
+
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [expandedFaq, setExpandedFaq] = useState(0);
+  const [isVisible, setIsVisible] = useState<VisibilityState>({});
 
   useEffect(() => {
     const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -80px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
+          const id = (entry.target as HTMLElement).id;
+          setIsVisible((prev) => ({ ...prev, [id]: true }));
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll('.scroll-observe').forEach((el) => observer.observe(el));
+    document.querySelectorAll('[data-observe]').forEach((el) => {
+      const element = el as HTMLElement;
+      element.id = element.id || `obs-${Math.random().toString(36).substr(2, 9)}`;
+      observer.observe(el);
+    });
 
     const handleScroll = () => {
       const scrolled = window.scrollY;
@@ -65,16 +75,14 @@ export default function HomePage() {
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-32 bg-gradient-to-b from-black via-black to-black">
+      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-32 bg-black">
         
-        {/* Rich Animated Background Orbs */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-0 -right-40 w-96 h-96 bg-gradient-to-br from-emerald-600/15 to-cyan-600/8 rounded-full blur-3xl animate-blob-1"></div>
           <div className="absolute bottom-0 -left-40 w-96 h-96 bg-gradient-to-tr from-cyan-600/15 to-emerald-600/8 rounded-full blur-3xl animate-blob-2"></div>
-          <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-3xl animate-blob-3" style={{ animationDelay: '4s' }}></div>
+          <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-3xl animate-blob-3"></div>
         </div>
 
-        {/* Grid pattern overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/50 -z-5"></div>
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -83,25 +91,25 @@ export default function HomePage() {
             {/* LEFT CONTENT */}
             <div className="text-center lg:text-left space-y-6">
               
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 font-medium text-sm hover:bg-emerald-500/25 transition-all duration-300 w-fit fade-in-1">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 font-medium text-sm hover:bg-emerald-500/25 transition-all duration-300 w-fit animate-fade-in-down">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                 Made in India • Premium Quality
               </div>
 
               <div className="space-y-1">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white fade-in-2">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
                   Everyday Risks.<br className="hidden md:block" /> <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">Lasting Protection.</span>
                 </h1>
               </div>
               
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl font-light fade-in-4">
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl font-light animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
                 Your car faces <span className="text-white font-semibold">hidden threats every day</span>. From unexpected weather to kids playing nearby, give yourself <span className="text-emerald-300 font-medium">complete peace of mind</span>.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 fade-in-5">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
                 <a 
                   href="tel:+919600840058"
-                  className="group px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-base hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 btn-lift"
+                  className="group px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-base hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2"
                 >
                   <Shield className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                   Protect My Car Now
@@ -109,32 +117,32 @@ export default function HomePage() {
                 
                 <a 
                   href="#gallery"
-                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/60 text-emerald-300 font-bold text-base hover:bg-emerald-500/15 hover:border-emerald-400 hover:text-emerald-200 transition-all duration-300 inline-flex items-center justify-center gap-2 group btn-lift"
+                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/60 text-emerald-300 font-bold text-base hover:bg-emerald-500/15 hover:border-emerald-400 hover:text-emerald-200 transition-all duration-300 inline-flex items-center justify-center gap-2 group"
                 >
                   <Play className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   View Gallery
                 </a>
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 fade-in-6">
-                <div className="flex items-center gap-3 card-float">
+              <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                <div className="flex items-center gap-3">
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current star-pop" style={{ animationDelay: `${i * 50}ms` }} />
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" style={{ animation: `star-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 50}ms forwards`, opacity: 0 }} />
                     ))}
                   </div>
                   <span className="text-gray-300 text-sm font-medium">2,000+ Protected Cars</span>
                 </div>
                 <div className="h-6 w-px bg-gray-700 hidden sm:block"></div>
-                <div className="flex items-center gap-2 card-float">
+                <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                   <span className="text-gray-300 text-sm">2-Year Warranty</span>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 pt-4 text-xs text-gray-400 fade-in-7">
+              <div className="flex flex-wrap gap-4 pt-4 text-xs text-gray-400 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                 {['Free Installation', '2-4 Hour Setup', 'No Hidden Costs'].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 badge-pop" style={{ animationDelay: `${i * 80}ms` }}>
+                  <div key={i} className="flex items-center gap-2" style={{ animation: `badge-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 80}ms forwards`, opacity: 0 }}>
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
                     {item}
                   </div>
@@ -142,8 +150,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* RIGHT IMAGE - PROFESSIONAL CAR */}
-            <div className="flex justify-center lg:justify-end order-first lg:order-last parallax fade-in-image">
+            {/* RIGHT IMAGE */}
+            <div className="flex justify-center lg:justify-end order-first lg:order-last parallax" style={{ animation: 'zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both' }}>
               <div className="relative w-full max-w-[520px] h-[500px] group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/15 to-emerald-500/20 rounded-3xl blur-3xl group-hover:opacity-100 opacity-70 transition-opacity duration-500"></div>
                 <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/10 rounded-3xl blur-2xl opacity-60"></div>
@@ -165,13 +173,15 @@ export default function HomePage() {
       </section>
 
       {/* FEATURES */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-black via-black to-black">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/5 via-transparent to-cyan-900/5 -z-10"></div>
         
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Complete Protection</h2>
-            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto text-reveal">
+          <div className="text-center mb-16" id="features" data-observe>
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
+              Complete Protection
+            </h2>
+            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
               Four layers of engineered defense for every risk
             </p>
           </div>
@@ -182,31 +192,44 @@ export default function HomePage() {
               { icon: <Umbrella className="w-12 h-12 text-blue-400" />, title: "Rain Protection", desc: "100% waterproof coating" },
               { icon: <Zap className="w-12 h-12 text-yellow-400" />, title: "Scratch-Proof", desc: "Military-grade fabric" },
               { icon: <UserCheck className="w-12 h-12 text-green-400" />, title: "Safe for Kids", desc: "Family-friendly design" }
-            ].map((feature, idx) => (
-              <div 
-                key={idx}
-                className="scroll-observe group relative p-6 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/40 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05] hover:-translate-y-2 hover:shadow-xl card-stagger"
-                style={{ animationDelay: `${idx * 120}ms` }}
-              >
-                <div className="flex flex-col items-center text-center space-y-3">
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-white/10 to-white/5 group-hover:from-white/15 group-hover:to-white/8 transition-colors duration-300 icon-bounce" style={{ animationDelay: `${idx * 150}ms` }}>
-                    {feature.icon}
+            ].map((feature, idx) => {
+              const featureId = `feature-${idx}`;
+              const isFeatureVisible = isVisible[featureId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={featureId}
+                  data-observe
+                  className="group relative p-6 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/40 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05] hover:-translate-y-2 hover:shadow-xl"
+                  style={{
+                    opacity: isFeatureVisible ? 1 : 0,
+                    transform: isFeatureVisible ? 'scale(1) translateY(0)' : 'scale(0.9) translateY(20px)',
+                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 120}ms`
+                  }}
+                >
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-white/10 to-white/5 group-hover:from-white/15 group-hover:to-white/8 transition-all duration-300 group-hover:scale-110" style={{ animation: `icon-bounce 2s ease-in-out infinite ${idx * 150}ms` }}>
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-lg font-bold text-white">{feature.title}</h3>
+                    <p className="text-sm text-gray-400 leading-relaxed">{feature.desc}</p>
                   </div>
-                  <h3 className="text-lg font-bold text-white">{feature.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{feature.desc}</p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* VALUE PROPS */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-black via-slate-950/30 to-black">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Why Choose SafePark?</h2>
-            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto text-reveal">
+          <div className="text-center mb-16" id="value-props" data-observe>
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['value-props'] ? 1 : 0, transform: isVisible['value-props'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
+              Why Choose SafePark?
+            </h2>
+            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto" style={{ opacity: isVisible['value-props'] ? 1 : 0, transform: isVisible['value-props'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
               Premium protection engineered for modern vehicles
             </p>
           </div>
@@ -216,39 +239,53 @@ export default function HomePage() {
               { icon: <Shield className="w-10 h-10" />, title: "Weather Protection", desc: "Advanced weather-resistant fabric with 100% UV protection", badge: "100% Waterproof" },
               { icon: <Zap className="w-10 h-10" />, title: "Scratch & Damage Cover", desc: "Revolutionary retractable design prevents all surface damage", badge: "Military Grade" },
               { icon: <Award className="w-10 h-10" />, title: "Peace of Mind Warranty", desc: "2-year comprehensive warranty with premium support", badge: "2-Year Coverage" }
-            ].map((item, idx) => (
-              <div 
-                key={idx}
-                className="scroll-observe group relative p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/40 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05] hover:-translate-y-2 card-slide"
-                style={{ animationDelay: `${idx * 150}ms` }}
-              >
-                <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/25 border border-emerald-500/40 text-emerald-200 text-xs font-bold badge-scale">
-                  {item.badge}
-                </div>
-
-                <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/25 transition-all duration-300 icon-spin">
-                    {item.icon}
+            ].map((item, idx) => {
+              const valueId = `value-${idx}`;
+              const isValueVisible = isVisible[valueId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={valueId}
+                  data-observe
+                  className="group relative p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/40 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05] hover:-translate-y-2"
+                  style={{
+                    opacity: isValueVisible ? 1 : 0,
+                    transform: isValueVisible ? 'translateX(0) translateY(0)' : 'translateX(-20px) translateY(20px)',
+                    transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 150}ms`
+                  }}
+                >
+                  <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/25 border border-emerald-500/40 text-emerald-200 text-xs font-bold">
+                    {item.badge}
                   </div>
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
+
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/25 transition-all duration-300" style={{ animation: `icon-spin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 100}ms forwards`, opacity: 0 }}>
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                    <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* GALLERY CAROUSEL - FULL IMAGE VISIBLE */}
+      {/* GALLERY CAROUSEL */}
       <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">SafePark Installation</h2>
-            <p className="text-lg text-gray-400 font-light text-reveal">Real installations, real results</p>
+          <div className="text-center mb-20" id="gallery-header" data-observe>
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['gallery-header'] ? 1 : 0, transform: isVisible['gallery-header'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
+              SafePark Installation
+            </h2>
+            <p className="text-lg text-gray-400 font-light" style={{ opacity: isVisible['gallery-header'] ? 1 : 0, transform: isVisible['gallery-header'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
+              Real installations, real results
+            </p>
           </div>
           
-          {/* Main Carousel */}
-          <div className="relative scroll-observe">
+          <div id="carousel" data-observe className="relative" style={{ opacity: isVisible['carousel'] ? 1 : 0, transform: isVisible['carousel'] ? 'scale(1)' : 'scale(0.95)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
             <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-gradient-to-br from-gray-900 to-black shadow-2xl">
               <div className="relative w-full bg-gray-950 flex items-center justify-center overflow-hidden" style={{ height: '500px' }}>
                 <img 
@@ -260,7 +297,6 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
               </div>
 
-              {/* Carousel Controls */}
               <button
                 onClick={() => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
                 className="absolute left-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 text-white hover:bg-black/90 transition-all z-10 hover:scale-110 duration-300"
@@ -275,18 +311,15 @@ export default function HomePage() {
                 <ChevronRight className="w-6 h-6" />
               </button>
 
-              {/* Slide Counter */}
               <div className="absolute top-6 right-6 px-4 py-2 rounded-lg bg-black/70 text-emerald-300 text-sm font-bold backdrop-blur-sm z-10">
                 {currentSlide + 1} / {galleryImages.length}
               </div>
 
-              {/* Title Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/80 to-transparent z-10">
                 <h3 className="text-2xl md:text-3xl font-bold text-white">{galleryImages[currentSlide].title}</h3>
               </div>
             </div>
 
-            {/* Thumbnail Strip */}
             <div className="flex gap-4 mt-8 overflow-x-auto pb-2 scroll-smooth">
               {galleryImages.map((img, idx) => (
                 <button
@@ -306,42 +339,57 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FAQ SECTION */}
+      {/* FAQ */}
       <section className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black to-black relative">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16 scroll-observe space-y-4">
-            <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-400 font-light text-reveal">Everything you need to know about SafePark</p>
+          <div className="text-center mb-16" id="faq-header" data-observe>
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['faq-header'] ? 1 : 0, transform: isVisible['faq-header'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
+              FAQ
+            </h2>
+            <p className="text-lg text-gray-400 font-light" style={{ opacity: isVisible['faq-header'] ? 1 : 0, transform: isVisible['faq-header'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
+              Everything you need to know
+            </p>
           </div>
 
-          <div className="space-y-4 scroll-observe">
-            {faqItems.map((item, idx) => (
-              <div
-                key={idx}
-                className="group border border-white/15 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] transition-all duration-300 overflow-hidden"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <button
-                  onClick={() => setExpandedFaq(expandedFaq === idx ? -1 : idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/[0.02] transition-all"
+          <div id="faq-list" data-observe className="space-y-4">
+            {faqItems.map((item, idx) => {
+              const faqId = `faq-${idx}`;
+              const isFaqVisible = isVisible[faqId] || false;
+              
+              return (
+                <div
+                  key={idx}
+                  id={faqId}
+                  data-observe
+                  className="border border-white/15 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] transition-all duration-300 overflow-hidden"
+                  style={{
+                    opacity: isFaqVisible ? 1 : 0,
+                    transform: isFaqVisible ? 'translateY(0)' : 'translateY(20px)',
+                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 100}ms`
+                  }}
                 >
-                  <h3 className="text-lg font-bold text-white flex-1">{item.question}</h3>
-                  <div className="ml-4 flex-shrink-0 text-emerald-400 group-hover:text-emerald-300">
-                    {expandedFaq === idx ? (
-                      <Minus className="w-5 h-5" />
-                    ) : (
-                      <Plus className="w-5 h-5" />
-                    )}
-                  </div>
-                </button>
+                  <button
+                    onClick={() => setExpandedFaq(expandedFaq === idx ? -1 : idx)}
+                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/[0.02] transition-all"
+                  >
+                    <h3 className="text-lg font-bold text-white flex-1">{item.question}</h3>
+                    <div className="ml-4 flex-shrink-0 text-emerald-400 group-hover:text-emerald-300 transition-transform" style={{ transform: expandedFaq === idx ? 'rotate(180deg)' : 'rotate(0deg)', transitionDuration: '300ms' }}>
+                      {expandedFaq === idx ? (
+                        <Minus className="w-5 h-5" />
+                      ) : (
+                        <Plus className="w-5 h-5" />
+                      )}
+                    </div>
+                  </button>
 
-                {expandedFaq === idx && (
-                  <div className="px-6 pb-5 text-gray-300 leading-relaxed animate-fade-up border-t border-white/10">
-                    {item.answer}
-                  </div>
-                )}
-              </div>
-            ))}
+                  {expandedFaq === idx && (
+                    <div className="px-6 pb-5 text-gray-300 leading-relaxed border-t border-white/10" style={{ animation: 'fade-in-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }}>
+                      {item.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -349,12 +397,12 @@ export default function HomePage() {
       {/* CTA */}
       <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
         <div className="max-w-4xl mx-auto">
-          <div className="relative scroll-observe cta-scale">
+          <div id="cta" data-observe className="relative" style={{ opacity: isVisible['cta'] ? 1 : 0, transform: isVisible['cta'] ? 'scale(1)' : 'scale(0.95)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 via-cyan-600/5 to-emerald-600/10 rounded-3xl blur-3xl opacity-50"></div>
             
             <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl rounded-3xl p-12 border border-white/15 text-center space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold text-white heading-reveal">Ready to Protect Your Vehicle?</h2>
-              <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light text-reveal">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">Ready to Protect Your Vehicle?</h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light">
                 Join thousands who chose SafePark. Get started in minutes.
               </p>
 
@@ -362,9 +410,9 @@ export default function HomePage() {
                 {[
                   { icon: <Phone className="w-6 h-6" />, title: "Phone", content: "+91 9600840058", href: "tel:+919600840058" },
                   { icon: <MessageCircle className="w-6 h-6" />, title: "WhatsApp", content: "Message Us", href: "https://wa.me/919600840058" },
-                  { icon: <MapPin className="w-6 h-6" />, title: "Location", content: "Coimbatore, Tamil Nadu", href: null }
+                  { icon: <MapPin className="w-6 h-6" />, title: "Location", content: "Coimbatore, TN", href: null }
                 ].map((contact, i) => (
-                  <div key={i} className="group/contact contact-pop" style={{ animationDelay: `${i * 100}ms` }}>
+                  <div key={i} className="group/contact" style={{ animation: `contact-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 100}ms forwards`, opacity: 0 }}>
                     <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-3 text-emerald-300 group-hover/contact:bg-emerald-500/30 group-hover/contact:text-emerald-200 transition-all">
                       {contact.icon}
                     </div>
@@ -380,17 +428,18 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 fade-in-buttons">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <a 
                   href="tel:+919600840058"
-                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-500 btn-pulse"
+                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-500"
+                  style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards', opacity: 0 }}
                 >
                   Call for Free Quote
                 </a>
                 <a 
                   href="https://wa.me/919600840058"
-                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/60 text-emerald-300 font-bold hover:bg-emerald-500/15 hover:border-emerald-400 hover:text-emerald-200 transition-all duration-300 btn-pulse"
-                  style={{ animationDelay: '100ms' }}
+                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/60 text-emerald-300 font-bold hover:bg-emerald-500/15 hover:border-emerald-400 hover:text-emerald-200 transition-all duration-300"
+                  style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards', opacity: 0 }}
                 >
                   WhatsApp Now
                 </a>
@@ -445,7 +494,6 @@ export default function HomePage() {
         </div>
       </footer>
 
-      {/* ANIMATIONS */}
       <style jsx>{`
         @keyframes blob-1 {
           0%, 100% { transform: translate(0, 0) scale(1); }
@@ -465,10 +513,6 @@ export default function HomePage() {
           50% { transform: translate(50px, -80px) scale(1.1); }
         }
 
-        .animate-blob-1 { animation: blob-1 8s infinite ease-in-out; }
-        .animate-blob-2 { animation: blob-2 7s infinite ease-in-out; }
-        .animate-blob-3 { animation: blob-3 9s infinite ease-in-out; }
-
         @keyframes fade-in-down {
           from { opacity: 0; transform: translateY(-20px); }
           to { opacity: 1; transform: translateY(0); }
@@ -479,131 +523,46 @@ export default function HomePage() {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        .fade-in-1 { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both; }
-        .fade-in-2 { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both; }
-        .fade-in-4 { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both; }
-        .fade-in-5 { animation: fade-in-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both; }
-        .fade-in-6 { animation: fade-in-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both; }
-        .fade-in-7 { animation: fade-in-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both; }
-
         @keyframes zoom-in {
           from { transform: scale(0.8); opacity: 0; }
           to { transform: scale(1); opacity: 1; }
         }
-
-        .fade-in-image { animation: zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both; }
-
-        @keyframes scroll-fade-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .scroll-observe {
-          opacity: 0;
-          animation: scroll-fade-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-        }
-
-        @keyframes heading-reveal {
-          from { opacity: 0; transform: translateY(-30px) scaleY(0.8); }
-          to { opacity: 1; transform: translateY(0) scaleY(1); }
-        }
-
-        .heading-reveal { animation: heading-reveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important; }
-
-        @keyframes text-reveal {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .text-reveal { animation: text-reveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards !important; }
-
-        @keyframes card-scale {
-          from { opacity: 0; transform: scale(0.9) translateY(20px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .card-stagger { animation: card-scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes card-slide-in {
-          from { opacity: 0; transform: translateX(-20px) translateY(20px); }
-          to { opacity: 1; transform: translateX(0) translateY(0); }
-        }
-
-        .card-slide { animation: card-slide-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
         @keyframes icon-bounce {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-8px); }
         }
 
-        .icon-bounce { animation: icon-bounce 2s ease-in-out infinite; }
-
         @keyframes icon-spin {
           from { transform: rotate(-180deg); opacity: 0; }
           to { transform: rotate(0deg); opacity: 1; }
         }
-
-        .icon-spin { animation: icon-spin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
         @keyframes badge-pop {
           from { opacity: 0; transform: scale(0) translateY(10px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .badge-pop { animation: badge-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes badge-scale {
-          from { transform: scale(0.8); }
-          to { transform: scale(1); }
-        }
-
-        .badge-scale { animation: badge-scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes star-twinkle {
+        @keyframes star-pop {
           from { opacity: 0; transform: scale(0) rotate(-180deg); }
           to { opacity: 1; transform: scale(1) rotate(0deg); }
         }
-
-        .star-pop { animation: star-twinkle 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
         @keyframes contact-pop {
           from { opacity: 0; transform: scale(0) translateY(20px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .contact-pop { animation: contact-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes cta-scale-in {
-          from { opacity: 0; transform: scale(0.95) translateY(30px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .cta-scale { animation: cta-scale-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
         @keyframes button-pulse {
           from { opacity: 0; transform: scale(0.8) translateY(10px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .btn-pulse { animation: button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        .fade-in-buttons .btn-pulse:nth-child(2) { animation-delay: 0.1s; }
-
-        @keyframes card-float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-5px); }
-        }
-
-        .card-float { animation: card-float 2s ease-in-out infinite; }
-
-        @keyframes btn-lift {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .btn-lift { animation: btn-lift 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        .in-view { opacity: 1 !important; }
+        .animate-blob-1 { animation: blob-1 8s infinite ease-in-out; }
+        .animate-blob-2 { animation: blob-2 7s infinite ease-in-out; }
+        .animate-blob-3 { animation: blob-3 9s infinite ease-in-out; }
+        .animate-fade-in-down { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .animate-fade-in-up { animation: fade-in-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
         * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         html { scroll-behavior: smooth; }
