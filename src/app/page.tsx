@@ -65,42 +65,46 @@ export default function HomePage() {
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-16">
+      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-16 bg-gradient-to-b from-black via-black to-black">
         
-        {/* Animated Background Orbs - Very Subtle */}
+        {/* Rich Animated Background Orbs */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute top-0 -right-40 w-80 h-80 bg-gradient-to-br from-emerald-500/5 to-cyan-500/3 rounded-full blur-3xl animate-blob-1" style={{ animationDelay: '0s' }}></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-cyan-500/5 to-emerald-500/3 rounded-full blur-3xl animate-blob-2" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-0 -right-40 w-96 h-96 bg-gradient-to-br from-emerald-600/15 to-cyan-600/8 rounded-full blur-3xl animate-blob-1"></div>
+          <div className="absolute bottom-0 -left-40 w-96 h-96 bg-gradient-to-tr from-cyan-600/15 to-emerald-600/8 rounded-full blur-3xl animate-blob-2"></div>
+          <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-full blur-3xl animate-blob-3" style={{ animationDelay: '4s' }}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto w-full relative">
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/50 -z-5"></div>
+
+        <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             {/* LEFT CONTENT */}
             <div className="text-center lg:text-left space-y-6">
               
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium text-sm hover:bg-emerald-500/20 transition-all duration-300 w-fit fade-in-1">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 font-medium text-sm hover:bg-emerald-500/25 transition-all duration-300 w-fit fade-in-1">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                 Made in India • Premium Quality
               </div>
 
-              <div className="space-y-2">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white fade-in-2">
+              <div className="space-y-1">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white fade-in-2 break-words">
                   Everyday Risks.
                 </h1>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 bg-clip-text text-transparent fade-in-3">
-                  Lasting Protection.
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent fade-in-3 break-words">
+                  Lasting<br className="hidden lg:block" /> Protection.
                 </h2>
               </div>
               
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl font-light fade-in-4">
-                Your car faces <span className="text-white font-semibold">hidden threats every day</span>. From unexpected weather to kids playing nearby, give yourself <span className="text-emerald-400 font-medium">complete peace of mind</span>.
+                Your car faces <span className="text-white font-semibold">hidden threats every day</span>. From unexpected weather to kids playing nearby, give yourself <span className="text-emerald-300 font-medium">complete peace of mind</span>.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4 fade-in-5">
                 <a 
                   href="tel:+919600840058"
-                  className="group px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-base hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 btn-lift"
+                  className="group px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-base hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 btn-lift"
                 >
                   <Shield className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                   Protect My Car Now
@@ -108,7 +112,7 @@ export default function HomePage() {
                 
                 <a 
                   href="#gallery"
-                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/50 text-emerald-400 font-bold text-base hover:bg-emerald-500/10 hover:border-emerald-400 transition-all duration-300 inline-flex items-center justify-center gap-2 group btn-lift"
+                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/60 text-emerald-300 font-bold text-base hover:bg-emerald-500/15 hover:border-emerald-400 hover:text-emerald-200 transition-all duration-300 inline-flex items-center justify-center gap-2 group btn-lift"
                 >
                   <Play className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   View Gallery
@@ -141,19 +145,20 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* RIGHT IMAGE */}
+            {/* RIGHT IMAGE - FULL QUALITY */}
             <div className="flex justify-center lg:justify-end order-first lg:order-last parallax fade-in-image">
-              <div className="relative w-full max-w-[500px] group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-cyan-500/10 to-emerald-500/10 rounded-3xl blur-3xl group-hover:opacity-100 opacity-60 transition-opacity duration-500 animate-glow"></div>
+              <div className="relative w-full max-w-[520px] h-[500px] group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/15 to-emerald-500/20 rounded-3xl blur-3xl group-hover:opacity-100 opacity-70 transition-opacity duration-500"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/10 rounded-3xl blur-2xl opacity-60"></div>
                 
                 <img 
                   src="/gallery/hero-car.jpeg" 
                   alt="Premium car protected by SafePark"
-                  className="relative w-full h-[350px] md:h-[420px] object-contain rounded-3xl shadow-2xl border border-emerald-500/20 group-hover:border-emerald-500/40 group-hover:shadow-emerald-500/20 transition-all duration-500 img-zoom bg-black/20"
+                  className="relative w-full h-full object-cover rounded-3xl shadow-2xl border border-emerald-500/30 group-hover:border-emerald-400/50 group-hover:shadow-2xl group-hover:shadow-emerald-500/30 transition-all duration-500"
                   loading="eager"
                 />
                 
-                <div className="absolute top-6 left-6 bg-gradient-to-r from-emerald-500/90 to-cyan-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg group-hover:scale-110 transition-transform duration-300 badge-slide">
+                <div className="absolute top-6 left-6 bg-gradient-to-r from-emerald-500/95 to-cyan-500/85 backdrop-blur-md text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
                   Premium Protection
                 </div>
               </div>
@@ -163,7 +168,8 @@ export default function HomePage() {
       </section>
 
       {/* FEATURES */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-black via-black to-black">
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/5 via-transparent to-cyan-900/5 -z-10"></div>
         
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 scroll-observe space-y-4">
@@ -182,11 +188,11 @@ export default function HomePage() {
             ].map((feature, idx) => (
               <div 
                 key={idx}
-                className="scroll-observe group relative p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-2 hover:shadow-xl card-stagger"
+                className="scroll-observe group relative p-6 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/40 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05] hover:-translate-y-2 hover:shadow-xl card-stagger"
                 style={{ animationDelay: `${idx * 120}ms` }}
               >
                 <div className="flex flex-col items-center text-center space-y-3">
-                  <div className="p-3 rounded-xl bg-white/5 group-hover:bg-white/8 transition-colors duration-300 icon-bounce" style={{ animationDelay: `${idx * 150}ms` }}>
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-white/10 to-white/5 group-hover:from-white/15 group-hover:to-white/8 transition-colors duration-300 icon-bounce" style={{ animationDelay: `${idx * 150}ms` }}>
                     {feature.icon}
                   </div>
                   <h3 className="text-lg font-bold text-white">{feature.title}</h3>
@@ -216,15 +222,15 @@ export default function HomePage() {
             ].map((item, idx) => (
               <div 
                 key={idx}
-                className="scroll-observe group relative p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.06] hover:-translate-y-2 card-slide"
+                className="scroll-observe group relative p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/40 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05] hover:-translate-y-2 card-slide"
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
-                <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold badge-scale">
+                <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/25 border border-emerald-500/40 text-emerald-200 text-xs font-bold badge-scale">
                   {item.badge}
                 </div>
 
                 <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/15 transition-all duration-300 icon-spin">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/25 transition-all duration-300 icon-spin">
                     {item.icon}
                   </div>
                   <h3 className="text-xl font-bold text-white">{item.title}</h3>
@@ -246,46 +252,53 @@ export default function HomePage() {
           
           {/* Main Carousel */}
           <div className="relative scroll-observe">
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black">
-              <div className="relative h-[400px] md:h-[500px] overflow-hidden bg-gray-900 flex items-center justify-center">
+            <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-gradient-to-br from-gray-900 to-black shadow-2xl">
+              <div className="relative h-[450px] md:h-[550px] w-full bg-gray-950 flex items-center justify-center overflow-hidden">
                 <img 
                   src={galleryImages[currentSlide].src}
                   alt={galleryImages[currentSlide].alt}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               </div>
 
               {/* Carousel Controls */}
               <button
                 onClick={() => setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)}
-                className="absolute left-6 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all z-10"
+                className="absolute left-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 text-white hover:bg-black/90 transition-all z-10 hover:scale-110 duration-300"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
               <button
                 onClick={() => setCurrentSlide((prev) => (prev + 1) % galleryImages.length)}
-                className="absolute right-6 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all z-10"
+                className="absolute right-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 text-white hover:bg-black/90 transition-all z-10 hover:scale-110 duration-300"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
 
+              {/* Slide Counter */}
+              <div className="absolute top-6 right-6 px-4 py-2 rounded-lg bg-black/70 text-emerald-300 text-sm font-bold backdrop-blur-sm">
+                {currentSlide + 1} / {galleryImages.length}
+              </div>
+
               {/* Title Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
-                <h3 className="text-xl md:text-2xl font-bold text-white">{galleryImages[currentSlide].title}</h3>
+              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/80 to-transparent">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">{galleryImages[currentSlide].title}</h3>
               </div>
             </div>
 
             {/* Thumbnail Strip */}
-            <div className="flex gap-4 mt-8 overflow-x-auto pb-2">
+            <div className="flex gap-4 mt-8 overflow-x-auto pb-2 scroll-smooth">
               {galleryImages.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentSlide(idx)}
-                  className={`relative flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden border-2 transition-all ${
-                    currentSlide === idx ? 'border-emerald-500 scale-105' : 'border-white/20 hover:border-white/40'
+                  className={`relative flex-shrink-0 w-28 h-28 rounded-xl overflow-hidden border-3 transition-all duration-300 ${
+                    currentSlide === idx 
+                      ? 'border-emerald-500 ring-2 ring-emerald-500/50 scale-110' 
+                      : 'border-white/20 hover:border-white/50'
                   }`}
                 >
                   <img src={img.src} alt={img.alt} className="w-full h-full object-cover" loading="lazy" />
@@ -297,7 +310,7 @@ export default function HomePage() {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
+      <section className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black to-black relative">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16 scroll-observe space-y-4">
             <h2 className="text-5xl md:text-6xl font-bold text-white heading-reveal">Frequently Asked Questions</h2>
@@ -308,15 +321,15 @@ export default function HomePage() {
             {faqItems.map((item, idx) => (
               <div
                 key={idx}
-                className="group border border-white/10 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 overflow-hidden"
+                className="group border border-white/15 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] hover:from-white/[0.12] hover:to-white/[0.05] transition-all duration-300 overflow-hidden"
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === idx ? -1 : idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/[0.03] transition-all"
+                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/[0.02] transition-all"
                 >
                   <h3 className="text-lg font-bold text-white flex-1">{item.question}</h3>
-                  <div className="ml-4 flex-shrink-0 text-emerald-400">
+                  <div className="ml-4 flex-shrink-0 text-emerald-400 group-hover:text-emerald-300">
                     {expandedFaq === idx ? (
                       <Minus className="w-5 h-5" />
                     ) : (
@@ -326,7 +339,7 @@ export default function HomePage() {
                 </button>
 
                 {expandedFaq === idx && (
-                  <div className="px-6 pb-5 text-gray-300 leading-relaxed animate-fade-up">
+                  <div className="px-6 pb-5 text-gray-300 leading-relaxed animate-fade-up border-t border-white/10">
                     {item.answer}
                   </div>
                 )}
@@ -340,27 +353,27 @@ export default function HomePage() {
       <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
         <div className="max-w-4xl mx-auto">
           <div className="relative scroll-observe cta-scale">
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-cyan-500/5 to-emerald-500/5 rounded-3xl blur-2xl opacity-40"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 via-cyan-600/5 to-emerald-600/10 rounded-3xl blur-3xl opacity-50"></div>
             
-            <div className="relative bg-white/[0.03] backdrop-blur-xl rounded-3xl p-12 border border-white/10 text-center space-y-6">
+            <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl rounded-3xl p-12 border border-white/15 text-center space-y-6">
               <h2 className="text-4xl md:text-5xl font-bold text-white heading-reveal">Ready to Protect Your Vehicle?</h2>
               <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light text-reveal">
                 Join thousands who chose SafePark. Get started in minutes.
               </p>
 
-              <div className="grid md:grid-cols-3 gap-8 py-8 border-y border-white/10">
+              <div className="grid md:grid-cols-3 gap-8 py-8 border-y border-white/15">
                 {[
                   { icon: <Phone className="w-6 h-6" />, title: "Phone", content: "+91 9600840058", href: "tel:+919600840058" },
                   { icon: <MessageCircle className="w-6 h-6" />, title: "WhatsApp", content: "Message Us", href: "https://wa.me/919600840058" },
                   { icon: <MapPin className="w-6 h-6" />, title: "Location", content: "Coimbatore, Tamil Nadu", href: null }
                 ].map((contact, i) => (
                   <div key={i} className="group/contact contact-pop" style={{ animationDelay: `${i * 100}ms` }}>
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-3 text-emerald-400 group-hover/contact:bg-emerald-500/20 transition-colors">
+                    <div className="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-3 text-emerald-300 group-hover/contact:bg-emerald-500/30 group-hover/contact:text-emerald-200 transition-all">
                       {contact.icon}
                     </div>
                     <p className="text-sm text-gray-400 mb-1">{contact.title}</p>
                     {contact.href ? (
-                      <a href={contact.href} className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+                      <a href={contact.href} className="text-emerald-300 hover:text-emerald-200 font-semibold transition-colors">
                         {contact.content}
                       </a>
                     ) : (
@@ -373,13 +386,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 fade-in-buttons">
                 <a 
                   href="tel:+919600840058"
-                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500 btn-pulse"
+                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-500 btn-pulse"
                 >
                   Call for Free Quote
                 </a>
                 <a 
                   href="https://wa.me/919600840058"
-                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/50 text-emerald-400 font-bold hover:bg-emerald-500/10 hover:border-emerald-400 transition-all duration-300 btn-pulse"
+                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/60 text-emerald-300 font-bold hover:bg-emerald-500/15 hover:border-emerald-400 hover:text-emerald-200 transition-all duration-300 btn-pulse"
                   style={{ animationDelay: '100ms' }}
                 >
                   WhatsApp Now
@@ -391,7 +404,7 @@ export default function HomePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/5 bg-black py-16 px-6 md:px-12 lg:px-20">
+      <footer className="border-t border-white/10 bg-gradient-to-b from-black to-black/50 py-16 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 mb-12">
             <div>
@@ -413,11 +426,11 @@ export default function HomePage() {
             <div>
               <h4 className="font-bold text-white mb-8 text-lg">Contact</h4>
               <div className="space-y-4">
-                <a href="tel:+919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-400 transition-colors">
+                <a href="tel:+919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-300 transition-colors">
                   <Phone className="w-4 h-4" />
                   +91 9600840058
                 </a>
-                <a href="https://wa.me/919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-400 transition-colors">
+                <a href="https://wa.me/919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-300 transition-colors">
                   <MessageCircle className="w-4 h-4" />
                   WhatsApp
                 </a>
@@ -450,8 +463,14 @@ export default function HomePage() {
           66% { transform: translate(40px, -30px) scale(1.05); }
         }
 
+        @keyframes blob-3 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          50% { transform: translate(50px, -80px) scale(1.1); }
+        }
+
         .animate-blob-1 { animation: blob-1 8s infinite ease-in-out; }
         .animate-blob-2 { animation: blob-2 7s infinite ease-in-out; }
+        .animate-blob-3 { animation: blob-3 9s infinite ease-in-out; }
 
         @keyframes fade-in-down {
           from { opacity: 0; transform: translateY(-20px); }
@@ -477,21 +496,6 @@ export default function HomePage() {
         }
 
         .fade-in-image { animation: zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both; }
-
-        @keyframes image-zoom {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.02); }
-          100% { transform: scale(1); }
-        }
-
-        .img-zoom { animation: image-zoom 4s ease-in-out infinite; }
-
-        @keyframes glow-pulse {
-          0%, 100% { opacity: 0.6; }
-          50% { opacity: 0.8; }
-        }
-
-        .animate-glow { animation: glow-pulse 3s ease-in-out infinite; }
 
         @keyframes scroll-fade-up {
           from { opacity: 0; transform: translateY(30px); }
@@ -558,13 +562,6 @@ export default function HomePage() {
         }
 
         .badge-scale { animation: badge-scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-
-        @keyframes badge-slide {
-          from { opacity: 0; transform: translateX(-10px) translateY(10px); }
-          to { opacity: 1; transform: translateX(0) translateY(0); }
-        }
-
-        .badge-slide { animation: badge-slide 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
         @keyframes star-twinkle {
           from { opacity: 0; transform: scale(0) rotate(-180deg); }
