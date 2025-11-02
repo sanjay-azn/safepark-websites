@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { CheckCircle2, Phone, MessageCircle, Shield, Umbrella, Crown, Star, Users, Award, Clock, Zap, ArrowRight } from 'lucide-react';
 
 export default function PricingPage() {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   const plans = [
     {
