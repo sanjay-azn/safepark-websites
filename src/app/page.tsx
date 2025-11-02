@@ -65,7 +65,7 @@ export default function HomePage() {
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-16 bg-gradient-to-b from-black via-black to-black">
+      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-32 bg-gradient-to-b from-black via-black to-black">
         
         {/* Rich Animated Background Orbs */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -89,12 +89,9 @@ export default function HomePage() {
               </div>
 
               <div className="space-y-1">
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white fade-in-2 break-words">
-                  Everyday Risks.
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white fade-in-2">
+                  Everyday Risks.<br className="hidden md:block" /> <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">Lasting Protection.</span>
                 </h1>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent fade-in-3 break-words">
-                  Lasting<br className="hidden lg:block" /> Protection.
-                </h2>
               </div>
               
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl font-light fade-in-4">
@@ -145,15 +142,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* RIGHT IMAGE - FULL QUALITY */}
+            {/* RIGHT IMAGE - PROFESSIONAL CAR */}
             <div className="flex justify-center lg:justify-end order-first lg:order-last parallax fade-in-image">
               <div className="relative w-full max-w-[520px] h-[500px] group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/15 to-emerald-500/20 rounded-3xl blur-3xl group-hover:opacity-100 opacity-70 transition-opacity duration-500"></div>
                 <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/10 rounded-3xl blur-2xl opacity-60"></div>
                 
                 <img 
-                  src="/gallery/hero-car.jpeg" 
-                  alt="Premium car protected by SafePark"
+                  src="/gallery/gallery1.jpg" 
+                  alt="Premium BMW car protected by SafePark"
                   className="relative w-full h-full object-cover rounded-3xl shadow-2xl border border-emerald-500/30 group-hover:border-emerald-400/50 group-hover:shadow-2xl group-hover:shadow-emerald-500/30 transition-all duration-500"
                   loading="eager"
                 />
@@ -242,7 +239,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* GALLERY CAROUSEL - PROFESSIONAL */}
+      {/* GALLERY CAROUSEL - FULL IMAGE VISIBLE */}
       <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20 scroll-observe space-y-4">
@@ -253,14 +250,14 @@ export default function HomePage() {
           {/* Main Carousel */}
           <div className="relative scroll-observe">
             <div className="relative rounded-2xl overflow-hidden border border-white/15 bg-gradient-to-br from-gray-900 to-black shadow-2xl">
-              <div className="relative h-[450px] md:h-[550px] w-full bg-gray-950 flex items-center justify-center overflow-hidden">
+              <div className="relative w-full bg-gray-950 flex items-center justify-center overflow-hidden" style={{ height: '500px' }}>
                 <img 
                   src={galleryImages[currentSlide].src}
                   alt={galleryImages[currentSlide].alt}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-500 hover:scale-105 p-4"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
               </div>
 
               {/* Carousel Controls */}
@@ -279,12 +276,12 @@ export default function HomePage() {
               </button>
 
               {/* Slide Counter */}
-              <div className="absolute top-6 right-6 px-4 py-2 rounded-lg bg-black/70 text-emerald-300 text-sm font-bold backdrop-blur-sm">
+              <div className="absolute top-6 right-6 px-4 py-2 rounded-lg bg-black/70 text-emerald-300 text-sm font-bold backdrop-blur-sm z-10">
                 {currentSlide + 1} / {galleryImages.length}
               </div>
 
               {/* Title Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/80 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/80 to-transparent z-10">
                 <h3 className="text-2xl md:text-3xl font-bold text-white">{galleryImages[currentSlide].title}</h3>
               </div>
             </div>
@@ -484,7 +481,6 @@ export default function HomePage() {
 
         .fade-in-1 { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both; }
         .fade-in-2 { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both; }
-        .fade-in-3 { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both; }
         .fade-in-4 { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both; }
         .fade-in-5 { animation: fade-in-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both; }
         .fade-in-6 { animation: fade-in-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both; }
