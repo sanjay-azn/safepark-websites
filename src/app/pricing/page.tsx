@@ -21,7 +21,7 @@ export default function FeaturesPage() {
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
-      {/* HERO SECTION - EXPANDED */}
+      {/* HERO SECTION - EXPANDED & NEW CONTENT */}
       <section className="relative pt-48 pb-32 px-6 md:px-12 lg:px-24 overflow-hidden">
         
         {/* Animated Background */}
@@ -170,8 +170,11 @@ export default function FeaturesPage() {
             ].map((item, idx) => (
               <div 
                 key={idx}
-                className="comparison-row grid grid-cols-1 md:grid-cols-3 gap-4 p-8 border-b border-white/5 hover:bg-white/[0.02] transition-colors opacity-0 translate-x-4 group-in-view:opacity-100 group-in-view:translate-x-0"
-                style={{ transitionDelay: `${idx * 75}ms` }}
+                className="comparison-row grid grid-cols-1 md:grid-cols-3 gap-4 p-8 border-b border-white/5 hover:bg-white/[0.02] transition-colors opacity-0 translate-x-4"
+                style={{ 
+                  animation: `slideIn 0.6s ease-out forwards`,
+                  animationDelay: `${idx * 75}ms`
+                }}
               >
                 <div className="font-semibold text-white">{item.feature}</div>
                 <div className="text-gray-400 flex items-center gap-2">
@@ -202,38 +205,32 @@ export default function FeaturesPage() {
               {
                 title: "Complete Peace of Mind",
                 desc: "Stop worrying about weather damage, scratches, and unexpected harm. Your car is always protected, always secure.",
-                icon: <Shield className="w-10 h-10" />,
-                color: "emerald"
+                icon: <Shield className="w-10 h-10 text-emerald-400" />
               },
               {
                 title: "Maintenance Savings",
                 desc: "Eliminate frequent washing, waxing, and expensive paint repairs. Keep your car in pristine condition effortlessly.",
-                icon: <TrendingUp className="w-10 h-10" />,
-                color: "cyan"
+                icon: <TrendingUp className="w-10 h-10 text-cyan-400" />
               },
               {
                 title: "Premium Curb Appeal",
                 desc: "Modern, sleek design that enhances your home's aesthetic. Professional protection that looks stunning.",
-                icon: <Sparkles className="w-10 h-10" />,
-                color: "yellow"
+                icon: <Sparkles className="w-10 h-10 text-yellow-400" />
               },
               {
                 title: "Instant Deployment",
                 desc: "Access your car in seconds. Advanced engineering means no complex setup—just deploy and go.",
-                icon: <Performance className="w-10 h-10" />,
-                color: "red"
+                icon: <Performance className="w-10 h-10 text-red-400" />
               },
               {
                 title: "Space Reclamation",
                 desc: "Collapse it when not needed. Maximize your parking space for other uses, perfect for Indian homes.",
-                icon: <Box className="w-10 h-10" />,
-                color: "blue"
+                icon: <Box className="w-10 h-10 text-blue-400" />
               },
               {
                 title: "Family Safe Environment",
                 desc: "Engineered with safety first. Rounded edges, stable structure—kids can play nearby without worry.",
-                icon: <Users className="w-10 h-10" />,
-                color: "green"
+                icon: <Users className="w-10 h-10 text-green-400" />
               }
             ].map((benefit, idx) => (
               <div 
@@ -243,7 +240,7 @@ export default function FeaturesPage() {
               >
                 <div className="relative p-10 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all duration-500 h-full hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05] group-hover:-translate-y-2">
                   
-                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br from-${benefit.color}-500/20 to-${benefit.color}-500/10 flex items-center justify-center mb-6 text-${benefit.color}-400 group-hover:bg-gradient-to-br group-hover:from-${benefit.color}-500/30 group-hover:to-${benefit.color}-500/20 transition-all`}>
+                  <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-white/15 transition-colors">
                     {benefit.icon}
                   </div>
 
@@ -323,7 +320,6 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* ANIMATIONS */}
       <style jsx>{`
         @keyframes blob-1 {
           0%, 100% { transform: translate(0, 0) scale(1); }
@@ -338,6 +334,11 @@ export default function FeaturesPage() {
           66% { transform: translate(40px, -30px) scale(1.05); }
         }
 
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateX(16px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+
         .animate-blob-1 { animation: blob-1 8s infinite ease-in-out; }
         .animate-blob-2 { animation: blob-2 7s infinite ease-in-out; }
 
@@ -347,17 +348,8 @@ export default function FeaturesPage() {
           transform: translateY(0) !important;
         }
 
-        .comparison-row.in-view {
-          opacity: 1 !important;
-          transform: translateX(0) !important;
-        }
-
         * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         html { scroll-behavior: smooth; }
-
-        @media (prefers-reduced-motion: reduce) {
-          * { animation: none !important; transition: none !important; }
-        }
       `}</style>
     </div>
   );
