@@ -1,60 +1,42 @@
 'use client';
 
-import { Shield, ArrowRight, CheckCircle, Play, Phone, MessageCircle, MapPin, Star } from 'lucide-react';
+import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     setIsLoaded(true);
 
-    // Smooth scroll animations
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -80px 0px'
-    };
-
+    // Scroll animations
+    const observerOptions = { threshold: 0.2, rootMargin: '0px 0px -100px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in-up');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('fade-in');
       });
     }, observerOptions);
 
-    document.querySelectorAll('.observe').forEach((el) => observer.observe(el));
-
-    // Mouse tracking for subtle effects
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    document.querySelectorAll('.scroll-observe').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="bg-white overflow-x-hidden">
+    <div className="scroll-smooth bg-gradient-to-br from-[#0f172a] via-[#0f2d2a] to-[#052e16] min-h-screen overflow-x-hidden">
       
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full backdrop-blur-md bg-white/80 border-b border-gray-100/50 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      {/* FIXED PREMIUM NAVIGATION */}
+      <nav className="fixed top-0 w-full backdrop-blur-xl bg-black/40 border-b border-emerald-500/10 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform duration-300">
               S
             </div>
-            <span className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">SafePark</span>
+            <span className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">SafePark</span>
           </div>
           
           <a 
             href="tel:+919600840058"
-            className="hidden md:inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-medium hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/30"
+            className="hidden md:flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold text-sm hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300"
           >
             Get Started
             <ArrowRight className="w-4 h-4" />
@@ -62,417 +44,393 @@ export default function HomePage() {
         </div>
       </nav>
 
-      <main>
-        {/* HERO SECTION - PREMIUM MINIMALIST */}
-        <section className="relative pt-32 pb-20 px-6 md:px-12 overflow-hidden">
-          {/* Animated background gradients */}
-          <div className="absolute inset-0 -z-10">
-            <div 
-              className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-emerald-100 to-cyan-50 rounded-full blur-3xl opacity-60 animate-blob"
-              style={{
-                animation: 'blob 8s infinite ease-in-out'
-              }}
-            ></div>
-            <div 
-              className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-cyan-100 to-emerald-50 rounded-full blur-3xl opacity-60 animate-blob"
-              style={{
-                animation: 'blob 8s infinite ease-in-out 2s'
-              }}
-            ></div>
-          </div>
+      {/* HERO SECTION */}
+      <section className="pt-32 pb-20 px-6 md:px-12 lg:px-20 relative overflow-hidden">
+        
+        {/* Animated Background Orbs */}
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute top-0 -right-40 w-80 h-80 bg-gradient-to-br from-emerald-500/10 to-cyan-500/5 rounded-full blur-3xl animate-blob" style={{ animation: 'blob 7s infinite' }}></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-cyan-500/10 to-emerald-500/5 rounded-full blur-3xl animate-blob" style={{ animation: 'blob 7s infinite 2s' }}></div>
+        </div>
 
-          <div className="max-w-5xl mx-auto">
-            {/* Premium heading */}
-            <div className="text-center space-y-8 animate-fade-in-down">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-medium text-sm hover:border-emerald-300 hover:bg-emerald-100 transition-all duration-300">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                Trusted by 2,000+ car owners
+        <div className="max-w-7xl mx-auto relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* LEFT CONTENT */}
+            <div className="text-center lg:text-left space-y-8 animate-fade-down">
+              
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium text-sm hover:bg-emerald-500/20 transition-all duration-300 w-fit">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                Made in India • Premium Quality
               </div>
 
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-tight tracking-tight">
-                Premium Protection
-                <br />
-                <span className="bg-gradient-to-r from-emerald-500 via-cyan-500 to-emerald-600 bg-clip-text text-transparent">
-                  That Works
-                </span>
-              </h1>
-
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl mx-auto font-light">
-                Your car deserves more than luck. SafePark delivers weatherproof, scratch-proof protection that blends seamlessly into your lifestyle.
+              <div className="space-y-4">
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white">
+                  Everyday Risks.
+                </h1>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 bg-clip-text text-transparent">
+                  Lasting Protection.
+                </h2>
+              </div>
+              
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl font-light">
+                Your car faces <span className="text-white font-semibold">hidden threats every day</span>. From unexpected weather to kids playing nearby, give yourself <span className="text-emerald-400 font-medium">complete peace of mind</span>.
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-                <a 
-                  href="tel:+919600840058"
-                  className="group px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold text-lg hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2"
-                >
-                  Schedule Consultation
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-                
-                <a 
-                  href="#features"
-                  className="px-8 py-4 rounded-full border-2 border-gray-300 text-gray-900 font-semibold text-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-300 inline-flex items-center justify-center gap-2 group"
-                >
-                  <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  See It In Action
-                </a>
-              </div>
-
-              {/* Trust badges */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8 text-sm text-gray-600">
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-6 py-4">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-500" />
-                  <span>2-Year Warranty</span>
-                </div>
-                <div className="w-px h-6 bg-gray-200 hidden sm:block"></div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-500" />
-                  <span>Free Installation</span>
-                </div>
-                <div className="w-px h-6 bg-gray-200 hidden sm:block"></div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-500" />
-                  <span>Premium Materials</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Image with glassmorphism */}
-            <div className="relative mt-20 lg:mt-32 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-emerald-500/20 rounded-3xl blur-2xl"></div>
-              <img 
-                src="/gallery/hero-car.jpeg" 
-                alt="Premium SafePark protection system"
-                className="relative w-full h-[400px] md:h-[500px] object-cover rounded-3xl shadow-2xl border border-white/80 backdrop-blur-sm hover:shadow-3xl hover:shadow-emerald-500/20 transition-all duration-500"
-                loading="eager"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* FEATURES SECTION - GRID LAYOUT */}
-        <section id="features" className="py-24 px-6 md:px-12 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20 observe">
-              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Why Choose SafePark?</h2>
-              <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto font-light">
-                Four layers of engineered protection designed for real cars, real weather, real protection
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  title: "Weather Proof",
-                  desc: "100% waterproof & UV protected",
-                  icon: "🌧️",
-                  features: ["Rain resistant", "UV blocking", "Temperature stable"]
-                },
-                {
-                  title: "Scratch Proof",
-                  desc: "Military-grade fabric protection",
-                  icon: "🛡️",
-                  features: ["No dents", "No scratches", "No damage"]
-                },
-                {
-                  title: "Fire Safe",
-                  desc: "Advanced flame resistant tech",
-                  icon: "🔥",
-                  features: ["Heat resistant", "Flame proof", "Safety certified"]
-                },
-                {
-                  title: "Kid Safe",
-                  desc: "Family-friendly design",
-                  icon: "👨‍👩‍👧‍👦",
-                  features: ["Rounded edges", "Stable base", "Tested safe"]
-                }
-              ].map((feature, idx) => (
-                <div 
-                  key={idx}
-                  className="group observe relative p-8 rounded-2xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                >
-                  {/* Hover gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 to-cyan-50/0 group-hover:from-emerald-50 group-hover:to-cyan-50 rounded-2xl transition-all duration-500 -z-10"></div>
-                  
-                  <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4 font-light">{feature.desc}</p>
-                  
-                  <ul className="space-y-2">
-                    {feature.features.map((f, i) => (
-                      <li key={i} className="text-sm text-gray-600 flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* VALUE PROPOSITION SECTION */}
-        <section className="py-24 px-6 md:px-12 bg-white">
-          <div className="max-w-6xl mx-auto">
-            {[
-              {
-                title: "Installation",
-                desc: "Professional setup in just 2-4 hours with zero downtime",
-                benefits: ["Free installation", "Expert team", "Full support"]
-              },
-              {
-                title: "Warranty",
-                desc: "Comprehensive 2-year coverage with extended protection",
-                benefits: ["2-year guarantee", "Parts included", "Priority support"]
-              },
-              {
-                title: "Support",
-                desc: "24/7 customer care team ready to help anytime",
-                benefits: ["Live support", "Quick response", "Expert guidance"]
-              }
-            ].map((item, idx) => (
-              <div 
-                key={idx}
-                className="grid md:grid-cols-2 gap-16 items-center mb-24 last:mb-0 observe"
-                style={{ animationDelay: `${idx * 0.15}s` }}
-              >
-                {idx % 2 === 0 ? (
-                  <>
-                    <div>
-                      <div className="h-96 bg-gradient-to-br from-emerald-100 to-cyan-50 rounded-2xl"></div>
-                    </div>
-                    <div className="space-y-6">
-                      <h2 className="text-4xl md:text-5xl font-bold text-gray-900">{item.title}</h2>
-                      <p className="text-lg text-gray-600 leading-relaxed font-light">{item.desc}</p>
-                      <ul className="space-y-3">
-                        {item.benefits.map((b, i) => (
-                          <li key={i} className="flex items-center gap-3 text-gray-700">
-                            <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="space-y-6">
-                      <h2 className="text-4xl md:text-5xl font-bold text-gray-900">{item.title}</h2>
-                      <p className="text-lg text-gray-600 leading-relaxed font-light">{item.desc}</p>
-                      <ul className="space-y-3">
-                        {item.benefits.map((b, i) => (
-                          <li key={i} className="flex items-center gap-3 text-gray-700">
-                            <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <div className="h-96 bg-gradient-to-br from-cyan-100 to-emerald-50 rounded-2xl"></div>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* TESTIMONIALS - MINIMAL ELEGANT */}
-        <section className="py-24 px-6 md:px-12 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20 observe">
-              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Trusted by Thousands</h2>
-              <p className="text-xl text-gray-600 font-light">Real protection. Real satisfaction.</p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { name: "Rajesh Kumar", role: "BMW Owner", text: "SafePark completely transformed my car protection strategy. The quality and service are exceptional.", location: "Coimbatore" },
-                { name: "Priya Sharma", role: "Entrepreneur", text: "The retractable design is genius. No more weather worries. Highly recommended for serious car enthusiasts.", location: "Tamil Nadu" },
-                { name: "Arjun Patel", role: "Business Owner", text: "Professional installation, premium materials, perfect execution. SafePark exceeds every expectation.", location: "Gujarat" }
-              ].map((testimonial, idx) => (
-                <div 
-                  key={idx}
-                  className="observe group p-8 rounded-2xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-lg transition-all duration-500 hover:-translate-y-1"
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                >
-                  <div className="flex items-center gap-1 mb-6">
+                  <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  
-                  <p className="text-gray-700 leading-relaxed mb-6 font-light italic">"{testimonial.text}"</p>
-                  
-                  <div className="border-t border-gray-200 pt-4">
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.role} • {testimonial.location}</p>
-                  </div>
+                  <span className="text-gray-300 text-sm font-medium">2,000+ Protected Cars</span>
                 </div>
-              ))}
+                <div className="h-6 w-px bg-gray-600 hidden sm:block"></div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                  <span className="text-gray-300 text-sm">2-Year Warranty</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                <a 
+                  href="tel:+919600840058"
+                  className="group px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-base hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2"
+                >
+                  <Shield className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                  Protect My Car Now
+                </a>
+                
+                <a 
+                  href="#gallery"
+                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/50 text-emerald-400 font-bold text-base hover:bg-emerald-500/10 hover:border-emerald-400 transition-all duration-300 inline-flex items-center justify-center gap-2 group"
+                >
+                  <Play className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  View Gallery
+                </a>
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-4 text-xs text-gray-400">
+                {['Free Installation', '2-4 Hour Setup', 'No Hidden Costs'].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
 
-        {/* CTA FINAL - PREMIUM GLASS */}
-        <section className="py-24 px-6 md:px-12 bg-white">
-          <div className="max-w-4xl mx-auto">
-            <div className="relative group">
-              {/* Background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-cyan-500/10 to-emerald-500/10 rounded-3xl blur-2xl group-hover:from-emerald-500/20 group-hover:via-cyan-500/20 group-hover:to-emerald-500/20 transition-all duration-500"></div>
-              
-              {/* Glass card */}
-              <div className="relative backdrop-blur-lg bg-white/80 border border-white/30 rounded-3xl p-12 lg:p-16 text-center space-y-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Ready for Premium Protection?</h2>
-                <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl mx-auto">
-                  Join thousands who chose SafePark. Get a free consultation from our experts today.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-                  <a 
-                    href="tel:+919600840058"
-                    className="px-8 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold text-lg hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500"
-                  >
-                    Call Now
-                  </a>
-                  <a 
-                    href="https://wa.me/919600840058"
-                    className="px-8 py-4 rounded-full border-2 border-gray-300 text-gray-900 font-semibold text-lg hover:border-emerald-500 hover:text-emerald-600 transition-all duration-300"
-                  >
-                    WhatsApp
-                  </a>
+            {/* RIGHT IMAGE */}
+            <div className="flex justify-center lg:justify-end order-first lg:order-last animate-fade-up">
+              <div className="relative w-full max-w-[550px] group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/20 to-emerald-500/20 rounded-3xl blur-3xl group-hover:opacity-100 opacity-70 transition-opacity duration-500"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-50"></div>
+                
+                <img 
+                  src="/gallery/hero-car.jpeg" 
+                  alt="Premium car protected by SafePark"
+                  className="relative w-full h-[380px] md:h-[450px] object-cover rounded-3xl shadow-2xl border border-white/10 group-hover:border-emerald-500/30 group-hover:shadow-emerald-500/20 transition-all duration-500"
+                />
+                
+                <div className="absolute top-6 left-6 bg-gradient-to-r from-emerald-500/90 to-cyan-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  Premium Protection
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FOOTER - MINIMAL PROFESSIONAL */}
-        <footer className="border-t border-gray-200 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-6 py-16 md:py-24">
-            <div className="grid md:grid-cols-3 gap-16 mb-16">
-              <div>
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold">
-                    S
+      {/* FEATURES */}
+      <section className="py-28 px-6 md:px-12 lg:px-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-cyan-500/5 -z-10"></div>
+        
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20 scroll-observe space-y-4">
+            <h2 className="text-5xl md:text-6xl font-bold text-white">Complete Protection</h2>
+            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto">
+              Four layers of engineered defense for every risk
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <Shield className="w-12 h-12 text-red-400" />, title: "Fire Protection", desc: "Heat & flame resistant", gradient: "from-red-500/15 to-orange-500/5" },
+              { icon: <Umbrella className="w-12 h-12 text-blue-400" />, title: "Rain Protection", desc: "100% waterproof coating", gradient: "from-blue-500/15 to-cyan-500/5" },
+              { icon: <Zap className="w-12 h-12 text-yellow-400" />, title: "Scratch-Proof", desc: "Military-grade fabric", gradient: "from-yellow-500/15 to-amber-500/5" },
+              { icon: <UserCheck className="w-12 h-12 text-green-400" />, title: "Safe for Kids", desc: "Family-friendly design", gradient: "from-green-500/15 to-emerald-500/5" }
+            ].map((feature, idx) => (
+              <div 
+                key={idx}
+                className="scroll-observe group relative p-6 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.08] hover:-translate-y-2 hover:shadow-2xl"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} rounded-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                
+                <div className="flex flex-col items-center text-center space-y-3">
+                  <div className="p-3 rounded-xl bg-white/5 group-hover:bg-white/10 transition-colors duration-300">
+                    {feature.icon}
                   </div>
-                  <span className="text-lg font-bold text-gray-900">SafePark</span>
+                  <h3 className="text-lg font-bold text-white">{feature.title}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">{feature.desc}</p>
                 </div>
-                <p className="text-gray-600 leading-relaxed font-light">
-                  Premium car protection engineered for the modern world. Trusted by thousands across India.
-                </p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-6">Contact</h4>
+      {/* VALUE PROPS */}
+      <section className="py-28 px-6 md:px-12 lg:px-20 relative">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20 scroll-observe space-y-4">
+            <h2 className="text-5xl md:text-6xl font-bold text-white">Why Choose SafePark?</h2>
+            <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto">
+              Premium protection engineered for modern vehicles
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { icon: <Shield className="w-10 h-10" />, title: "Weather Protection", desc: "Advanced weather-resistant fabric with 100% UV protection", badge: "100% Waterproof" },
+              { icon: <Zap className="w-10 h-10" />, title: "Scratch & Damage Cover", desc: "Revolutionary retractable design prevents all surface damage", badge: "Military Grade" },
+              { icon: <Award className="w-10 h-10" />, title: "Peace of Mind Warranty", desc: "2-year comprehensive warranty with premium support", badge: "2-Year Coverage" }
+            ].map((item, idx) => (
+              <div 
+                key={idx}
+                className="scroll-observe group relative p-8 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.08] hover:-translate-y-2"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold">
+                  {item.badge}
+                </div>
+
                 <div className="space-y-4">
-                  <a href="tel:+919600840058" className="flex items-center gap-3 text-gray-600 hover:text-emerald-600 transition-colors">
-                    <Phone className="w-4 h-4" />
-                    +91 9600840058
-                  </a>
-                  <a href="https://wa.me/919600840058" className="flex items-center gap-3 text-gray-600 hover:text-emerald-600 transition-colors">
-                    <MessageCircle className="w-4 h-4" />
-                    WhatsApp
-                  </a>
-                  <div className="flex items-center gap-3 text-gray-600">
-                    <MapPin className="w-4 h-4" />
-                    Coimbatore, Tamil Nadu
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-300">
+                    {item.icon}
                   </div>
+                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                  <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-6">Why SafePark?</h4>
-                <ul className="space-y-3 text-gray-600 font-light text-sm">
-                  <li>✓ 2-Year Warranty</li>
-                  <li>✓ Professional Installation</li>
-                  <li>✓ Premium Quality</li>
-                  <li>✓ 24/7 Support</li>
-                </ul>
+      {/* GALLERY */}
+      <section id="gallery" className="py-28 px-6 md:px-12 lg:px-20 bg-white/[0.02] relative">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20 scroll-observe space-y-4">
+            <h2 className="text-5xl md:text-6xl font-bold text-white">See SafePark in Action</h2>
+            <p className="text-lg text-gray-400 font-light">Real installations, real results</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { src: "/gallery/gallery1.jpg", caption: "Luxury Car Protection", tag: "Premium" },
+              { src: "/gallery/gallery2.jpg", caption: "All-Weather Installation", tag: "Weatherproof" },
+              { src: "/gallery/gallery3.jpg", caption: "Quick Setup Demo", tag: "Fast Setup" },
+              { src: "/gallery/gallery4.jpg", caption: "Urban Protection", tag: "City Ready" },
+              { src: "/gallery/gallery5.jpg", caption: "Family Vehicle Care", tag: "Family Safe" },
+              { src: "/gallery/gallery-video.mp4", caption: "Installation Process", tag: "Professional", type: "video" }
+            ].map((item, idx) => (
+              <div 
+                key={idx}
+                className="scroll-observe group relative rounded-2xl overflow-hidden bg-white/[0.05] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:-translate-y-2"
+                style={{ animationDelay: `${idx * 80}ms` }}
+              >
+                <div className="relative h-48 overflow-hidden">
+                  {item.type === "video" ? (
+                    <video src={item.src} controls className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" poster="/gallery/gallery1.jpg" preload="metadata" />
+                  ) : (
+                    <img src={item.src} alt={item.caption} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                  )}
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute top-3 right-3 px-2 py-1 bg-emerald-500/80 text-white text-xs font-bold rounded-lg">{item.tag}</div>
+                </div>
+                
+                <div className="p-4">
+                  <h3 className="text-white font-bold text-sm group-hover:text-emerald-400 transition-colors">{item.caption}</h3>
+                  <p className="text-emerald-400/70 text-xs mt-1">Professional Installation</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-28 px-6 md:px-12 lg:px-20 relative">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-20 scroll-observe space-y-4">
+            <h2 className="text-5xl md:text-6xl font-bold text-white">Trusted by Thousands</h2>
+            <p className="text-lg text-gray-400 font-light">Real satisfaction from real customers</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { name: "Rajesh Kumar", role: "BMW Owner", location: "Coimbatore", text: "SafePark completely transformed how I protect my BMW. Exceptional quality." },
+              { name: "Priya Sharma", role: "Entrepreneur", location: "Tamil Nadu", text: "The retractable design is genius. No more weather worries. Highly recommended." },
+              { name: "Arjun Patel", role: "Business Owner", location: "Gujarat", text: "Professional installation and premium materials. SafePark exceeds expectations." }
+            ].map((review, idx) => (
+              <div 
+                key={idx}
+                className="scroll-observe group p-6 rounded-2xl bg-white/[0.05] border border-white/10 hover:border-emerald-500/30 transition-all duration-500 hover:bg-white/[0.08] hover:-translate-y-2"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                
+                <p className="text-gray-300 text-sm leading-relaxed mb-4 italic">"{review.text}"</p>
+                
+                <div className="border-t border-white/10 pt-4">
+                  <p className="font-bold text-white text-sm">{review.name}</p>
+                  <p className="text-xs text-gray-400">{review.role} • {review.location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-28 px-6 md:px-12 lg:px-20 relative">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative scroll-observe">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-cyan-500/10 to-emerald-500/10 rounded-3xl blur-2xl opacity-60"></div>
+            
+            <div className="relative bg-white/[0.06] backdrop-blur-2xl rounded-3xl p-12 border border-white/10 text-center space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-white">Ready to Protect Your Vehicle?</h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light">
+                Join thousands who chose SafePark. Get started in minutes.
+              </p>
+
+              <div className="grid md:grid-cols-3 gap-8 py-8 border-y border-white/10">
+                {[
+                  { icon: <Phone className="w-6 h-6" />, title: "Phone", content: "+91 9600840058", href: "tel:+919600840058" },
+                  { icon: <MessageCircle className="w-6 h-6" />, title: "WhatsApp", content: "Message Us", href: "https://wa.me/919600840058" },
+                  { icon: <MapPin className="w-6 h-6" />, title: "Location", content: "Coimbatore, Tamil Nadu", href: null }
+                ].map((contact, i) => (
+                  <div key={i} className="group/contact">
+                    <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-3 text-emerald-400 group-hover/contact:bg-emerald-500/20 transition-colors">
+                      {contact.icon}
+                    </div>
+                    <p className="text-sm text-gray-400 mb-1">{contact.title}</p>
+                    {contact.href ? (
+                      <a href={contact.href} className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+                        {contact.content}
+                      </a>
+                    ) : (
+                      <p className="text-emerald-300 font-semibold">{contact.content}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <a 
+                  href="tel:+919600840058"
+                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500"
+                >
+                  Call for Free Quote
+                </a>
+                <a 
+                  href="https://wa.me/919600840058"
+                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/50 text-emerald-400 font-bold hover:bg-emerald-500/10 hover:border-emerald-400 transition-all duration-300"
+                >
+                  WhatsApp Now
+                </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="border-t border-gray-200 pt-8 text-center text-gray-600 font-light">
-              <p>© 2025 SafePark. Engineered excellence from Coimbatore.</p>
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 bg-black/20 py-16 px-6 md:px-12 lg:px-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 mb-12">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold">S</div>
+                <span className="text-2xl font-bold text-white">SafePark</span>
+              </div>
+              <p className="text-gray-400 leading-relaxed mb-6 font-light">
+                Premium car protection engineered for the modern world. Trusted by thousands across India.
+              </p>
+              <div className="flex gap-1 mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                ))}
+              </div>
+              <p className="text-sm text-gray-400">2,000+ Happy Customers</p>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-white mb-8 text-lg">Contact</h4>
+              <div className="space-y-4">
+                <a href="tel:+919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-400 transition-colors">
+                  <Phone className="w-4 h-4" />
+                  +91 9600840058
+                </a>
+                <a href="https://wa.me/919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-400 transition-colors">
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </a>
+                <div className="flex items-center gap-3 text-gray-400">
+                  <MapPin className="w-4 h-4" />
+                  Coimbatore, Tamil Nadu
+                </div>
+              </div>
             </div>
           </div>
-        </footer>
-      </main>
 
+          <div className="border-t border-white/10 pt-8 text-center text-gray-400 font-light">
+            <p>© 2025 SafePark. Engineered excellence from Coimbatore, Tamil Nadu</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* ANIMATIONS */}
       <style jsx>{`
         @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -50px) scale(1.05); }
-          50% { transform: translate(-20px, 20px) scale(0.95); }
-          75% { transform: translate(50px, 50px) scale(1.02); }
+          0%, 100% { transform: translate(0, 0); }
+          25% { transform: translate(30px, -50px); }
+          50% { transform: translate(-20px, 20px); }
+          75% { transform: translate(50px, 50px); }
         }
 
-        @keyframes fade-in-down {
-          from {
-            opacity: 0;
-            transform: translateY(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        @keyframes fade-down {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
-        .animate-fade-in-down {
-          animation: fade-in-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+        .animate-blob { animation: blob 7s infinite ease-in-out; }
+        .animate-fade-down { animation: fade-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+        .scroll-observe { opacity: 0; animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .fade-in { opacity: 1 !important; }
 
-        .observe {
-          opacity: 0;
-          animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .fade-in-up {
-          opacity: 1 !important;
-          animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        * {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
+        * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        html { scroll-behavior: smooth; }
 
         @media (prefers-reduced-motion: reduce) {
-          * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-          }
+          * { animation: none !important; transition: none !important; }
         }
 
-        a:focus-visible {
-          outline: 2px solid #10b981;
-          outline-offset: 2px;
-        }
+        a:focus-visible { outline: 2px solid #10b981; outline-offset: 2px; }
       `}</style>
     </div>
   );
