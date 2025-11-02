@@ -9,7 +9,7 @@ interface VisibilityState {
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [expandedFaq, setExpandedFaq] = useState(0);
+  const [expandedFaq, setExpandedFaq] = useState(-1);
   const [isVisible, setIsVisible] = useState<VisibilityState>({});
 
   useEffect(() => {
@@ -181,6 +181,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
               Complete Protection
             </h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto mb-4 rounded-full"></div>
             <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
               Four layers of engineered defense for every risk
             </p>
@@ -229,6 +230,7 @@ export default function HomePage() {
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['value-props'] ? 1 : 0, transform: isVisible['value-props'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
               Why Choose SafePark?
             </h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto mb-4 rounded-full"></div>
             <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto" style={{ opacity: isVisible['value-props'] ? 1 : 0, transform: isVisible['value-props'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
               Premium protection engineered for modern vehicles
             </p>
@@ -263,7 +265,7 @@ export default function HomePage() {
                     <div className="w-12 h-12 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/25 transition-all duration-300" style={{ animation: `icon-spin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 100}ms forwards`, opacity: 0 }}>
                       {item.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-white">{item.title}</h3>
+                    <h3 className="text-lg md:text-xl font-bold text-white">{item.title}</h3>
                     <p className="text-gray-400 leading-relaxed text-sm">{item.desc}</p>
                   </div>
                 </div>
@@ -273,13 +275,17 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* BREATHING SPACE */}
+      <div className="h-20 bg-gradient-to-b from-slate-950/30 via-black/50 to-slate-950"></div>
+
       {/* GALLERY CAROUSEL */}
-      <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-black relative">
+      <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-slate-950 via-slate-900/20 to-black relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20" id="gallery-header" data-observe>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['gallery-header'] ? 1 : 0, transform: isVisible['gallery-header'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
               SafePark Installation
             </h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto mb-4 rounded-full"></div>
             <p className="text-lg text-gray-400 font-light" style={{ opacity: isVisible['gallery-header'] ? 1 : 0, transform: isVisible['gallery-header'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
               Real installations, real results
             </p>
@@ -339,16 +345,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* BREATHING SPACE */}
+      <div className="h-20 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
+
       {/* FAQ */}
-      <section className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black to-black relative">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16" id="faq-header" data-observe>
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-3" style={{ opacity: isVisible['faq-header'] ? 1 : 0, transform: isVisible['faq-header'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
-              FAQ
-            </h2>
-            <p className="text-lg text-gray-400 font-light" style={{ opacity: isVisible['faq-header'] ? 1 : 0, transform: isVisible['faq-header'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
-              Everything you need to know
-            </p>
+      <section className="py-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute -top-40 left-1/3 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl animate-float-1"></div>
+          <div className="absolute -bottom-40 right-1/3 w-80 h-80 bg-cyan-500/8 rounded-full blur-3xl animate-float-2"></div>
+        </div>
+
+        <div className="max-w-3xl mx-auto relative z-10">
+          <div 
+            id="faq-header" 
+            data-observe
+            className="text-center mb-16"
+            style={{
+              opacity: isVisible['faq-header'] ? 1 : 0,
+              transform: isVisible['faq-header'] ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)'
+            }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">Frequently Asked Questions</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto mb-4 rounded-full"></div>
+            <p className="text-lg text-gray-400">Everything you need to know</p>
           </div>
 
           <div id="faq-list" data-observe className="space-y-4">
@@ -372,8 +393,8 @@ export default function HomePage() {
                     onClick={() => setExpandedFaq(expandedFaq === idx ? -1 : idx)}
                     className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/[0.02] transition-all"
                   >
-                    <h3 className="text-lg font-bold text-white flex-1">{item.question}</h3>
-                    <div className="ml-4 flex-shrink-0 text-emerald-400 group-hover:text-emerald-300 transition-transform" style={{ transform: expandedFaq === idx ? 'rotate(180deg)' : 'rotate(0deg)', transitionDuration: '300ms' }}>
+                    <h3 className="text-base md:text-lg font-bold text-white flex-1 pr-4">{item.question}</h3>
+                    <div className="ml-4 flex-shrink-0 text-emerald-400 transition-transform duration-300" style={{ transform: expandedFaq === idx ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                       {expandedFaq === idx ? (
                         <Minus className="w-5 h-5" />
                       ) : (
@@ -383,7 +404,7 @@ export default function HomePage() {
                   </button>
 
                   {expandedFaq === idx && (
-                    <div className="px-6 pb-5 text-gray-300 leading-relaxed border-t border-white/10" style={{ animation: 'fade-in-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }}>
+                    <div className="px-6 pb-6 pt-2 text-gray-300 leading-relaxed border-t border-white/10" style={{ animation: 'fade-in-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }}>
                       {item.answer}
                     </div>
                   )}
@@ -393,6 +414,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* BREATHING SPACE */}
+      <div className="h-20 bg-gradient-to-b from-black to-black"></div>
 
       {/* CTA */}
       <section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black">
@@ -418,11 +442,11 @@ export default function HomePage() {
                     </div>
                     <p className="text-sm text-gray-400 mb-1">{contact.title}</p>
                     {contact.href ? (
-                      <a href={contact.href} className="text-emerald-300 hover:text-emerald-200 font-semibold transition-colors">
+                      <a href={contact.href} className="text-emerald-300 hover:text-emerald-200 font-semibold transition-colors text-sm md:text-base">
                         {contact.content}
                       </a>
                     ) : (
-                      <p className="text-emerald-300 font-semibold">{contact.content}</p>
+                      <p className="text-emerald-300 font-semibold text-sm md:text-base">{contact.content}</p>
                     )}
                   </div>
                 ))}
@@ -431,14 +455,14 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <a 
                   href="tel:+919600840058"
-                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-500"
+                  className="px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-500 text-sm md:text-base"
                   style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards', opacity: 0 }}
                 >
                   Call for Free Quote
                 </a>
                 <a 
                   href="https://wa.me/919600840058"
-                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/60 text-emerald-300 font-bold hover:bg-emerald-500/15 hover:border-emerald-400 hover:text-emerald-200 transition-all duration-300"
+                  className="px-8 py-3 rounded-xl border-2 border-emerald-500/60 text-emerald-300 font-bold hover:bg-emerald-500/15 hover:border-emerald-400 hover:text-emerald-200 transition-all duration-300 text-sm md:text-base"
                   style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards', opacity: 0 }}
                 >
                   WhatsApp Now
@@ -458,7 +482,7 @@ export default function HomePage() {
                 <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold">S</div>
                 <span className="text-2xl font-bold text-white">SafePark</span>
               </div>
-              <p className="text-gray-400 leading-relaxed mb-6 font-light">
+              <p className="text-gray-400 leading-relaxed mb-6 font-light text-sm md:text-base">
                 Premium car protection engineered for the modern world. Trusted by thousands across India.
               </p>
               <div className="flex gap-1 mb-3">
@@ -472,23 +496,23 @@ export default function HomePage() {
             <div>
               <h4 className="font-bold text-white mb-8 text-lg">Contact</h4>
               <div className="space-y-4">
-                <a href="tel:+919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-300 transition-colors">
-                  <Phone className="w-4 h-4" />
+                <a href="tel:+919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-300 transition-colors text-sm md:text-base">
+                  <Phone className="w-4 h-4 flex-shrink-0" />
                   +91 9600840058
                 </a>
-                <a href="https://wa.me/919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-300 transition-colors">
-                  <MessageCircle className="w-4 h-4" />
+                <a href="https://wa.me/919600840058" className="flex items-center gap-3 text-gray-400 hover:text-emerald-300 transition-colors text-sm md:text-base">
+                  <MessageCircle className="w-4 h-4 flex-shrink-0" />
                   WhatsApp
                 </a>
-                <div className="flex items-center gap-3 text-gray-400">
-                  <MapPin className="w-4 h-4" />
+                <div className="flex items-center gap-3 text-gray-400 text-sm md:text-base">
+                  <MapPin className="w-4 h-4 flex-shrink-0" />
                   Coimbatore, Tamil Nadu
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 text-center text-gray-400 font-light">
+          <div className="border-t border-white/10 pt-8 text-center text-gray-400 font-light text-sm">
             <p>© 2025 SafePark. Engineered excellence from Coimbatore, Tamil Nadu</p>
           </div>
         </div>
@@ -511,6 +535,23 @@ export default function HomePage() {
         @keyframes blob-3 {
           0%, 100% { transform: translate(0, 0) scale(1); }
           50% { transform: translate(50px, -80px) scale(1.1); }
+        }
+
+        @keyframes float-1 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.05); }
+          66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        @keyframes float-2 {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(-40px, 40px) scale(0.98); }
+          66% { transform: translate(40px, -30px) scale(1.05); }
+        }
+
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 0.2; }
         }
 
         @keyframes fade-in-down {
@@ -561,6 +602,9 @@ export default function HomePage() {
         .animate-blob-1 { animation: blob-1 8s infinite ease-in-out; }
         .animate-blob-2 { animation: blob-2 7s infinite ease-in-out; }
         .animate-blob-3 { animation: blob-3 9s infinite ease-in-out; }
+        .animate-float-1 { animation: float-1 12s infinite ease-in-out; }
+        .animate-float-2 { animation: float-2 14s infinite ease-in-out; }
+        .animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
         .animate-fade-in-down { animation: fade-in-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
         .animate-fade-in-up { animation: fade-in-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
@@ -572,6 +616,12 @@ export default function HomePage() {
         }
 
         a:focus-visible { outline: 2px solid #10b981; outline-offset: 2px; }
+
+        @media (max-width: 768px) {
+          .text-5xl { font-size: 1.875rem; }
+          .text-6xl { font-size: 2.25rem; }
+          .text-7xl { font-size: 3rem; }
+        }
       `}</style>
     </div>
   );
