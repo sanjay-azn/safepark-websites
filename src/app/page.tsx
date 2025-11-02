@@ -1,7 +1,7 @@
 'use client';
 
 import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function HomePage() {
   useEffect(() => {
@@ -21,8 +21,9 @@ export default function HomePage() {
     const handleScroll = () => {
       const scrolled = window.scrollY;
       document.querySelectorAll('.parallax').forEach((el) => {
+        const element = el as HTMLElement;
         const offset = scrolled * 0.5;
-        el.style.transform = `translateY(${offset}px)`;
+        element.style.transform = `translateY(${offset}px)`;
       });
     };
 
@@ -123,6 +124,7 @@ export default function HomePage() {
                   src="/gallery/hero-car.jpeg" 
                   alt="Premium car protected by SafePark"
                   className="relative w-full h-[350px] md:h-[420px] object-cover rounded-3xl shadow-2xl border border-white/10 group-hover:border-emerald-500/30 group-hover:shadow-emerald-500/20 transition-all duration-500 img-zoom"
+                  loading="eager"
                 />
                 
                 <div className="absolute top-6 left-6 bg-gradient-to-r from-emerald-500/90 to-cyan-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg group-hover:scale-110 transition-transform duration-300 badge-slide">
@@ -235,9 +237,20 @@ export default function HomePage() {
               >
                 <div className="relative h-48 overflow-hidden">
                   {item.type === "video" ? (
-                    <video src={item.src} controls className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" poster="/gallery/gallery1.jpg" preload="metadata" />
+                    <video 
+                      src={item.src} 
+                      controls 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                      poster="/gallery/gallery1.jpg" 
+                      preload="metadata" 
+                    />
                   ) : (
-                    <img src={item.src} alt={item.caption} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                    <img 
+                      src={item.src} 
+                      alt={item.caption} 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                      loading="lazy" 
+                    />
                   )}
                   
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
