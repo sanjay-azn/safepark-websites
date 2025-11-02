@@ -1,6 +1,6 @@
 'use client';
 
-import { Shield, Umbrella, Zap, CheckCircle2, Star, Phone, MessageCircle, Award, Clock, Sparkles, Lightbulb, Flame, Droplets, Bolt, Wind, Wrench, Zap as Speed } from 'lucide-react';
+import { Shield, Umbrella, Zap, CheckCircle2, Star, Phone, MessageCircle, Award, Clock, Sparkles, Lightbulb, Flame, Droplets, Bolt, Wind, Wrench, Sun, Zap as Lightning, Droplet, Cloud, Cog, Gauge } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface VisibilityState {
@@ -238,38 +238,38 @@ export default function FeaturesPage() {
               { 
                 title: ">90% Heat & UV Block", 
                 desc: "Protects paint, dashboard, and interiors from sun damage.",
-                icon: "☀️",
+                icon: <Sun className="w-8 h-8 text-yellow-400" />,
                 color: "from-yellow-500/20"
               },
               { 
                 title: "Impact Resistant", 
                 desc: "Everyday hits won't harm your car. Tested for durability.",
-                icon: "⚡",
-                color: "from-blue-500/20"
+                icon: <Lightning className="w-8 h-8 text-orange-400" />,
+                color: "from-orange-500/20"
               },
               { 
                 title: "Water & Dust Proof", 
                 desc: "No more scratches, no more daily cleaning needed.",
-                icon: "💧",
-                color: "from-cyan-500/20"
+                icon: <Droplet className="w-8 h-8 text-blue-400" />,
+                color: "from-blue-500/20"
               },
               { 
                 title: "Wind Stability", 
                 desc: "Engineered to withstand rough weather conditions.",
-                icon: "💨",
-                color: "from-emerald-500/20"
+                icon: <Wind className="w-8 h-8 text-cyan-400" />,
+                color: "from-cyan-500/20"
               },
               { 
                 title: "Rust-Free Frame", 
                 desc: "Premium, durable, and stylish galvanized frame.",
-                icon: "🔧",
-                color: "from-orange-500/20"
+                icon: <Wrench className="w-8 h-8 text-red-400" />,
+                color: "from-red-500/20"
               },
               { 
                 title: "Retractable in 2-5 Seconds", 
                 desc: "Park, pull, and protect instantly. No complexity.",
-                icon: "⚙️",
-                color: "from-purple-500/20"
+                icon: <Cog className="w-8 h-8 text-emerald-400" />,
+                color: "from-emerald-500/20"
               }
             ].map((benefit, idx) => {
               const benefitId = `benefit-${idx}`;
@@ -292,7 +292,7 @@ export default function FeaturesPage() {
                     <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} to-transparent blur-2xl group-hover:blur-3xl transition-all duration-500`}></div>
                   </div>
 
-                  <div className="text-5xl mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12 origin-center inline-block">
+                  <div className="mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12 origin-center inline-block">
                     {benefit.icon}
                   </div>
                   
@@ -316,10 +316,10 @@ export default function FeaturesPage() {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: '⭐', value: '4.9/5', label: 'Reviews' },
-              { icon: '🚗', value: '2000+', label: 'Cars Protected' },
-              { icon: '🇮🇳', value: 'India', label: 'Made Locally' },
-              { icon: '📞', value: '24/7', label: 'Support' }
+              { icon: <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />, value: '4.9/5', label: 'Reviews' },
+              { icon: <Gauge className="w-6 h-6 text-emerald-400" />, value: '2000+', label: 'Cars Protected' },
+              { icon: <Award className="w-6 h-6 text-blue-400" />, value: 'India', label: 'Made Locally' },
+              { icon: <Phone className="w-6 h-6 text-cyan-400" />, value: '24/7', label: 'Support' }
             ].map((stat, idx) => {
               const statId = `stat-${idx}`;
               const isStatVisible = isVisible[statId] || false;
@@ -336,7 +336,7 @@ export default function FeaturesPage() {
                     transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`
                   }}
                 >
-                  <div className="text-3xl mb-2 group-hover:scale-125 transition-transform duration-300">{stat.icon}</div>
+                  <div className="flex justify-center mb-2 group-hover:scale-125 transition-transform duration-300">{stat.icon}</div>
                   <div className="text-white font-bold text-xl group-hover:text-emerald-400 transition-colors">{stat.value}</div>
                   <div className="text-gray-400 text-sm">{stat.label}</div>
                 </div>
