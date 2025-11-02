@@ -1,6 +1,6 @@
 'use client';
 
-import { Shield, Umbrella, Zap, CheckCircle2, Star, Phone, MessageCircle, Award, Clock, Sparkles, Lightbulb, TrendingUp, Heart, Box, Users } from 'lucide-react';
+import { Shield, Umbrella, Zap, CheckCircle2, Star, Phone, MessageCircle, Award, Clock, Sparkles, Lightbulb } from 'lucide-react';
 import { useEffect } from 'react';
 
 export default function FeaturesPage() {
@@ -21,8 +21,8 @@ export default function FeaturesPage() {
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
-      {/* COMPACT HERO */}
-      <section className="relative pt-32 pb-16 px-6 md:px-12 lg:px-20 overflow-hidden">
+      {/* HERO SECTION */}
+      <section className="relative pt-28 pb-20 px-6 md:px-12 lg:px-20 overflow-hidden bg-black">
         
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-0 -right-40 w-96 h-96 bg-gradient-to-br from-emerald-600/15 to-cyan-600/8 rounded-full blur-3xl"></div>
@@ -50,33 +50,33 @@ export default function FeaturesPage() {
       </section>
 
       {/* 2x2 GRID FEATURES */}
-      <section className="pb-32 px-6 md:px-12 lg:px-20">
+      <section className="pb-24 px-6 md:px-12 lg:px-20 bg-black">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                icon: <Shield className="w-12 h-12 text-red-400" />,
+                icon: <Shield className="w-10 h-10 text-red-400" />,
                 title: "Thermal Protection",
                 subtitle: "Heat & flame resistant",
                 desc: "Advanced thermal resistance up to 2000°F with flame-retardant coating.",
                 features: ["Heat resistant to 2000°F", "Flame retardant", "Structural integrity"]
               },
               {
-                icon: <Umbrella className="w-12 h-12 text-blue-400" />,
+                icon: <Umbrella className="w-10 h-10 text-blue-400" />,
                 title: "Weather Shield",
                 subtitle: "IPX7 waterproof",
                 desc: "Military-grade waterproof coating with advanced drainage system.",
                 features: ["100% waterproof", "Advanced drainage", "UV resistance"]
               },
               {
-                icon: <Zap className="w-12 h-12 text-yellow-400" />,
+                icon: <Zap className="w-10 h-10 text-yellow-400" />,
                 title: "Impact Guard",
                 subtitle: "Military-grade fabric",
                 desc: "Oxford 600D fabric prevents scratches, dents, and damage.",
                 features: ["Scratch resistant", "Impact protected", "Tear-proof"]
               },
               {
-                icon: <Heart className="w-12 h-12 text-emerald-400" />,
+                icon: <Award className="w-10 h-10 text-emerald-400" />,
                 title: "Safety First",
                 subtitle: "Family approved",
                 desc: "Rounded edges and non-toxic materials for complete peace of mind.",
@@ -88,20 +88,20 @@ export default function FeaturesPage() {
                 className="feature-card group relative opacity-0 translate-y-8 transition-all duration-500"
                 style={{ transitionDelay: `${idx * 100}ms` }}
               >
-                <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 rounded-2xl p-8 group-hover:border-emerald-500/30 transition-all duration-500 h-full flex flex-col group-hover:bg-gradient-to-br group-hover:from-white/[0.12] group-hover:to-white/[0.05]">
+                <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 rounded-xl p-6 group-hover:border-emerald-500/30 transition-all duration-500 h-full flex flex-col group-hover:bg-gradient-to-br group-hover:from-white/[0.12] group-hover:to-white/[0.05]">
                   
-                  <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-white/15 transition-colors">
+                  <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center mb-4 group-hover:bg-white/15 transition-colors">
                     {feature.icon}
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-white mb-1">{feature.title}</h3>
-                  <p className="text-sm text-gray-400 mb-4">{feature.subtitle}</p>
-                  <p className="text-sm text-gray-300 leading-relaxed mb-6 flex-grow">{feature.desc}</p>
+                  <h3 className="text-xl font-bold text-white mb-1">{feature.title}</h3>
+                  <p className="text-sm text-gray-400 mb-3">{feature.subtitle}</p>
+                  <p className="text-sm text-gray-300 leading-relaxed mb-5 flex-grow">{feature.desc}</p>
                   
-                  <div className="space-y-3 pt-6 border-t border-white/10">
+                  <div className="space-y-2 pt-4 border-t border-white/10">
                     {feature.features.map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 text-sm text-gray-300">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2 text-xs text-gray-300">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-400 flex-shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -113,34 +113,34 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* COMPACT COMPARISON */}
-      <section className="pb-32 px-6 md:px-12 lg:px-20">
-        <div className="max-w-4xl mx-auto">
+      {/* WHY SAFEPARK BEATS TRADITIONAL - DARKER BACKGROUND */}
+      <section className="pb-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-slate-950 to-black">
+        <div className="max-w-5xl mx-auto">
           
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">Why SafePark Leads</h2>
-            <p className="text-lg text-gray-400">Industry comparison—see the difference</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">Why SafePark Beats Traditional Car Sheds</h2>
+            <p className="text-lg text-gray-400">See how we compare to conventional solutions</p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2">
             {[
-              { feature: "Portability", traditional: "Fixed", safepark: "Deploy instantly" },
-              { feature: "Design", traditional: "Basic", safepark: "Premium" },
-              { feature: "Setup", traditional: "Days/weeks", safepark: "2-4 hours" },
-              { feature: "Material", traditional: "Standard", safepark: "Military-grade" },
-              { feature: "Weather", traditional: "Partial", safepark: "100% coverage" },
-              { feature: "Space", traditional: "Permanent", safepark: "Collapsible" }
+              { feature: "Portability", traditional: "Fixed", safepark: "Retractable" },
+              { feature: "Aesthetics", traditional: "Basic", safepark: "Stylish & Modern" },
+              { feature: "Installation", traditional: "Complex", safepark: "Quick & Easy" },
+              { feature: "Material Quality", traditional: "Low-grade", safepark: "Military-Grade" },
+              { feature: "Weather Protection", traditional: "Limited", safepark: "Complete Coverage" },
+              { feature: "Space Usage", traditional: "Permanent", safepark: "Collapsible" }
             ].map((item, idx) => (
               <div 
                 key={idx}
-                className="grid grid-cols-3 gap-4 p-4 rounded-lg bg-white/[0.03] border border-white/10 hover:border-emerald-500/20 transition-all"
+                className="grid grid-cols-3 gap-4 p-4 rounded-lg bg-white/[0.04] border border-white/10 hover:border-emerald-500/20 transition-all text-sm md:text-base"
               >
                 <div className="font-semibold text-white">{item.feature}</div>
                 <div className="text-gray-400 flex items-center gap-2 justify-center">
-                  <span className="text-red-400">✕</span> {item.traditional}
+                  <span className="text-red-400 font-bold">✕</span> {item.traditional}
                 </div>
                 <div className="text-emerald-300 font-semibold flex items-center gap-2 justify-end">
-                  <span className="text-emerald-400">✓</span> {item.safepark}
+                  <span className="text-emerald-400 font-bold">✓</span> {item.safepark}
                 </div>
               </div>
             ))}
@@ -148,35 +148,55 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      {/* BENEFITS - 3 COLUMNS */}
-      <section className="pb-32 px-6 md:px-12 lg:px-20">
-        <div className="max-w-5xl mx-auto">
+      {/* WHY CAR OWNERS CHOOSE - LIGHTER BACKGROUND */}
+      <section className="pb-24 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black via-slate-900/30 to-black">
+        <div className="max-w-6xl mx-auto">
           
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">What Customers Value</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">Why Car Owners Choose SafePark</h2>
             <p className="text-lg text-gray-400">Real benefits from premium protection</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: "Peace of Mind", desc: "Stop worrying about damage. Your car is always protected.", icon: <Shield className="w-10 h-10 text-emerald-400" />, bgColor: "from-emerald-500/20 to-emerald-500/10" },
-              { title: "Save Money", desc: "Skip washing, waxing, repairs. Keep pristine condition.", icon: <TrendingUp className="w-10 h-10 text-cyan-400" />, bgColor: "from-cyan-500/20 to-cyan-500/10" },
-              { title: "Premium Look", desc: "Modern design enhances your home. Professional quality.", icon: <Sparkles className="w-10 h-10 text-yellow-400" />, bgColor: "from-yellow-500/20 to-yellow-500/10" },
-              { title: "Instant Access", desc: "Deploy in seconds. No complex setup needed.", icon: <Zap className="w-10 h-10 text-red-400" />, bgColor: "from-red-500/20 to-red-500/10" },
-              { title: "Space Smart", desc: "Collapse when not needed. Perfect for Indian homes.", icon: <Box className="w-10 h-10 text-blue-400" />, bgColor: "from-blue-500/20 to-blue-500/10" },
-              { title: "Family Safe", desc: "Kids can play safely. Engineered with safety first.", icon: <Users className="w-10 h-10 text-green-400" />, bgColor: "from-green-500/20 to-green-500/10" }
+              { 
+                title: ">90% Heat & UV Block", 
+                desc: "Protects paint, dashboard, and interiors from sun damage.",
+                icon: "🌞"
+              },
+              { 
+                title: "Impact Resistant", 
+                desc: "Everyday hits won't harm your car. Tested for durability.",
+                icon: "⚡"
+              },
+              { 
+                title: "Water & Dust Proof", 
+                desc: "No more scratches, no more daily cleaning needed.",
+                icon: "💧"
+              },
+              { 
+                title: "Wind Stability", 
+                desc: "Engineered to withstand rough weather conditions.",
+                icon: "💨"
+              },
+              { 
+                title: "Rust-Free Frame", 
+                desc: "Premium, durable, and stylish galvanized frame.",
+                icon: "🔧"
+              },
+              { 
+                title: "Retractable in 2-5 Seconds", 
+                desc: "Park, pull, and protect instantly. No complexity.",
+                icon: "⚙️"
+              }
             ].map((benefit, idx) => (
               <div 
                 key={idx}
                 className="benefit-card group relative opacity-0 translate-y-8 transition-all duration-500"
                 style={{ transitionDelay: `${idx * 100}ms` }}
               >
-                <div className="relative p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all h-full">
-                  
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${benefit.bgColor} flex items-center justify-center mb-4`}>
-                    {benefit.icon}
-                  </div>
-
+                <div className="relative p-6 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 hover:border-emerald-500/20 transition-all h-full">
+                  <div className="text-3xl mb-3">{benefit.icon}</div>
                   <h3 className="text-lg font-bold text-white mb-2">{benefit.title}</h3>
                   <p className="text-sm text-gray-300">{benefit.desc}</p>
                 </div>
@@ -187,7 +207,7 @@ export default function FeaturesPage() {
       </section>
 
       {/* TRUST */}
-      <section className="pb-24 px-6 md:px-12 lg:px-20">
+      <section className="pb-24 px-6 md:px-12 lg:px-20 bg-black">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="text-center p-6 rounded-xl bg-white/[0.03] border border-white/10">
@@ -219,17 +239,17 @@ export default function FeaturesPage() {
       </section>
 
       {/* CTA */}
-      <section className="pb-32 px-6 md:px-12 lg:px-20">
+      <section className="pb-32 px-6 md:px-12 lg:px-20 bg-black">
         <div className="max-w-3xl mx-auto">
           <div className="relative bg-gradient-to-br from-emerald-500/10 via-cyan-500/5 to-emerald-500/10 rounded-2xl border border-white/15 p-8 md:p-10 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Experience SafePark Today</h2>
             <p className="text-lg text-gray-300 mb-8">Get professional consultation. Free. No pressure.</p>
             
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href="tel:+919600840058" className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 inline-flex items-center justify-center gap-2">
+              <a href="tel:+919600840058" className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 inline-flex items-center justify-center gap-2 text-sm md:text-base">
                 <Phone className="w-5 h-5" /> Get Free Consultation
               </a>
-              <a href="https://wa.me/919600840058" className="bg-white/10 border border-white/30 text-white hover:bg-white/20 px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 inline-flex items-center justify-center gap-2">
+              <a href="https://wa.me/919600840058" className="bg-white/10 border border-white/30 text-white hover:bg-white/20 px-8 py-3 rounded-xl font-bold transition-all hover:scale-105 inline-flex items-center justify-center gap-2 text-sm md:text-base">
                 <MessageCircle className="w-5 h-5" /> WhatsApp
               </a>
             </div>
