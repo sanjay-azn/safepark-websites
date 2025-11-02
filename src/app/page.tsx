@@ -1,15 +1,10 @@
 'use client';
 
 import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function HomePage() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
-    setIsLoaded(true);
-
-    // Scroll animations
     const observerOptions = { threshold: 0.2, rootMargin: '0px 0px -100px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -24,28 +19,8 @@ export default function HomePage() {
   return (
     <div className="scroll-smooth bg-gradient-to-br from-[#0f172a] via-[#0f2d2a] to-[#052e16] min-h-screen overflow-x-hidden">
       
-      {/* FIXED PREMIUM NAVIGATION */}
-      <nav className="fixed top-0 w-full backdrop-blur-xl bg-black/40 border-b border-emerald-500/10 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center text-white font-bold group-hover:scale-110 transition-transform duration-300">
-              S
-            </div>
-            <span className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">SafePark</span>
-          </div>
-          
-          <a 
-            href="tel:+919600840058"
-            className="hidden md:flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold text-sm hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300"
-          >
-            Get Started
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
-      </nav>
-
-      {/* HERO SECTION */}
-      <section className="pt-32 pb-20 px-6 md:px-12 lg:px-20 relative overflow-hidden">
+      {/* HERO SECTION - FULL WIDTH NO PADDING TOP */}
+      <section className="min-h-screen flex items-center px-6 md:px-12 lg:px-20 relative overflow-hidden py-16">
         
         {/* Animated Background Orbs */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -53,22 +28,22 @@ export default function HomePage() {
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-cyan-500/10 to-emerald-500/5 rounded-full blur-3xl animate-blob" style={{ animation: 'blob 7s infinite 2s' }}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative">
+        <div className="max-w-7xl mx-auto w-full relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             {/* LEFT CONTENT */}
-            <div className="text-center lg:text-left space-y-8 animate-fade-down">
+            <div className="text-center lg:text-left space-y-6 animate-fade-down">
               
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium text-sm hover:bg-emerald-500/20 transition-all duration-300 w-fit">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                 Made in India • Premium Quality
               </div>
 
-              <div className="space-y-4">
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white">
+              <div className="space-y-3">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
                   Everyday Risks.
                 </h1>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 bg-clip-text text-transparent">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 bg-clip-text text-transparent">
                   Lasting Protection.
                 </h2>
               </div>
@@ -77,23 +52,7 @@ export default function HomePage() {
                 Your car faces <span className="text-white font-semibold">hidden threats every day</span>. From unexpected weather to kids playing nearby, give yourself <span className="text-emerald-400 font-medium">complete peace of mind</span>.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-6 py-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-gray-300 text-sm font-medium">2,000+ Protected Cars</span>
-                </div>
-                <div className="h-6 w-px bg-gray-600 hidden sm:block"></div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                  <span className="text-gray-300 text-sm">2-Year Warranty</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a 
                   href="tel:+919600840058"
                   className="group px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold text-base hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2"
@@ -111,6 +70,22 @@ export default function HomePage() {
                 </a>
               </div>
 
+              <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
+                <div className="flex items-center gap-3">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <span className="text-gray-300 text-sm font-medium">2,000+ Protected Cars</span>
+                </div>
+                <div className="h-6 w-px bg-gray-600 hidden sm:block"></div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                  <span className="text-gray-300 text-sm">2-Year Warranty</span>
+                </div>
+              </div>
+
               <div className="flex flex-wrap gap-4 pt-4 text-xs text-gray-400">
                 {['Free Installation', '2-4 Hour Setup', 'No Hidden Costs'].map((item, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -123,14 +98,14 @@ export default function HomePage() {
 
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end order-first lg:order-last animate-fade-up">
-              <div className="relative w-full max-w-[550px] group">
+              <div className="relative w-full max-w-[500px] group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/20 to-emerald-500/20 rounded-3xl blur-3xl group-hover:opacity-100 opacity-70 transition-opacity duration-500"></div>
                 <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-50"></div>
                 
                 <img 
                   src="/gallery/hero-car.jpeg" 
                   alt="Premium car protected by SafePark"
-                  className="relative w-full h-[380px] md:h-[450px] object-cover rounded-3xl shadow-2xl border border-white/10 group-hover:border-emerald-500/30 group-hover:shadow-emerald-500/20 transition-all duration-500"
+                  className="relative w-full h-[350px] md:h-[420px] object-cover rounded-3xl shadow-2xl border border-white/10 group-hover:border-emerald-500/30 group-hover:shadow-emerald-500/20 transition-all duration-500"
                 />
                 
                 <div className="absolute top-6 left-6 bg-gradient-to-r from-emerald-500/90 to-cyan-500/80 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -143,11 +118,11 @@ export default function HomePage() {
       </section>
 
       {/* FEATURES */}
-      <section className="py-28 px-6 md:px-12 lg:px-20 relative">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-cyan-500/5 -z-10"></div>
         
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20 scroll-observe space-y-4">
+          <div className="text-center mb-16 scroll-observe space-y-4">
             <h2 className="text-5xl md:text-6xl font-bold text-white">Complete Protection</h2>
             <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto">
               Four layers of engineered defense for every risk
@@ -182,9 +157,9 @@ export default function HomePage() {
       </section>
 
       {/* VALUE PROPS */}
-      <section className="py-28 px-6 md:px-12 lg:px-20 relative">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20 scroll-observe space-y-4">
+          <div className="text-center mb-16 scroll-observe space-y-4">
             <h2 className="text-5xl md:text-6xl font-bold text-white">Why Choose SafePark?</h2>
             <p className="text-lg text-gray-400 font-light max-w-2xl mx-auto">
               Premium protection engineered for modern vehicles
@@ -220,9 +195,9 @@ export default function HomePage() {
       </section>
 
       {/* GALLERY */}
-      <section id="gallery" className="py-28 px-6 md:px-12 lg:px-20 bg-white/[0.02] relative">
+      <section id="gallery" className="py-24 px-6 md:px-12 lg:px-20 bg-white/[0.02] relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20 scroll-observe space-y-4">
+          <div className="text-center mb-16 scroll-observe space-y-4">
             <h2 className="text-5xl md:text-6xl font-bold text-white">See SafePark in Action</h2>
             <p className="text-lg text-gray-400 font-light">Real installations, real results</p>
           </div>
@@ -263,9 +238,9 @@ export default function HomePage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-28 px-6 md:px-12 lg:px-20 relative">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20 scroll-observe space-y-4">
+          <div className="text-center mb-16 scroll-observe space-y-4">
             <h2 className="text-5xl md:text-6xl font-bold text-white">Trusted by Thousands</h2>
             <p className="text-lg text-gray-400 font-light">Real satisfaction from real customers</p>
           </div>
@@ -300,7 +275,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 px-6 md:px-12 lg:px-20 relative">
+      <section className="py-24 px-6 md:px-12 lg:px-20 relative">
         <div className="max-w-4xl mx-auto">
           <div className="relative scroll-observe">
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-cyan-500/10 to-emerald-500/10 rounded-3xl blur-2xl opacity-60"></div>
