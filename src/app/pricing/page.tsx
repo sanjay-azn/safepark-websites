@@ -1,67 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { CheckCircle2, Phone, MessageCircle, Shield, Umbrella, Crown, Star, Users, Award, Clock, Zap, ArrowRight } from 'lucide-react';
+import { Shield, Umbrella, Zap, UserCheck, CheckCircle2, Star, ArrowRight, Phone, MessageCircle, Award, Clock, MapPin, Sparkles, Lightbulb, TrendingUp, Heart, Zap as Performance, Box, Users } from 'lucide-react';
+import { useEffect } from 'react';
 
-export default function PricingPage() {
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-
-  const plans = [
-    {
-      id: 'essential',
-      name: "Essential",
-      subtitle: "Perfect for compact cars",
-      price: 14800,
-      originalPrice: 20000,
-      icon: <Shield className="w-8 h-8 text-blue-400" />,
-      popular: false,
-      features: [
-        "5.5m × 2.5m × 2.3m coverage",
-        "Premium galvanized steel frame", 
-        "Oxford 600D waterproof fabric",
-        "Professional installation (2 hours)",
-        "Perfect for Swift, i20, City",
-        "2-year comprehensive warranty"
-      ]
-    },
-    {
-      id: 'professional',
-      name: "Professional",
-      subtitle: "Most popular choice",
-      price: 17600,
-      originalPrice: 25000,
-      icon: <Umbrella className="w-8 h-8 text-emerald-400" />,
-      popular: true,
-      features: [
-        "6.0m × 2.6m × 2.5m coverage",
-        "Heavy-duty galvanized frame",
-        "Premium Oxford fabric with UV coating",
-        "Expert installation with site prep",
-        "Ideal for Camry, Creta, XUV500",
-        "3-year warranty + VIP support"
-      ]
-    },
-    {
-      id: 'premium',
-      name: "Premium",
-      subtitle: "For luxury vehicles",
-      price: 20000,
-      originalPrice: 28000,
-      icon: <Crown className="w-8 h-8 text-yellow-400" />,
-      popular: false,
-      features: [
-        "6.5m × 2.8m × 2.5m coverage",
-        "Ultra-strong galvanized frame",
-        "Military-grade fabric protection",
-        "White-glove installation",
-        "Designed for Fortuner, X5, Range Rover",
-        "Lifetime structural warranty"
-      ]
-    }
-  ];
-
+export default function FeaturesPage() {
   useEffect(() => {
-    const observerOptions = { threshold: 0.2 };
+    const observerOptions = { threshold: 0.15 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -70,248 +14,310 @@ export default function PricingPage() {
       });
     }, observerOptions);
 
-    document.querySelectorAll('.pricing-card').forEach((el) => observer.observe(el));
+    document.querySelectorAll('.feature-card, .comparison-row, .benefit-card').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
-
-  const getSavings = (plan: any) => plan.originalPrice - plan.price;
 
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
-      {/* HERO SECTION */}
-      <section className="relative pt-40 pb-24 px-6 md:px-12 lg:px-20 overflow-hidden">
+      {/* HERO SECTION - EXPANDED */}
+      <section className="relative pt-48 pb-32 px-6 md:px-12 lg:px-24 overflow-hidden">
         
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-0 -right-40 w-96 h-96 bg-gradient-to-br from-emerald-600/15 to-cyan-600/8 rounded-full blur-3xl animate-blob-1"></div>
           <div className="absolute bottom-0 -left-40 w-96 h-96 bg-gradient-to-tr from-cyan-600/15 to-emerald-600/8 rounded-full blur-3xl animate-blob-2"></div>
         </div>
-        
-        <div className="max-w-6xl mx-auto text-center relative z-10">
+
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           
-          {/* Trust Badge */}
+          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-sm font-medium">
-            <Zap className="w-4 h-4" />
-            Trusted by 2,000+ car owners across India
+            <Lightbulb className="w-4 h-4" />
+            Smart Protection Technology
           </div>
           
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
-            Simple, Transparent
+          {/* Headline */}
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-8">
+            The Smart Way to 
             <br className="hidden md:block" />
-            <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">Pricing You'll Love</span>
+            <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent">Protect Your Car</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4 max-w-3xl mx-auto">
-            Professional installation, premium warranty, and world-class support included in every plan.
+          <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-6 max-w-4xl mx-auto font-light">
+            SafePark delivers professional-grade protection with cutting-edge engineering. Engineered to withstand everything your car faces—weather, impact, UV damage—with precision and style.
           </p>
-          <p className="text-base text-gray-400 max-w-2xl mx-auto">No hidden fees. No surprises. Just premium car protection.</p>
+          <p className="text-lg text-gray-400 max-w-3xl mx-auto">Trusted by over 2,000 satisfied customers across India. Premium protection starts here.</p>
+
+          {/* Trust Bar */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16 text-sm text-gray-400">
+            <div className="flex items-center gap-2">
+              <Star className="w-4 h-4 text-yellow-400" />
+              <span>4.9/5 Rating</span>
+            </div>
+            <div className="h-4 w-px bg-gray-700 hidden sm:block"></div>
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 text-emerald-400" />
+              <span>2-Year Warranty</span>
+            </div>
+            <div className="h-4 w-px bg-gray-700 hidden sm:block"></div>
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4 text-cyan-400" />
+              <span>24/7 Support</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* PRICING CARDS */}
-      <section className="pb-24 px-6 md:px-12 lg:px-20">
+      {/* FEATURES GRID - PROFESSIONAL */}
+      <section className="pb-32 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6">
-            {plans.map((plan, idx) => (
-              <div
-                key={plan.id}
-                className={`pricing-card group relative rounded-2xl border transition-all duration-500 transform opacity-0 translate-y-8 ${
-                  plan.popular 
-                    ? "lg:scale-105 lg:-translate-y-6" 
-                    : ""
-                }`}
-                style={{
-                  animationDelay: `${idx * 150}ms`,
-                }}
-                onMouseEnter={() => setHoveredCard(plan.id)}
-                onMouseLeave={() => setHoveredCard(null)}
+          
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">Four Layers of Defense</h2>
+            <p className="text-xl text-gray-400 font-light max-w-3xl mx-auto">Each component engineered for maximum durability and protection in real-world conditions</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: <Shield className="w-12 h-12 text-red-400" />,
+                title: "Thermal Protection",
+                subtitle: "Heat & flame resistant",
+                desc: "Advanced thermal resistance up to 2000°F with flame-retardant coating. Engineered for extreme conditions.",
+                features: ["Extreme heat resistance", "Flame retardant", "Structural integrity"]
+              },
+              {
+                icon: <Umbrella className="w-12 h-12 text-blue-400" />,
+                title: "Weather Shield",
+                subtitle: "IPX7 waterproof",
+                desc: "Military-grade waterproof coating with advanced drainage. Complete protection in monsoon and all seasons.",
+                features: ["100% waterproof", "Advanced drainage", "UV resistance"]
+              },
+              {
+                icon: <Performance className="w-12 h-12 text-yellow-400" />,
+                title: "Impact Guard",
+                subtitle: "Military-grade fabric",
+                desc: "Oxford 600D fabric prevents scratches, dents, and damage from daily use and accidents.",
+                features: ["Scratch resistant", "Impact protected", "Tear-proof"]
+              },
+              {
+                icon: <Heart className="w-12 h-12 text-emerald-400" />,
+                title: "Safety First",
+                subtitle: "Family approved",
+                desc: "Child-safe design with rounded edges and non-toxic materials. Engineered for complete peace of mind.",
+                features: ["Child safe", "Stable frame", "Non-toxic"]
+              }
+            ].map((feature, idx) => (
+              <div 
+                key={idx}
+                className="feature-card group relative opacity-0 translate-y-8 transition-all duration-500"
+                style={{ transitionDelay: `${idx * 100}ms` }}
               >
-                
-                {/* Animated Background Gradient */}
-                <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Card Border Glow */}
-                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-20 ${
-                  plan.popular 
-                    ? "bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 blur-xl" 
-                    : "bg-gradient-to-r from-white/10 to-white/5 blur-xl"
-                }`}></div>
-
-                <div className={`absolute inset-0 rounded-2xl border transition-colors duration-500 ${
-                  plan.popular 
-                    ? "border-emerald-400/40 group-hover:border-emerald-400/80" 
-                    : "border-white/15 group-hover:border-white/30"
-                }`}></div>
-                
-                {/* Popular Badge */}
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                    <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-5 py-1.5 rounded-full text-xs font-bold shadow-lg">
-                      ⭐ MOST POPULAR
-                    </div>
-                  </div>
-                )}
-
-                <div className="relative p-8 md:p-10">
+                <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 rounded-2xl p-10 group-hover:border-emerald-500/30 transition-all duration-500 h-full flex flex-col group-hover:bg-gradient-to-br group-hover:from-white/[0.12] group-hover:to-white/[0.05]">
                   
-                  {/* Plan Header */}
-                  <div className="mb-8">
-                    <div className={`w-14 h-14 rounded-xl mb-4 flex items-center justify-center ${
-                      plan.popular 
-                        ? "bg-gradient-to-br from-emerald-500/20 to-cyan-500/20" 
-                        : "bg-white/10"
-                    }`}>
-                      {plan.icon}
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{plan.name}</h3>
-                    <p className="text-sm md:text-base text-gray-400">{plan.subtitle}</p>
+                  <div className="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-white/15 transition-colors">
+                    {feature.icon}
                   </div>
-
-                  {/* Pricing Section */}
-                  <div className="mb-8 pb-8 border-b border-white/10">
-                    <div className="mb-4">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="text-sm text-gray-500 line-through">₹{plan.originalPrice.toLocaleString()}</span>
-                        <span className="bg-emerald-500/20 text-emerald-300 px-3 py-1 rounded-full text-xs font-bold">
-                          Save ₹{getSavings(plan).toLocaleString()}
-                        </span>
+                  
+                  <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
+                  <p className="text-sm text-gray-400 mb-4">{feature.subtitle}</p>
+                  
+                  <p className="text-sm text-gray-300 leading-relaxed mb-8 flex-grow">{feature.desc}</p>
+                  
+                  <div className="space-y-3 pt-6 border-t border-white/10">
+                    {feature.features.map((item, i) => (
+                      <div key={i} className="flex items-start gap-3 text-sm text-gray-300">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
                       </div>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-emerald-400 font-bold">₹</span>
-                        <span className={`text-4xl md:text-5xl font-black ${
-                          plan.popular ? 'text-emerald-400' : 'text-white'
-                        }`}>
-                          {plan.price.toLocaleString()}
-                        </span>
-                      </div>
-                    </div>
-                    <p className="text-xs text-gray-400">One-time payment • Free professional installation</p>
-                  </div>
-
-                  {/* CTA Button */}
-                  <div className="mb-8">
-                    <a
-                      href="tel:+919600840058"
-                      className={`w-full py-3.5 px-6 rounded-xl text-base font-bold transition-all duration-300 inline-flex items-center justify-center gap-2 mb-3 ${
-                        plan.popular
-                          ? "bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white shadow-lg hover:shadow-emerald-500/30 hover:scale-[1.02]"
-                          : "bg-white/10 border border-white/30 text-white hover:bg-white/20 hover:border-white/50 hover:scale-[1.02]"
-                      }`}
-                    >
-                      <Phone className="w-4 h-4" />
-                      Get Started
-                    </a>
-                    <a
-                      href="https://wa.me/919600840058"
-                      className={`w-full py-3 px-6 rounded-xl text-sm font-bold transition-all duration-300 inline-flex items-center justify-center gap-2 ${
-                        plan.popular
-                          ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/20"
-                          : "bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10"
-                      }`}
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      WhatsApp
-                    </a>
-                  </div>
-
-                  {/* Features */}
-                  <div className="pt-8 border-t border-white/10">
-                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-5">Everything Included:</h4>
-                    <ul className="space-y-4">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3 text-sm text-gray-300 group/feature">
-                          <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover/feature:bg-emerald-500/30 transition-colors">
-                            <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                          </div>
-                          <span className="leading-relaxed">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    ))}
                   </div>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Comparison Note */}
-          <div className="mt-16 text-center">
-            <p className="text-gray-400 text-sm">
-              All plans include: Professional installation • Free delivery • 24/7 customer support • Premium warranty
-            </p>
+      {/* COMPARISON SECTION - PROFESSIONAL TABLE */}
+      <section className="pb-32 px-6 md:px-12 lg:px-24 bg-gradient-to-br from-black via-black to-black">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">Why SafePark Leads</h2>
+            <p className="text-xl text-gray-400 font-light max-w-3xl mx-auto">Industry comparison—see the difference quality makes</p>
+          </div>
+
+          <div className="relative rounded-2xl border border-white/10 overflow-hidden bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-xl">
+            
+            {/* Table Header */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-8 md:p-10 bg-gradient-to-r from-white/5 to-transparent border-b border-white/10">
+              <div className="text-lg font-bold text-white">Feature</div>
+              <div className="text-lg font-bold text-gray-400">Traditional Shed</div>
+              <div className="text-lg font-bold text-emerald-400">SafePark Advantage</div>
+            </div>
+
+            {/* Table Rows */}
+            {[
+              { feature: "Portability", traditional: "Fixed installation", safepark: "Deploy & retract instantly" },
+              { feature: "Design Quality", traditional: "Basic appearance", safepark: "Premium aesthetic" },
+              { feature: "Setup Time", traditional: "Days or weeks", safepark: "2-4 hours professional" },
+              { feature: "Material Grade", traditional: "Standard fabric", safepark: "Military-grade Oxford 600D" },
+              { feature: "Weather Protection", traditional: "Partial coverage", safepark: "100% all-weather shield" },
+              { feature: "Space Efficiency", traditional: "Permanent fixture", safepark: "Collapses for storage" }
+            ].map((item, idx) => (
+              <div 
+                key={idx}
+                className="comparison-row grid grid-cols-1 md:grid-cols-3 gap-4 p-8 border-b border-white/5 hover:bg-white/[0.02] transition-colors opacity-0 translate-x-4 group-in-view:opacity-100 group-in-view:translate-x-0"
+                style={{ transitionDelay: `${idx * 75}ms` }}
+              >
+                <div className="font-semibold text-white">{item.feature}</div>
+                <div className="text-gray-400 flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-500/20 text-red-400 text-xs font-bold">✕</span>
+                  {item.traditional}
+                </div>
+                <div className="text-emerald-300 font-semibold flex items-center gap-2">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs">✓</span>
+                  {item.safepark}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* TRUST & CREDIBILITY */}
-      <section className="pb-24 px-6 md:px-12 lg:px-20">
+      {/* BENEFITS SECTION - PROFESSIONAL ICONS */}
+      <section className="pb-32 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">What Customers Value</h2>
+            <p className="text-xl text-gray-400 font-light max-w-3xl mx-auto">Real benefits from premium protection</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Complete Peace of Mind",
+                desc: "Stop worrying about weather damage, scratches, and unexpected harm. Your car is always protected, always secure.",
+                icon: <Shield className="w-10 h-10" />,
+                color: "emerald"
+              },
+              {
+                title: "Maintenance Savings",
+                desc: "Eliminate frequent washing, waxing, and expensive paint repairs. Keep your car in pristine condition effortlessly.",
+                icon: <TrendingUp className="w-10 h-10" />,
+                color: "cyan"
+              },
+              {
+                title: "Premium Curb Appeal",
+                desc: "Modern, sleek design that enhances your home's aesthetic. Professional protection that looks stunning.",
+                icon: <Sparkles className="w-10 h-10" />,
+                color: "yellow"
+              },
+              {
+                title: "Instant Deployment",
+                desc: "Access your car in seconds. Advanced engineering means no complex setup—just deploy and go.",
+                icon: <Performance className="w-10 h-10" />,
+                color: "red"
+              },
+              {
+                title: "Space Reclamation",
+                desc: "Collapse it when not needed. Maximize your parking space for other uses, perfect for Indian homes.",
+                icon: <Box className="w-10 h-10" />,
+                color: "blue"
+              },
+              {
+                title: "Family Safe Environment",
+                desc: "Engineered with safety first. Rounded edges, stable structure—kids can play nearby without worry.",
+                icon: <Users className="w-10 h-10" />,
+                color: "green"
+              }
+            ].map((benefit, idx) => (
+              <div 
+                key={idx}
+                className="benefit-card group relative opacity-0 translate-y-8 transition-all duration-500"
+                style={{ transitionDelay: `${idx * 100}ms` }}
+              >
+                <div className="relative p-10 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all duration-500 h-full hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05] group-hover:-translate-y-2">
+                  
+                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br from-${benefit.color}-500/20 to-${benefit.color}-500/10 flex items-center justify-center mb-6 text-${benefit.color}-400 group-hover:bg-gradient-to-br group-hover:from-${benefit.color}-500/30 group-hover:to-${benefit.color}-500/20 transition-all`}>
+                    {benefit.icon}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
+                  <p className="text-sm text-gray-300 leading-relaxed">{benefit.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TRUST SECTION */}
+      <section className="pb-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            
-            <div className="group text-center p-6 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05]">
-              <div className="flex justify-center mb-3">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05]">
+              <div className="flex justify-center mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <div className="text-white font-bold text-xl md:text-2xl mb-1">4.9/5</div>
-              <div className="text-gray-400 text-xs md:text-sm">2,000+ Reviews</div>
+              <div className="text-white font-bold text-2xl mb-1">4.9/5</div>
+              <div className="text-gray-400 text-sm">2,000+ Reviews</div>
             </div>
             
-            <div className="group text-center p-6 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05]">
-              <Users className="w-8 h-8 text-emerald-400 mx-auto mb-3" />
-              <div className="text-emerald-400 font-bold text-xl md:text-2xl mb-1">2,000+</div>
-              <div className="text-gray-400 text-xs md:text-sm">Cars Protected</div>
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05]">
+              <div className="text-emerald-400 text-3xl font-bold mb-2">2,000+</div>
+              <div className="text-gray-400 text-sm">Cars Protected</div>
             </div>
             
-            <div className="group text-center p-6 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05]">
-              <Award className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-              <div className="text-white font-bold text-xl md:text-2xl mb-1">Made in India</div>
-              <div className="text-gray-400 text-xs md:text-sm">Premium Quality</div>
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05]">
+              <div className="text-2xl font-bold mb-2">🇮🇳</div>
+              <div className="text-white font-bold mb-1">Made in India</div>
+              <div className="text-gray-400 text-sm">Premium Quality</div>
             </div>
             
-            <div className="group text-center p-6 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all duration-500 hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05]">
-              <Clock className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-              <div className="text-white font-bold text-xl md:text-2xl mb-1">24/7 Support</div>
-              <div className="text-gray-400 text-xs md:text-sm">Customer Care</div>
+            <div className="text-center p-8 rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 hover:border-emerald-500/30 transition-all hover:bg-gradient-to-br hover:from-white/[0.12] hover:to-white/[0.05]">
+              <div className="text-cyan-400 text-3xl font-bold mb-2">24/7</div>
+              <div className="text-white font-bold mb-1">Support</div>
+              <div className="text-gray-400 text-sm">Always Available</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FINAL CTA */}
-      <section className="pb-32 px-6 md:px-12 lg:px-20">
+      <section className="pb-32 px-6 md:px-12 lg:px-24">
         <div className="max-w-4xl mx-auto">
-          <div className="relative bg-gradient-to-br from-emerald-500/10 via-cyan-500/5 to-emerald-500/10 rounded-2xl border border-white/15 p-8 md:p-12 backdrop-blur-xl shadow-2xl">
+          <div className="relative bg-gradient-to-br from-emerald-500/10 via-cyan-500/5 to-emerald-500/10 rounded-2xl border border-white/15 p-10 md:p-16 backdrop-blur-xl shadow-2xl text-center">
             
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 blur-2xl opacity-0 hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Join Premium Car Owners
+            </h2>
             
-            <div className="text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-                Ready to Protect Your Vehicle?
-              </h2>
-              
-              <p className="text-base md:text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                Join thousands of satisfied customers. Free consultation, zero pressure.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="tel:+919600840058"
-                  className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30 inline-flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-5 h-5" />
-                  Get Free Quote
-                </a>
-                <a 
-                  href="https://wa.me/919600840058"
-                  className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-2"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Message on WhatsApp
-                </a>
-              </div>
+            <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+              Experience industry-leading protection. Get your personalized consultation today—absolutely free.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="tel:+919600840058"
+                className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-white px-10 py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/30 inline-flex items-center justify-center gap-2"
+              >
+                <Phone className="w-5 h-5" />
+                Get Free Consultation
+              </a>
+              <a 
+                href="https://wa.me/919600840058"
+                className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 px-10 py-4 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Chat on WhatsApp
+              </a>
             </div>
           </div>
         </div>
@@ -335,9 +341,15 @@ export default function PricingPage() {
         .animate-blob-1 { animation: blob-1 8s infinite ease-in-out; }
         .animate-blob-2 { animation: blob-2 7s infinite ease-in-out; }
 
-        .pricing-card.in-view {
+        .feature-card.in-view,
+        .benefit-card.in-view {
           opacity: 1 !important;
           transform: translateY(0) !important;
+        }
+
+        .comparison-row.in-view {
+          opacity: 1 !important;
+          transform: translateX(0) !important;
         }
 
         * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
