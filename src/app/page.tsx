@@ -177,47 +177,76 @@ export default function HomePage() {
   <div className="absolute inset-0 bg-black opacity-60"></div>
 </div>
 
-      {/* FEATURES - SIMPLE 4 CARDS */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/30 to-black">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.05),transparent_50%)] -z-10"></div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-14" id="features" data-observe>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 backdrop-blur-md border border-emerald-400/30 text-emerald-300 text-xs md:text-sm font-semibold mb-4 shadow-lg" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.9)', transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
-              <Shield className="w-3.5 h-3.5" />
-              Complete Protection
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3 drop-shadow-2xl" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0)' : 'translateY(-30px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
-              Complete Protection
-            </h2>
-            <p className="text-base md:text-lg text-gray-400 font-light max-w-2xl mx-auto" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s' }}>
-              Four layers of engineered defense
-            </p>
+    {/* FEATURES - CLEAN & SIMPLE 4 CARDS */}
+<section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
+  <div className="max-w-6xl mx-auto relative z-10">
+    {/* Section Header */}
+    <div className="text-center mb-16" id="features" data-observe>
+      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/30 via-cyan-500/25 to-emerald-500/30 backdrop-blur-md border-2 border-emerald-400/60 text-emerald-200 font-medium text-sm hover:from-emerald-500/40 hover:via-cyan-500/35 hover:to-emerald-500/40 hover:border-emerald-300/80 transition-all duration-300 w-fit mx-auto animate-fade-in-down shadow-lg shadow-emerald-500/40 mb-4">
+        <Shield className="w-4 h-4" />
+        Complete Protection
+      </div>
+      <h2 className="text-4xl md:text-5xl font-black text-white mb-3 animate-fade-in-up drop-shadow-xl" style={{ animationDelay: '0.1s' }}>
+        Complete Protection
+      </h2>
+      <p className="text-base md:text-lg text-gray-400 font-light max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        Four layers of engineered defense
+      </p>
+    </div>
+
+    {/* Features Grid */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Feature 1 - UV Protection */}
+      <div className={`group relative p-6 rounded-2xl border-2 border-red-500/30 bg-gradient-to-br from-red-950/20 to-transparent hover:border-red-400/60 hover:bg-red-950/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-500/20 overflow-hidden ${isVisible['feature-1'] ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }} id="feature-1" data-observe>
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
+          <div className="p-3 rounded-2xl bg-red-950/40 group-hover:bg-red-950/60 transition-all duration-300 group-hover:scale-110">
+            <Shield className="w-8 h-8 text-red-400" />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { icon: <Shield className="w-9 h-9" />, title: "Fire Protection", desc: "Heat & flame resistant", gradient: "from-red-500/20 to-orange-500/10", iconColor: "text-red-400", borderColor: "border-red-500/40 hover:border-red-400/60" },
-              { icon: <Umbrella className="w-9 h-9" />, title: "Rain Protection", desc: "100% waterproof coating", gradient: "from-blue-500/20 to-cyan-500/10", iconColor: "text-blue-400", borderColor: "border-blue-500/40 hover:border-blue-400/60" },
-              { icon: <Zap className="w-9 h-9" />, title: "Scratch-Proof", desc: "Military-grade fabric", gradient: "from-yellow-500/20 to-amber-500/10", iconColor: "text-yellow-400", borderColor: "border-yellow-500/40 hover:border-yellow-400/60" },
-              { icon: <UserCheck className="w-9 h-9" />, title: "Safe for Kids", desc: "Family-friendly design", gradient: "from-green-500/20 to-emerald-500/10", iconColor: "text-green-400", borderColor: "border-green-500/40 hover:border-green-400/60" }
-            ].map((feature, idx) => {
-              const featureId = `feature-${idx}`;
-              const isFeatureVisible = isVisible[featureId] || false;
-              return (
-                <div key={idx} id={featureId} data-observe className={`group relative p-5 rounded-2xl bg-gradient-to-br ${feature.gradient} backdrop-blur-sm border-2 ${feature.borderColor} transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden`} style={{ opacity: isFeatureVisible ? 1 : 0, transform: isFeatureVisible ? 'scale(1) translateY(0)' : 'scale(0.9) translateY(20px)', transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 120}ms` }}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="flex flex-col items-center text-center space-y-2.5 relative z-10">
-                    <div className={`p-3 rounded-2xl bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-md group-hover:from-white/20 group-hover:to-white/10 transition-all duration-300 group-hover:scale-110 shadow-lg ${feature.iconColor}`} style={{ animation: `icon-bounce 2.5s ease-in-out infinite ${idx * 200}ms` }}>
-                      {feature.icon}
-                    </div>
-                    <h3 className="text-sm md:text-base font-bold text-white">{feature.title}</h3>
-                    <p className="text-xs text-gray-300 leading-relaxed">{feature.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <h3 className="text-lg font-bold text-white">Fire Protection</h3>
+          <p className="text-sm text-gray-400">Heat & flame resistant</p>
         </div>
-      </section>
+      </div>
+
+      {/* Feature 2 - Rain Protection */}
+      <div className={`group relative p-6 rounded-2xl border-2 border-blue-500/30 bg-gradient-to-br from-blue-950/20 to-transparent hover:border-blue-400/60 hover:bg-blue-950/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 overflow-hidden ${isVisible['feature-2'] ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s' }} id="feature-2" data-observe>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
+          <div className="p-3 rounded-2xl bg-blue-950/40 group-hover:bg-blue-950/60 transition-all duration-300 group-hover:scale-110">
+            <Umbrella className="w-8 h-8 text-blue-400" />
+          </div>
+          <h3 className="text-lg font-bold text-white">Rain Protection</h3>
+          <p className="text-sm text-gray-400">100% waterproof coating</p>
+        </div>
+      </div>
+
+      {/* Feature 3 - Scratch-Proof */}
+      <div className={`group relative p-6 rounded-2xl border-2 border-amber-500/30 bg-gradient-to-br from-amber-950/20 to-transparent hover:border-amber-400/60 hover:bg-amber-950/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-amber-500/20 overflow-hidden ${isVisible['feature-3'] ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.16s' }} id="feature-3" data-observe>
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
+          <div className="p-3 rounded-2xl bg-amber-950/40 group-hover:bg-amber-950/60 transition-all duration-300 group-hover:scale-110">
+            <Zap className="w-8 h-8 text-amber-400" />
+          </div>
+          <h3 className="text-lg font-bold text-white">Scratch-Proof</h3>
+          <p className="text-sm text-gray-400">Military-grade fabric</p>
+        </div>
+      </div>
+
+      {/* Feature 4 - Safe for Kids */}
+      <div className={`group relative p-6 rounded-2xl border-2 border-emerald-500/30 bg-gradient-to-br from-emerald-950/20 to-transparent hover:border-emerald-400/60 hover:bg-emerald-950/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 overflow-hidden ${isVisible['feature-4'] ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.24s' }} id="feature-4" data-observe>
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
+          <div className="p-3 rounded-2xl bg-emerald-950/40 group-hover:bg-emerald-950/60 transition-all duration-300 group-hover:scale-110">
+            <CheckCircle2 className="w-8 h-8 text-emerald-400" />
+          </div>
+          <h3 className="text-lg font-bold text-white">Safe for Kids</h3>
+          <p className="text-sm text-gray-400">Family-friendly design</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* 2x2 GRID FEATURES FROM FEATURES PAGE */}
       <section className="pb-32 px-6 md:px-12 lg:px-20 bg-black">
@@ -719,6 +748,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
