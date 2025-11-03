@@ -171,6 +171,11 @@ export default function HomePage() {
 
       {/* BREATHING SPACE */}
       <div className="h-16 bg-gradient-to-b from-slate-950 via-slate-950/30 to-slate-950"></div>
+      {/* CLEAN SEPARATOR - Smooth transition between sections */}
+<div className="h-24 bg-gradient-to-b from-slate-950 via-black to-black relative">
+  {/* Mask out any overlapping blobs */}
+  <div className="absolute inset-0 bg-black opacity-60"></div>
+</div>
 
       {/* FEATURES - SIMPLE 4 CARDS */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/30 to-black">
@@ -714,6 +719,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
