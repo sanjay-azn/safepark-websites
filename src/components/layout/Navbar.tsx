@@ -10,6 +10,18 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleFeaturesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    if (pathname === '/') {
+      document.getElementById('features')?.scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    } else {
+      window.location.href = '/#features';
+    }
+  };
+
   const handleGalleryClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     setIsMenuOpen(false);
@@ -64,15 +76,13 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links - RIGHT SIDE */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link
-              href="/features"
-              onClick={handleNavClick}
-              className={`text-base font-medium transition-colors duration-300 ${
-                pathname === '/features' ? 'text-emerald-400' : 'text-white hover:text-emerald-400'
-              }`}
+            <a
+              href="/#features"
+              onClick={handleFeaturesClick}
+              className="text-base font-medium text-white hover:text-emerald-400 transition-colors duration-300"
             >
               Features
-            </Link>
+            </a>
             <a
               href="/#gallery"
               onClick={handleGalleryClick}
@@ -127,17 +137,13 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden pb-4 space-y-3 border-t border-white/10">
-            <Link
-              href="/features"
-              onClick={handleNavClick}
-              className={`block px-4 py-2 rounded-lg font-medium transition-colors duration-300 ${
-                pathname === '/features' 
-                  ? 'text-emerald-400 bg-white/5' 
-                  : 'text-white hover:text-emerald-400 hover:bg-white/5'
-              }`}
+            <a
+              href="/#features"
+              onClick={handleFeaturesClick}
+              className="block px-4 py-2 rounded-lg font-medium text-white hover:text-emerald-400 hover:bg-white/5 transition-colors duration-300"
             >
               Features
-            </Link>
+            </a>
             <a
               href="/#gallery"
               onClick={handleGalleryClick}
