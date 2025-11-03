@@ -74,43 +74,42 @@ export default function HomePage() {
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
-{/* HERO SECTION - PREMIUM GRADIENT BACKGROUND */}
-<section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center">
+{/* HERO SECTION - WITH VISIBLE TEAL GRADIENT BACKGROUND */}
+<section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center bg-gradient-to-br from-slate-900 via-blue-950 to-teal-950">
   <div className="absolute inset-0 -z-10 overflow-hidden">
-    {/* Premium subtle gradient: dark navy to deep teal (Apple/Tesla style) */}
-    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-black"></div>
-    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/30 via-blue-900/20 to-teal-900/30 opacity-60"></div>
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-teal-950/40 opacity-50"></div>
+    {/* Premium subtle gradient overlays */}
+    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/20 via-blue-900/15 to-teal-900/20 opacity-80"></div>
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-teal-950/40 opacity-60"></div>
     
-    {/* Subtle directional gradient - top-left to bottom-right */}
-    <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-blue-950/40 to-transparent opacity-40"></div>
-    <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-teal-950/30 to-transparent opacity-40"></div>
+    {/* Directional gradients for depth */}
+    <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-blue-950/30 to-transparent opacity-50"></div>
+    <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-teal-950/30 to-transparent opacity-50"></div>
     
-    {/* Very subtle animated elements */}
-    <div className="absolute top-20 -right-60 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/8 via-cyan-500/5 to-transparent rounded-full blur-3xl animate-blob-1 opacity-30"></div>
-    <div className="absolute bottom-20 -left-60 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/8 via-emerald-500/5 to-transparent rounded-full blur-3xl animate-blob-2 opacity-30"></div>
+    {/* Very subtle blobs */}
+    <div className="absolute top-20 -right-60 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/8 via-cyan-500/5 to-transparent rounded-full blur-3xl animate-blob-1 opacity-20"></div>
+    <div className="absolute bottom-20 -left-60 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/8 via-emerald-500/5 to-transparent rounded-full blur-3xl animate-blob-2 opacity-20"></div>
   </div>
 
   <div className="max-w-7xl mx-auto w-full relative z-10">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
-      {/* LEFT COLUMN - CONTENT WITH BETTER SPACING */}
+      {/* LEFT COLUMN - CONTENT */}
       <div className="text-center lg:text-left space-y-8">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/30 via-cyan-500/25 to-emerald-500/30 backdrop-blur-md border-2 border-emerald-400/60 text-emerald-200 font-medium text-sm hover:from-emerald-500/40 hover:via-cyan-500/35 hover:to-emerald-500/40 hover:border-emerald-300/80 transition-all duration-300 w-fit animate-fade-in-down shadow-lg shadow-emerald-500/40">
           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/80"></div>
           Premium Retractable Carport
         </div>
 
-        {/* HEADLINE - 2 LINES, PROFESSIONAL */}
+        {/* HEADLINE - 2 LINES */}
         <h1 className="text-4xl md:text-5xl font-black leading-tight text-white animate-fade-in-up drop-shadow-xl" style={{ animationDelay: '0.1s' }}>
           Your Car Deserves<br className="hidden md:block" /> <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.8)]">SafePark.</span>
         </h1>
         
-        {/* DESCRIPTION - BETTER SPACING */}
+        {/* DESCRIPTION */}
         <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light max-w-md animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           The world's smartest portable car shelter. Protects from sun, rain, dust, and damage. <span className="text-emerald-300 font-medium">Opens in just 2-5 seconds.</span>
         </p>
 
-        {/* BUTTONS - INDUSTRY STANDARD LIKE 2ND IMAGE */}
+        {/* BUTTONS */}
         <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <a href="#" className="group relative px-8 py-3.5 rounded-lg bg-gradient-to-r from-emerald-500 via-emerald-400 to-cyan-500 text-white font-bold text-sm md:text-base hover:shadow-xl hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 overflow-hidden border border-white/20">
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -125,10 +124,9 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* RIGHT COLUMN - LARGER IMAGE PROPERLY SIZED */}
+      {/* RIGHT COLUMN - IMAGE */}
       <div className="flex justify-center lg:justify-end order-first lg:order-last parallax" style={{ animation: 'zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both' }}>
         <div className="relative w-full max-w-[520px] h-[450px] group">
-          {/* Clean professional border */}
           <img src="/gallery/gallery1.jpg" alt="SafePark retractable carport in action" className="relative w-full h-full object-cover rounded-3xl shadow-lg border-2 border-emerald-400/50 group-hover:border-emerald-300/70 group-hover:shadow-xl group-hover:shadow-emerald-500/30 transition-all duration-500 group-hover:scale-[1.01]" loading="eager" />
         </div>
       </div>
@@ -137,7 +135,8 @@ export default function HomePage() {
 </section>
 
 {/* BREATHING SPACE */}
-<div className="h-16 bg-gradient-to-b from-black via-slate-950/20 to-slate-950"></div>
+<div className="h-16 bg-gradient-to-b from-teal-950 via-slate-950/30 to-slate-950"></div>
+
 
       {/* FEATURES - SIMPLE 4 CARDS */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/30 to-black">
@@ -681,6 +680,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
