@@ -720,7 +720,7 @@ export default function HomePage() {
                       {expandedFaq === idx ? (<Minus className="w-4 h-4" />) : (<Plus className="w-4 h-4" />)}
                     </div>
                   </button>
-                  {expandedFaq === idx && (<div className="px-5 pb-4 pt-1 text-gray-300 leading-relaxed text-sm border-t-2 border-white/10 bg-gradient-to-r from-emerald-500/8 to-transparent" style={{ animation: 'fade-in-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }}>
+                  {expandedFaq === idx && (<div className="px-5 pb-2 pt-1 text-gray-300 leading-relaxed text-sm border-t-2 border-white/10 bg-gradient-to-r from-emerald-500/8 to-transparent" style={{ animation: 'fade-in-up 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }}>
                     {item.answer}
                   </div>)}
                 </div>
@@ -842,3 +842,4 @@ export default function HomePage() {
     </div>
   );
 }
+
