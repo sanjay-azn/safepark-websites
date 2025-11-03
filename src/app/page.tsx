@@ -233,11 +233,12 @@ export default function HomePage() {
               return (
                 <div key={idx} id={valueId} data-observe className={`group relative p-6 lg:p-8 rounded-2xl bg-gradient-to-br ${item.gradient} backdrop-blur-sm border-2 border-white/15 hover:border-emerald-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/30 overflow-hidden`} style={{ opacity: isValueVisible ? 1 : 0, transform: isValueVisible ? 'translateX(0) translateY(0)' : 'translateX(-20px) translateY(20px)', transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 150}ms` }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-white/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Badge - FIXED */}
-                  <div className="absolute -top-1 right-6 inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/40 via-cyan-500/35 to-emerald-500/40 backdrop-blur-md border-2 border-emerald-400/60 text-emerald-200 text-xs font-bold shadow-lg shadow-emerald-500/40 whitespace-nowrap">
+
+                  {/* Badge - FULLY VISIBLE */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-5 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/50 via-cyan-500/45 to-emerald-500/50 backdrop-blur-md border-2 border-emerald-400/70 text-emerald-100 text-xs font-bold shadow-lg shadow-emerald-500/50 whitespace-nowrap z-20">
                     {item.badge}
                   </div>
+
 
                   <div className="space-y-3 lg:space-y-4 relative z-10 pt-6">
                     <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.iconBg} backdrop-blur-md flex items-center justify-center ${item.iconColor} group-hover:scale-110 transition-all duration-300 shadow-lg border-2 border-white/20`} style={{ animation: `icon-spin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 100}ms forwards`, opacity: 0 }}>
@@ -466,3 +467,4 @@ export default function HomePage() {
     </div>
   );
 }
+
