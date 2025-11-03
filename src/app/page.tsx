@@ -170,7 +170,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-12 bg-gradient-to-b from-slate-950 via-slate-950/30 to-slate-950"></div>
+      <div className="h-8 bg-gradient-to-b from-slate-950 via-slate-950/30 to-slate-950"></div>
       
 
     {/* FEATURES - PREMIUM ENTERPRISE DESIGN */}
@@ -842,6 +842,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
