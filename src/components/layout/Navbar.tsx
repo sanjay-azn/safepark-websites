@@ -43,9 +43,8 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo - WITH IMAGE */}
+          {/* LOGO - LEFT SIDE */}
           <Link href="/" className="flex items-center space-x-2 md:space-x-3 flex-shrink-0 group">
-            {/* Logo Image */}
             <div className="relative w-10 h-10 md:w-12 md:h-12 group-hover:scale-110 transition-transform duration-300">
               <Image 
                 src="/logo.png" 
@@ -55,13 +54,15 @@ export default function Navbar() {
                 priority
               />
             </div>
-            {/* Logo Text */}
-            <span className="text-emerald-400 font-bold text-lg md:text-2xl group-hover:text-emerald-300 transition-colors duration-300">
+            <span className="text-emerald-400 font-bold text-lg md:text-xl group-hover:text-emerald-300 transition-colors duration-300">
               SafePark
             </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
+          {/* SPACER - PUSHES CONTENT TO RIGHT */}
+          <div className="flex-grow"></div>
+
+          {/* Desktop Navigation Links - RIGHT SIDE */}
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="/features"
@@ -97,11 +98,11 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Call Button */}
-          <div className="hidden md:flex items-center flex-shrink-0">
+          {/* Desktop Call Button - FAR RIGHT */}
+          <div className="hidden md:flex items-center flex-shrink-0 ml-8">
             <a 
               href="tel:+919600840058" 
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-lg font-bold transition-colors duration-300 inline-flex items-center gap-2 text-sm md:text-base"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2 rounded-lg font-bold transition-colors duration-300 inline-flex items-center gap-2 text-sm md:text-base whitespace-nowrap"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -110,10 +111,10 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - FAR RIGHT */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-white hover:text-emerald-400 transition-colors"
+            className="md:hidden p-2 text-white hover:text-emerald-400 transition-colors flex-shrink-0"
           >
             {isMenuOpen ? (
               <X className="w-6 h-6" />
