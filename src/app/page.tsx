@@ -589,7 +589,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE - AFTER WHY CHOOSE */}
-      <div className="h-8 bg-gradient-to-b from-black to-black"></div>
+      <div className="h-0 bg-gradient-to-b from-black to-black"></div>
 
       {/* VALUE PROPS - BADGES */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
@@ -842,6 +842,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
