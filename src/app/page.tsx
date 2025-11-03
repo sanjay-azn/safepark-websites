@@ -83,9 +83,6 @@ export default function HomePage() {
     
     {/* Premium lighting - left to right subtle glow */}
     <div className="absolute inset-0 bg-gradient-to-r from-slate-900/20 via-black to-slate-900/20 opacity-50"></div>
-    
-    {/* Ultra-subtle vignette effect (darkness at edges) */}
-    <div className="absolute inset-0 bg-radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%)"></div>
   </div>
 
   <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -130,18 +127,11 @@ export default function HomePage() {
       </div>
     </div>
   </div>
-
-  <style jsx>{`
-    @supports (background: radial-gradient(ellipse, transparent, rgba(0,0,0,0.3))) {
-      .absolute {
-        background-image: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
-      }
-    }
-  `}</style>
 </section>
 
 {/* BREATHING SPACE */}
 <div className="h-16 bg-gradient-to-b from-black via-slate-950/10 to-slate-950"></div>
+
 
       {/* FEATURES - SIMPLE 4 CARDS */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/30 to-black">
@@ -685,6 +675,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
