@@ -173,70 +173,168 @@ export default function HomePage() {
       <div className="h-16 bg-gradient-to-b from-slate-950 via-slate-950/30 to-slate-950"></div>
       
 
-    {/* FEATURES - CLEAN & SIMPLE 4 CARDS */}
-<section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
-  <div className="max-w-6xl mx-auto relative z-10">
-    {/* Section Header */}
-    <div className="text-center mb-16" id="features" data-observe>
-      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/30 via-cyan-500/25 to-emerald-500/30 backdrop-blur-md border-2 border-emerald-400/60 text-emerald-200 font-medium text-sm hover:from-emerald-500/40 hover:via-cyan-500/35 hover:to-emerald-500/40 hover:border-emerald-300/80 transition-all duration-300 w-fit mx-auto animate-fade-in-down shadow-lg shadow-emerald-500/40 mb-4">
-        <Shield className="w-4 h-4" />
-        Complete Protection
+    {/* FEATURES - PREMIUM ENTERPRISE DESIGN */}
+<section className="py-24 px-6 md:px-12 lg:px-20 relative bg-black overflow-hidden">
+  {/* Premium background elements */}
+  <div className="absolute inset-0 -z-10">
+    <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl opacity-30"></div>
+    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl opacity-30"></div>
+  </div>
+
+  <div className="max-w-7xl mx-auto">
+    {/* Section Header - Premium */}
+    <div className="text-center mb-20" id="features" data-observe>
+      <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-emerald-500/15 to-cyan-500/15 backdrop-blur-xl border border-emerald-400/40 text-emerald-300 font-semibold text-xs md:text-sm tracking-wide mb-6 shadow-lg shadow-emerald-500/10">
+        <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+        Advanced Protection System
       </div>
-      <h2 className="text-4xl md:text-5xl font-black text-white mb-3 animate-fade-in-up drop-shadow-xl" style={{ animationDelay: '0.1s' }}>
-        Complete Protection
+      
+      <h2 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight drop-shadow-xl" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0)' : 'translateY(20px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
+        Complete Protection,<br className="hidden md:inline" /> <span className="bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">No Compromise</span>
       </h2>
-      <p className="text-base md:text-lg text-gray-400 font-light max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-        Four layers of engineered defense
+      
+      <p className="text-lg md:text-xl text-gray-400 font-light max-w-3xl mx-auto" style={{ opacity: isVisible['features'] ? 1 : 0, transform: isVisible['features'] ? 'translateY(0)' : 'translateY(10px)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s' }}>
+        Four engineered defense layers work together to protect your vehicle from every element, every season
       </p>
     </div>
 
-    {/* Features Grid */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {/* Premium Features Grid */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
       {/* Feature 1 - UV Protection */}
-      <div className={`group relative p-6 rounded-2xl border-2 border-red-500/30 bg-gradient-to-br from-red-950/20 to-transparent hover:border-red-400/60 hover:bg-red-950/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-500/20 overflow-hidden ${isVisible['feature-1'] ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' }} id="feature-1" data-observe>
-        <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
-          <div className="p-3 rounded-2xl bg-red-950/40 group-hover:bg-red-950/60 transition-all duration-300 group-hover:scale-110">
-            <Shield className="w-8 h-8 text-red-400" />
+      <div 
+        className={`group relative p-8 rounded-2xl border border-transparent bg-gradient-to-br from-slate-900/80 to-black hover:from-slate-900 hover:to-slate-950 transition-all duration-500 hover:border-emerald-400/40 hover:shadow-2xl hover:shadow-emerald-500/10 overflow-hidden`}
+        style={{ 
+          opacity: isVisible['feature-1'] ? 1 : 0, 
+          transform: isVisible['feature-1'] ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
+          transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0s'
+        }}
+        id="feature-1"
+        data-observe
+      >
+        {/* Gradient border effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl -z-10"></div>
+        <div className="absolute inset-px bg-gradient-to-br from-slate-900/80 to-black rounded-2xl -z-10"></div>
+
+        {/* Content */}
+        <div className="relative z-10 space-y-4 h-full flex flex-col">
+          <div className="flex items-start justify-between">
+            <div className="p-3.5 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/10 group-hover:from-emerald-500/30 group-hover:to-cyan-500/20 transition-all duration-300 group-hover:scale-110">
+              <Sun className="w-7 h-7 text-emerald-400" />
+            </div>
+            <div className="text-xs font-semibold text-emerald-400/60 bg-emerald-500/10 px-3 py-1 rounded-full">Premium</div>
           </div>
-          <h3 className="text-lg font-bold text-white">Fire Protection</h3>
-          <p className="text-sm text-gray-400">Heat & flame resistant</p>
+          
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">UV Shield</h3>
+            <p className="text-sm text-gray-400 leading-relaxed">Blocks 99.8% of harmful UV rays, protecting your car's paint and interior from fading and oxidation</p>
+          </div>
+          
+          <div className="flex items-center gap-2 text-xs text-emerald-300/70 group-hover:text-emerald-300 transition-colors">
+            <CheckCircle2 className="w-4 h-4" />
+            <span>Industry-leading protection</span>
+          </div>
         </div>
       </div>
 
-      {/* Feature 2 - Rain Protection */}
-      <div className={`group relative p-6 rounded-2xl border-2 border-blue-500/30 bg-gradient-to-br from-blue-950/20 to-transparent hover:border-blue-400/60 hover:bg-blue-950/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 overflow-hidden ${isVisible['feature-2'] ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s' }} id="feature-2" data-observe>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
-          <div className="p-3 rounded-2xl bg-blue-950/40 group-hover:bg-blue-950/60 transition-all duration-300 group-hover:scale-110">
-            <Umbrella className="w-8 h-8 text-blue-400" />
+      {/* Feature 2 - Waterproof */}
+      <div 
+        className={`group relative p-8 rounded-2xl border border-transparent bg-gradient-to-br from-slate-900/80 to-black hover:from-slate-900 hover:to-slate-950 transition-all duration-500 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-500/10 overflow-hidden`}
+        style={{ 
+          opacity: isVisible['feature-2'] ? 1 : 0, 
+          transform: isVisible['feature-2'] ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
+          transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s'
+        }}
+        id="feature-2"
+        data-observe
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl -z-10"></div>
+        <div className="absolute inset-px bg-gradient-to-br from-slate-900/80 to-black rounded-2xl -z-10"></div>
+
+        <div className="relative z-10 space-y-4 h-full flex flex-col">
+          <div className="flex items-start justify-between">
+            <div className="p-3.5 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/10 group-hover:from-cyan-500/30 group-hover:to-blue-500/20 transition-all duration-300 group-hover:scale-110">
+              <Droplets className="w-7 h-7 text-cyan-400" />
+            </div>
+            <div className="text-xs font-semibold text-cyan-400/60 bg-cyan-500/10 px-3 py-1 rounded-full">Premium</div>
           </div>
-          <h3 className="text-lg font-bold text-white">Rain Protection</h3>
-          <p className="text-sm text-gray-400">100% waterproof coating</p>
+          
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Waterproof Coating</h3>
+            <p className="text-sm text-gray-400 leading-relaxed">Triple-layered hydrophobic fabric repels heavy rain, moisture, and condensation in any climate</p>
+          </div>
+          
+          <div className="flex items-center gap-2 text-xs text-cyan-300/70 group-hover:text-cyan-300 transition-colors">
+            <CheckCircle2 className="w-4 h-4" />
+            <span>Water-resistant guarantee</span>
+          </div>
         </div>
       </div>
 
-      {/* Feature 3 - Scratch-Proof */}
-      <div className={`group relative p-6 rounded-2xl border-2 border-amber-500/30 bg-gradient-to-br from-amber-950/20 to-transparent hover:border-amber-400/60 hover:bg-amber-950/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-amber-500/20 overflow-hidden ${isVisible['feature-3'] ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.16s' }} id="feature-3" data-observe>
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
-          <div className="p-3 rounded-2xl bg-amber-950/40 group-hover:bg-amber-950/60 transition-all duration-300 group-hover:scale-110">
-            <Zap className="w-8 h-8 text-amber-400" />
+      {/* Feature 3 - Durable Fabric */}
+      <div 
+        className={`group relative p-8 rounded-2xl border border-transparent bg-gradient-to-br from-slate-900/80 to-black hover:from-slate-900 hover:to-slate-950 transition-all duration-500 hover:border-amber-400/40 hover:shadow-2xl hover:shadow-amber-500/10 overflow-hidden`}
+        style={{ 
+          opacity: isVisible['feature-3'] ? 1 : 0, 
+          transform: isVisible['feature-3'] ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
+          transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s'
+        }}
+        id="feature-3"
+        data-observe
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl -z-10"></div>
+        <div className="absolute inset-px bg-gradient-to-br from-slate-900/80 to-black rounded-2xl -z-10"></div>
+
+        <div className="relative z-10 space-y-4 h-full flex flex-col">
+          <div className="flex items-start justify-between">
+            <div className="p-3.5 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/10 group-hover:from-amber-500/30 group-hover:to-orange-500/20 transition-all duration-300 group-hover:scale-110">
+              <Zap className="w-7 h-7 text-amber-400" />
+            </div>
+            <div className="text-xs font-semibold text-amber-400/60 bg-amber-500/10 px-3 py-1 rounded-full">Military</div>
           </div>
-          <h3 className="text-lg font-bold text-white">Scratch-Proof</h3>
-          <p className="text-sm text-gray-400">Military-grade fabric</p>
+          
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Scratch-Resistant</h3>
+            <p className="text-sm text-gray-400 leading-relaxed">Military-grade polyester fabric withstands sharp objects, rough handling, and extreme weather</p>
+          </div>
+          
+          <div className="flex items-center gap-2 text-xs text-amber-300/70 group-hover:text-amber-300 transition-colors">
+            <CheckCircle2 className="w-4 h-4" />
+            <span>10-year durability tested</span>
+          </div>
         </div>
       </div>
 
-      {/* Feature 4 - Safe for Kids */}
-      <div className={`group relative p-6 rounded-2xl border-2 border-emerald-500/30 bg-gradient-to-br from-emerald-950/20 to-transparent hover:border-emerald-400/60 hover:bg-emerald-950/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 overflow-hidden ${isVisible['feature-4'] ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`} style={{ transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.24s' }} id="feature-4" data-observe>
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="relative z-10 flex flex-col items-center text-center space-y-3">
-          <div className="p-3 rounded-2xl bg-emerald-950/40 group-hover:bg-emerald-950/60 transition-all duration-300 group-hover:scale-110">
-            <CheckCircle2 className="w-8 h-8 text-emerald-400" />
+      {/* Feature 4 - Safe Design */}
+      <div 
+        className={`group relative p-8 rounded-2xl border border-transparent bg-gradient-to-br from-slate-900/80 to-black hover:from-slate-900 hover:to-slate-950 transition-all duration-500 hover:border-emerald-400/40 hover:shadow-2xl hover:shadow-emerald-500/10 overflow-hidden`}
+        style={{ 
+          opacity: isVisible['feature-4'] ? 1 : 0, 
+          transform: isVisible['feature-4'] ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
+          transition: 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s'
+        }}
+        id="feature-4"
+        data-observe
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-green-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl -z-10"></div>
+        <div className="absolute inset-px bg-gradient-to-br from-slate-900/80 to-black rounded-2xl -z-10"></div>
+
+        <div className="relative z-10 space-y-4 h-full flex flex-col">
+          <div className="flex items-start justify-between">
+            <div className="p-3.5 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/10 group-hover:from-emerald-500/30 group-hover:to-green-500/20 transition-all duration-300 group-hover:scale-110">
+              <Shield className="w-7 h-7 text-emerald-400" />
+            </div>
+            <div className="text-xs font-semibold text-emerald-400/60 bg-emerald-500/10 px-3 py-1 rounded-full">Certified</div>
           </div>
-          <h3 className="text-lg font-bold text-white">Safe for Kids</h3>
-          <p className="text-sm text-gray-400">Family-friendly design</p>
+          
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white mb-2">Family Safe</h3>
+            <p className="text-sm text-gray-400 leading-relaxed">Non-toxic, eco-friendly materials certified for family use. Smooth edges and safety-first design</p>
+          </div>
+          
+          <div className="flex items-center gap-2 text-xs text-emerald-300/70 group-hover:text-emerald-300 transition-colors">
+            <CheckCircle2 className="w-4 h-4" />
+            <span>Safety certified</span>
+          </div>
         </div>
       </div>
     </div>
@@ -744,6 +842,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
