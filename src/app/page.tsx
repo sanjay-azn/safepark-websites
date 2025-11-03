@@ -11,6 +11,7 @@ export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [expandedFaq, setExpandedFaq] = useState(-1);
   const [isVisible, setIsVisible] = useState<VisibilityState>({});
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -80px 0px' };
@@ -29,6 +30,10 @@ export default function HomePage() {
       observer.observe(el);
     });
 
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
     const handleScroll = () => {
       const scrolled = window.scrollY;
       document.querySelectorAll('.parallax').forEach((el) => {
@@ -38,9 +43,12 @@ export default function HomePage() {
       });
     };
 
+    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
     return () => {
       observer.disconnect();
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -74,64 +82,95 @@ export default function HomePage() {
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
 
-      
-{/* HERO SECTION - PREMIUM & CLASSIC (TESLA/APPLE STYLE) */}
-<section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center bg-black">
-  <div className="absolute inset-0 -z-10 overflow-hidden">
-    {/* Elegant depth layer - very subtle */}
-    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-black to-black"></div>
-    
-    {/* Premium lighting - left to right subtle glow */}
-    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/20 via-black to-slate-900/20 opacity-50"></div>
-  </div>
+      {/* HERO SECTION - INTERACTIVE WITH ANIMATED BLOBS */}
+      <section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center bg-gradient-to-br from-slate-900 via-black to-slate-950">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          {/* Base gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-black to-slate-900/30"></div>
 
-  <div className="max-w-7xl mx-auto w-full relative z-10">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
-      {/* LEFT COLUMN - CONTENT */}
-      <div className="text-center lg:text-left space-y-8">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/30 via-cyan-500/25 to-emerald-500/30 backdrop-blur-md border-2 border-emerald-400/60 text-emerald-200 font-medium text-sm hover:from-emerald-500/40 hover:via-cyan-500/35 hover:to-emerald-500/40 hover:border-emerald-300/80 transition-all duration-300 w-fit animate-fade-in-down shadow-lg shadow-emerald-500/40">
-          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/80"></div>
-          Premium Retractable Carport
+          {/* INTERACTIVE ANIMATED BLOB - Like Spotify */}
+          <div
+            className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/30 via-cyan-500/20 to-emerald-500/10 rounded-full blur-3xl opacity-70 transition-transform duration-300"
+            style={{
+              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+            }}
+          ></div>
+
+          {/* Secondary animated blob */}
+          <div
+            className="absolute bottom-0 -left-40 w-96 h-96 bg-gradient-to-tr from-cyan-500/10 via-emerald-500/5 to-transparent rounded-full blur-3xl opacity-50 transition-transform duration-300"
+            style={{
+              transform: `translate(${-mousePosition.x * 0.01}px, ${-mousePosition.y * 0.01}px)`,
+            }}
+          ></div>
+
+          {/* Animated curve shape (Spotify-style) */}
+          <svg
+            className="absolute right-0 top-0 w-96 h-96 opacity-40"
+            viewBox="0 0 400 400"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M 200 100 Q 300 150 300 250 Q 250 350 150 350 Q 50 350 50 250 Q 50 150 150 100 Q 200 50 200 100"
+              fill="url(#blobGradient)"
+              className="animate-pulse"
+            />
+          </svg>
         </div>
 
-        {/* HEADLINE */}
-        <h1 className="text-4xl md:text-5xl font-black leading-tight text-white animate-fade-in-up drop-shadow-xl" style={{ animationDelay: '0.1s' }}>
-          Your Car Deserves<br className="hidden md:block" /> <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.8)]">SafePark.</span>
-        </h1>
-        
-        {/* DESCRIPTION */}
-        <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light max-w-md animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          The world's smartest portable car shelter. Protects from sun, rain, dust, and damage. <span className="text-emerald-300 font-medium">Opens in just 2-5 seconds.</span>
-        </p>
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-24 items-center">
+            {/* LEFT COLUMN - CONTENT */}
+            <div className="text-center lg:text-left space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/30 via-cyan-500/25 to-emerald-500/30 backdrop-blur-md border-2 border-emerald-400/60 text-emerald-200 font-medium text-sm hover:from-emerald-500/40 hover:via-cyan-500/35 hover:to-emerald-500/40 hover:border-emerald-300/80 transition-all duration-300 w-fit animate-fade-in-down shadow-lg shadow-emerald-500/40">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/80"></div>
+                Premium Retractable Carport
+              </div>
 
-        {/* BUTTONS */}
-        <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <a href="#" className="group relative px-8 py-3.5 rounded-lg bg-gradient-to-r from-emerald-500 via-emerald-400 to-cyan-500 text-white font-bold text-sm md:text-base hover:shadow-xl hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 overflow-hidden border border-white/20">
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <span className="relative z-10 font-semibold">Get Started</span>
-          </a>
-          
-          <a href="#gallery" className="relative px-8 py-3.5 rounded-lg border-2 border-emerald-400/60 bg-transparent text-emerald-200 font-bold text-sm md:text-base hover:bg-emerald-500/15 hover:border-emerald-300 hover:text-emerald-100 hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 inline-flex items-center justify-center gap-2 group backdrop-blur-sm overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/20 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <Play className="w-4 h-4 group-hover:scale-110 transition-transform relative z-10" />
-            <span className="relative z-10 font-semibold">Watch Demo</span>
-          </a>
+              {/* HEADLINE */}
+              <h1 className="text-4xl md:text-5xl font-black leading-tight text-white animate-fade-in-up drop-shadow-xl" style={{ animationDelay: '0.1s' }}>
+                Your Car Deserves<br className="hidden md:block" /> <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.8)]">SafePark.</span>
+              </h1>
+              
+              {/* DESCRIPTION */}
+              <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light max-w-md animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                The world's smartest portable car shelter. Protects from sun, rain, dust, and damage. <span className="text-emerald-300 font-medium">Opens in just 2-5 seconds.</span>
+              </p>
+
+              {/* BUTTONS */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                <a href="#" className="group relative px-8 py-3.5 rounded-lg bg-gradient-to-r from-emerald-500 via-emerald-400 to-cyan-500 text-white font-bold text-sm md:text-base hover:shadow-xl hover:shadow-emerald-500/60 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 overflow-hidden border border-white/20">
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <span className="relative z-10 font-semibold">Get Started</span>
+                </a>
+                
+                <a href="#gallery" className="relative px-8 py-3.5 rounded-lg border-2 border-emerald-400/60 bg-transparent text-emerald-200 font-bold text-sm md:text-base hover:bg-emerald-500/15 hover:border-emerald-300 hover:text-emerald-100 hover:shadow-lg hover:shadow-emerald-500/30 transition-all duration-300 inline-flex items-center justify-center gap-2 group backdrop-blur-sm overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/20 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <Play className="w-4 h-4 group-hover:scale-110 transition-transform relative z-10" />
+                  <span className="relative z-10 font-semibold">Watch Demo</span>
+                </a>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN - IMAGE */}
+            <div className="flex justify-center lg:justify-end order-first lg:order-last parallax" style={{ animation: 'zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both' }}>
+              <div className="relative w-full max-w-[520px] h-[450px] group">
+                <img src="/gallery/gallery1.jpg" alt="SafePark retractable carport in action" className="relative w-full h-full object-cover rounded-3xl shadow-lg border-2 border-emerald-400/50 group-hover:border-emerald-300/70 group-hover:shadow-xl group-hover:shadow-emerald-500/30 transition-all duration-500 group-hover:scale-[1.01]" loading="eager" />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* RIGHT COLUMN - IMAGE */}
-      <div className="flex justify-center lg:justify-end order-first lg:order-last parallax" style={{ animation: 'zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both' }}>
-        <div className="relative w-full max-w-[520px] h-[450px] group">
-          <img src="/gallery/gallery1.jpg" alt="SafePark retractable carport in action" className="relative w-full h-full object-cover rounded-3xl shadow-lg border-2 border-emerald-400/50 group-hover:border-emerald-300/70 group-hover:shadow-xl group-hover:shadow-emerald-500/30 transition-all duration-500 group-hover:scale-[1.01]" loading="eager" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* BREATHING SPACE */}
-<div className="h-16 bg-gradient-to-b from-black via-slate-950/10 to-slate-950"></div>
-
+      {/* BREATHING SPACE */}
+      <div className="h-16 bg-gradient-to-b from-slate-950 via-slate-950/30 to-slate-950"></div>
 
       {/* FEATURES - SIMPLE 4 CARDS */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/30 to-black">
@@ -675,6 +714,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
