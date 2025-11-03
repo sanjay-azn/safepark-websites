@@ -73,21 +73,15 @@ export default function HomePage() {
 
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
-      
-{/* HERO SECTION - WITH VISIBLE TEAL GRADIENT BACKGROUND */}
-<section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center bg-gradient-to-br from-slate-900 via-blue-950 to-teal-950">
+{/* HERO SECTION - MINIMAL DARK NAVY (LIKE 2ND IMAGE) */}
+<section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center bg-gradient-to-b from-slate-900 to-slate-950">
   <div className="absolute inset-0 -z-10 overflow-hidden">
-    {/* Premium subtle gradient overlays */}
-    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/20 via-blue-900/15 to-teal-900/20 opacity-80"></div>
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-950/20 to-teal-950/40 opacity-60"></div>
+    {/* Very subtle, barely visible gradients */}
+    <div className="absolute inset-0 bg-gradient-to-br from-slate-900/10 via-blue-950/5 to-slate-950/10 opacity-40"></div>
     
-    {/* Directional gradients for depth */}
-    <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-blue-950/30 to-transparent opacity-50"></div>
-    <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-tl from-teal-950/30 to-transparent opacity-50"></div>
-    
-    {/* Very subtle blobs */}
-    <div className="absolute top-20 -right-60 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/8 via-cyan-500/5 to-transparent rounded-full blur-3xl animate-blob-1 opacity-20"></div>
-    <div className="absolute bottom-20 -left-60 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/8 via-emerald-500/5 to-transparent rounded-full blur-3xl animate-blob-2 opacity-20"></div>
+    {/* Minimal blobs - almost imperceptible */}
+    <div className="absolute top-20 -right-60 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/3 via-cyan-500/2 to-transparent rounded-full blur-3xl animate-blob-1 opacity-10"></div>
+    <div className="absolute bottom-20 -left-60 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/3 via-emerald-500/2 to-transparent rounded-full blur-3xl animate-blob-2 opacity-10"></div>
   </div>
 
   <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -135,7 +129,8 @@ export default function HomePage() {
 </section>
 
 {/* BREATHING SPACE */}
-<div className="h-16 bg-gradient-to-b from-teal-950 via-slate-950/30 to-slate-950"></div>
+<div className="h-16 bg-gradient-to-b from-slate-950 via-slate-950/30 to-slate-950"></div>
+
 
 
       {/* FEATURES - SIMPLE 4 CARDS */}
@@ -680,6 +675,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
