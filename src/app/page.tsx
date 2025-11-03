@@ -272,7 +272,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-8 bg-gradient-to-b from-black via-slate-950/30 to-slate-950"></div>
+      <div className="h-20 bg-gradient-to-b from-black via-slate-950/50 to-slate-950"></div>
 
       {/* WHY SAFEPARK BEATS - COMPARISON TABLE */}
       <section className="pb-32 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-slate-950 via-slate-900/20 to-black relative overflow-hidden">
@@ -527,7 +527,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-6 bg-gradient-to-b from-black via-slate-950/20 to-slate-950"></div>
+      <div className="h-12 bg-gradient-to-b from-black via-slate-950/30 to-slate-950"></div>
 
       {/* GALLERY */}
       <section id="gallery" className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/20 to-black">
@@ -618,7 +618,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-5 bg-gradient-to-b from-black to-black"></div>
+      <div className="h-10 bg-gradient-to-b from-black to-black"></div>
 
       {/* CTA - SLIM VERSION */}
       <section className="py-16 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-black via-slate-900/30 to-black">
@@ -729,4 +729,3 @@ export default function HomePage() {
     </div>
   );
 }
-
