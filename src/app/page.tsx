@@ -74,7 +74,7 @@ export default function HomePage() {
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
-      {/* HERO SECTION */}
+      {/* HERO SECTION - UPDATED */}
       <section className="py-20 lg:py-28 px-6 md:px-12 lg:px-20 relative overflow-hidden">
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-950"></div>
@@ -87,69 +87,40 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left space-y-5">
+            <div className="text-center lg:text-left space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-emerald-500/30 via-cyan-500/25 to-emerald-500/30 backdrop-blur-md border-2 border-emerald-400/60 text-emerald-200 font-medium text-sm hover:from-emerald-500/40 hover:via-cyan-500/35 hover:to-emerald-500/40 hover:border-emerald-300/80 transition-all duration-300 w-fit animate-fade-in-down shadow-lg shadow-emerald-500/40">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/80"></div>
-                Made in India • Premium Quality
+                Premium Retractable Carport
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-white animate-fade-in-up drop-shadow-xl" style={{ animationDelay: '0.1s' }}>
-                Everyday Risks.<br className="hidden md:block" /> <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.8)]">Lasting Protection.</span>
+                Your Car Deserves More<br className="hidden md:block" /> Than Just a Parking<br className="hidden md:block" /> Spot. It Deserves <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.8)]">SafePark.</span>
               </h1>
               
               <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-lg font-light animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                Your car faces <span className="text-white font-semibold">hidden threats every day</span>. From unexpected weather to kids playing nearby, give yourself <span className="text-emerald-300 font-medium">complete peace of mind</span>.
+                The world's smartest <span className="text-white font-semibold">portable car shed</span> that shields your car from sun, rain, dust, and everyday damage — and <span className="text-emerald-300 font-medium">opens in just 2-5 seconds.</span>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-3 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                <a href="tel:+919600840058" className="group relative px-7 py-3 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-cyan-500 text-white font-bold text-sm md:text-base hover:shadow-2xl hover:shadow-emerald-500/70 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 overflow-hidden border border-white/20">
+                <a href="#" className="group relative px-7 py-3 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-cyan-500 text-white font-bold text-sm md:text-base hover:shadow-2xl hover:shadow-emerald-500/70 hover:scale-105 transition-all duration-500 inline-flex items-center justify-center gap-2 overflow-hidden border border-white/20">
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <Shield className="w-4 h-4 group-hover:rotate-12 transition-transform relative z-10" />
-                  <span className="relative z-10">Protect My Car Now</span>
+                  <span className="relative z-10">Get Started</span>
                 </a>
                 
                 <a href="#gallery" className="relative px-7 py-3 rounded-xl border-2 border-emerald-400/80 bg-emerald-500/15 text-emerald-200 font-bold text-sm md:text-base hover:bg-emerald-500/25 hover:border-emerald-300 hover:text-emerald-100 hover:shadow-lg hover:shadow-emerald-500/40 transition-all duration-300 inline-flex items-center justify-center gap-2 group backdrop-blur-sm overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/30 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <Play className="w-3.5 h-3.5 group-hover:scale-110 transition-transform relative z-10" />
-                  <span className="relative z-10">View Gallery</span>
+                  <span className="relative z-10">Watch Demo</span>
                 </a>
-              </div>
-
-              <div className="flex flex-col sm:flex-row items-center gap-4 pt-2 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <div className="flex items-center gap-2 p-2.5 rounded-lg bg-gradient-to-r from-emerald-500/20 to-cyan-500/15 backdrop-blur-md border-2 border-emerald-400/50 hover:border-emerald-300/70 transition-all shadow-lg shadow-emerald-500/30">
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-current drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]" style={{ animation: `star-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 50}ms forwards`, opacity: 0 }} />
-                    ))}
-                  </div>
-                  <span className="text-gray-200 text-xs md:text-sm font-semibold">2,000+ Protected</span>
-                </div>
-                <div className="h-5 w-px bg-gradient-to-b from-emerald-400/50 via-cyan-400/50 to-emerald-400/50 hidden sm:block shadow-lg shadow-emerald-500/30"></div>
-                <div className="flex items-center gap-2 p-2.5 rounded-lg bg-gradient-to-r from-emerald-500/20 to-cyan-500/15 backdrop-blur-md border-2 border-emerald-400/50 hover:border-emerald-300/70 transition-all shadow-lg shadow-emerald-500/30">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-300 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                  <span className="text-gray-200 text-xs md:text-sm font-semibold">2-Year Warranty</span>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-2 pt-2 text-xs text-gray-300 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-                {['Free Installation', '2-4 Hour Setup', 'No Hidden Costs'].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/25 to-cyan-500/20 backdrop-blur-md border-1.5 border-emerald-400/60 hover:border-emerald-300/80 hover:from-emerald-500/35 hover:to-cyan-500/30 transition-all shadow-md shadow-emerald-500/30" style={{ animation: `badge-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 80}ms forwards`, opacity: 0 }}>
-                    <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 shadow-lg shadow-emerald-500/60"></div>
-                    {item}
-                  </div>
-                ))}
               </div>
             </div>
 
             <div className="flex justify-center lg:justify-end order-first lg:order-last parallax" style={{ animation: 'zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both' }}>
-              <div className="relative w-full max-w-[450px] h-[380px] group">
+              <div className="relative w-full max-w-[450px] h-[420px] group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/60 via-cyan-500/40 to-emerald-500/60 rounded-3xl blur-2xl group-hover:blur-3xl opacity-70 group-hover:opacity-100 transition-all duration-500 animate-pulse-slow"></div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/20 to-emerald-500/30 rounded-3xl blur-2xl group-hover:opacity-100 opacity-60 transition-opacity duration-500"></div>
                 
-                <img src="/gallery/gallery1.jpg" alt="Premium BMW car protected by SafePark" className="relative w-full h-full object-cover rounded-3xl shadow-2xl border-2 border-emerald-400/60 group-hover:border-emerald-300/80 group-hover:shadow-3xl group-hover:shadow-emerald-500/60 transition-all duration-500 group-hover:scale-[1.02]" loading="eager" />
-                <div className="absolute top-4 left-4 bg-gradient-to-r from-emerald-500/95 via-cyan-500/95 to-emerald-400/95 backdrop-blur-md text-white px-4 py-2 rounded-lg text-xs md:text-sm font-bold shadow-lg shadow-emerald-500/50 border border-white/30 group-hover:scale-110 transition-transform duration-300">
-                  Premium Protection
-                </div>
+                <img src="/gallery/gallery1.jpg" alt="SafePark retractable carport in action" className="relative w-full h-full object-cover rounded-3xl shadow-2xl border-2 border-emerald-400/60 group-hover:border-emerald-300/80 group-hover:shadow-3xl group-hover:shadow-emerald-500/60 transition-all duration-500 group-hover:scale-[1.02]" loading="eager" />
               </div>
             </div>
           </div>
@@ -272,7 +243,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-20 bg-gradient-to-b from-black via-slate-950/50 to-slate-950"></div>
+      <div className="h-8 bg-gradient-to-b from-black via-slate-950/30 to-slate-950"></div>
 
       {/* WHY SAFEPARK BEATS - COMPARISON TABLE */}
       <section className="pb-32 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-slate-950 via-slate-900/20 to-black relative overflow-hidden">
@@ -340,7 +311,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-20 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
+      <div className="h-8 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
 
       {/* WHY CAR OWNERS CHOOSE */}
       <section className="pb-32 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
@@ -440,43 +411,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BREATHING SPACE */}
-      <div className="h-20 bg-gradient-to-b from-black to-black"></div>
-
-      {/* TRUST STATS */}
-      <section className="pb-24 px-6 md:px-12 lg:px-20 bg-black">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { icon: <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />, value: '4.9/5', label: 'Reviews' },
-              { icon: <Gauge className="w-6 h-6 text-emerald-400" />, value: '2000+', label: 'Cars Protected' },
-              { icon: <Award className="w-6 h-6 text-blue-400" />, value: 'India', label: 'Made Locally' },
-              { icon: <Phone className="w-6 h-6 text-cyan-400" />, value: '24/7', label: 'Support' }
-            ].map((stat, idx) => {
-              const statId = `stat-${idx}`;
-              const isStatVisible = isVisible[statId] || false;
-              
-              return (
-                <div 
-                  key={idx}
-                  id={statId}
-                  data-observe="true"
-                  className="text-center p-6 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 hover:border-emerald-500/30 transition-all hover:from-white/[0.12] hover:to-white/[0.04] group"
-                  style={{
-                    opacity: isStatVisible ? 1 : 0,
-                    transform: isStatVisible ? 'translateY(0)' : 'translateY(20px)',
-                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`
-                  }}
-                >
-                  <div className="flex justify-center mb-2 group-hover:scale-125 transition-transform duration-300">{stat.icon}</div>
-                  <div className="text-white font-bold text-xl group-hover:text-emerald-400 transition-colors">{stat.value}</div>
-                  <div className="text-gray-400 text-sm">{stat.label}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* BREATHING SPACE - AFTER WHY CHOOSE */}
+      <div className="h-8 bg-gradient-to-b from-black to-black"></div>
 
       {/* VALUE PROPS - BADGES */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
@@ -527,7 +463,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-12 bg-gradient-to-b from-black via-slate-950/30 to-slate-950"></div>
+      <div className="h-6 bg-gradient-to-b from-black via-slate-950/20 to-slate-950"></div>
 
       {/* GALLERY */}
       <section id="gallery" className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/20 to-black">
@@ -577,7 +513,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-12 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
+      <div className="h-6 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
 
       {/* FAQ */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative overflow-hidden bg-black">
@@ -618,7 +554,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-10 bg-gradient-to-b from-black to-black"></div>
+      <div className="h-5 bg-gradient-to-b from-black to-black"></div>
 
       {/* CTA - SLIM VERSION */}
       <section className="py-16 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-black via-slate-900/30 to-black">
