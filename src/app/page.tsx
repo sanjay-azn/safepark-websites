@@ -1,6 +1,6 @@
 'use client';
 
-import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play, ChevronLeft, ChevronRight, Plus, Minus } from 'lucide-react';
+import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play, ChevronLeft, ChevronRight, Plus, Minus, Instagram } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface VisibilityState {
@@ -74,21 +74,14 @@ export default function HomePage() {
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
       
-      {/* HERO SECTION - WITH GLOWING BORDER */}
+      {/* HERO SECTION */}
       <section className="py-20 lg:py-28 px-6 md:px-12 lg:px-20 relative overflow-hidden">
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          {/* Vibrant gradient mesh background */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-black to-slate-950"></div>
-          
-          {/* Dynamic animated orbs with brighter colors */}
           <div className="absolute top-0 -right-40 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/40 via-cyan-500/25 to-transparent rounded-full blur-3xl animate-blob-1"></div>
           <div className="absolute bottom-0 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/40 via-emerald-500/25 to-transparent rounded-full blur-3xl animate-blob-2"></div>
           <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] bg-gradient-to-br from-emerald-400/20 via-cyan-400/15 to-transparent rounded-full blur-3xl animate-blob-3"></div>
-          
-          {/* Enhanced mesh grid */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.08)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_120%_80%_at_50%_50%,black,transparent)]"></div>
-          
-          {/* Gradient border effect */}
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-emerald-500/20 opacity-80 [mask-image:radial-gradient(ellipse_at_center,transparent_30%,black_100%)]"></div>
         </div>
 
@@ -150,7 +143,6 @@ export default function HomePage() {
 
             <div className="flex justify-center lg:justify-end order-first lg:order-last parallax" style={{ animation: 'zoom-in 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both' }}>
               <div className="relative w-full max-w-[450px] h-[380px] group">
-                {/* Glowing border effect */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/60 via-cyan-500/40 to-emerald-500/60 rounded-3xl blur-2xl group-hover:blur-3xl opacity-70 group-hover:opacity-100 transition-all duration-500 animate-pulse-slow"></div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 via-cyan-500/20 to-emerald-500/30 rounded-3xl blur-2xl group-hover:opacity-100 opacity-60 transition-opacity duration-500"></div>
                 
@@ -206,7 +198,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* VALUE PROPS - FIXED BADGES */}
+      {/* VALUE PROPS - BADGES FIXED */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(6,182,212,0.08),transparent_50%)] -z-10"></div>
         <div className="max-w-6xl mx-auto relative z-10">
@@ -231,20 +223,22 @@ export default function HomePage() {
               const valueId = `value-${idx}`;
               const isValueVisible = isVisible[valueId] || false;
               return (
-                <div key={idx} id={valueId} data-observe className={`group relative p-6 lg:p-8 rounded-2xl bg-gradient-to-br ${item.gradient} backdrop-blur-sm border-2 border-white/15 hover:border-emerald-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/30 overflow-hidden`} style={{ opacity: isValueVisible ? 1 : 0, transform: isValueVisible ? 'translateX(0) translateY(0)' : 'translateX(-20px) translateY(20px)', transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 150}ms` }}>
+                <div key={idx} id={valueId} data-observe className={`group relative p-6 lg:p-8 rounded-2xl bg-gradient-to-br ${item.gradient} backdrop-blur-sm border-2 border-white/15 hover:border-emerald-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/30`} style={{ opacity: isValueVisible ? 1 : 0, transform: isValueVisible ? 'translateX(0) translateY(0)' : 'translateX(-20px) translateY(20px)', transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 150}ms` }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-white/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                  {/* Badge - FULLY VISIBLE */}
-                  <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/25 border border-emerald-500/40 text-emerald-200 text-xs font-bold">
-                    {item.badge}
+                  
+                  {/* Badge - NOW INSIDE & FULLY VISIBLE */}
+                  <div className="flex justify-center mb-4">
+                    <div className="px-4 py-1.5 rounded-full bg-emerald-500/30 border border-emerald-500/50 text-emerald-200 text-xs font-bold whitespace-nowrap shadow-lg">
+                      {item.badge}
+                    </div>
                   </div>
 
-                  <div className="space-y-3 lg:space-y-4 relative z-10 pt-6">
-                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.iconBg} backdrop-blur-md flex items-center justify-center ${item.iconColor} group-hover:scale-110 transition-all duration-300 shadow-lg border-2 border-white/20`} style={{ animation: `icon-spin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 100}ms forwards`, opacity: 0 }}>
+                  <div className="space-y-3 lg:space-y-4 relative z-10">
+                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.iconBg} backdrop-blur-md flex items-center justify-center ${item.iconColor} group-hover:scale-110 transition-all duration-300 shadow-lg border-2 border-white/20 mx-auto`} style={{ animation: `icon-spin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 100}ms forwards`, opacity: 0 }}>
                       {item.icon}
                     </div>
-                    <h3 className="text-base md:text-lg font-bold text-white">{item.title}</h3>
-                    <p className="text-gray-300 leading-relaxed text-sm">{item.desc}</p>
+                    <h3 className="text-base md:text-lg font-bold text-white text-center">{item.title}</h3>
+                    <p className="text-gray-300 leading-relaxed text-sm text-center">{item.desc}</p>
                   </div>
                 </div>
               );
@@ -253,7 +247,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BREATHING SPACE - REDUCED */}
+      {/* BREATHING SPACE */}
       <div className="h-12 bg-gradient-to-b from-black via-slate-950/30 to-slate-950"></div>
 
       {/* GALLERY */}
@@ -303,7 +297,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BREATHING SPACE - REDUCED */}
+      {/* BREATHING SPACE */}
       <div className="h-12 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
 
       {/* FAQ */}
@@ -344,40 +338,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BREATHING SPACE - MINIMAL */}
+      {/* BREATHING SPACE */}
       <div className="h-10 bg-gradient-to-b from-black to-black"></div>
 
-      {/* CTA */}
-      <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-black via-slate-900/30 to-black">
+      {/* CTA - SLIM VERSION */}
+      <section className="py-16 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-black via-slate-900/30 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.08),transparent_60%)] -z-10"></div>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div id="cta" data-observe className="relative" style={{ opacity: isVisible['cta'] ? 1 : 0, transform: isVisible['cta'] ? 'scale(1)' : 'scale(0.95)', transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)' }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 via-cyan-600/15 to-emerald-600/20 rounded-3xl blur-3xl opacity-70 animate-pulse-slow"></div>
-            <div className="relative bg-gradient-to-br from-white/[0.10] to-white/[0.03] backdrop-blur-xl rounded-3xl p-10 border-2 border-emerald-400/40 text-center space-y-5 shadow-2xl shadow-emerald-500/30">
-              <h2 className="text-3xl md:text-4xl font-bold text-white drop-shadow-2xl">Ready to Protect Your Vehicle?</h2>
-              <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto font-light">Join thousands who chose SafePark. Get started in minutes.</p>
-              <div className="grid md:grid-cols-3 gap-6 py-6 border-y-2 border-white/15">
-                {[
-                  { icon: <Phone className="w-5 h-5" />, title: "Phone", content: "+91 9600840058", href: "tel:+919600840058", gradient: "from-blue-500/20 to-cyan-500/15" },
-                  { icon: <MessageCircle className="w-5 h-5" />, title: "WhatsApp", content: "Message Us", href: "https://wa.me/919600840058", gradient: "from-green-500/20 to-emerald-500/15" },
-                  { icon: <MapPin className="w-5 h-5" />, title: "Location", content: "Coimbatore, TN", href: null, gradient: "from-purple-500/20 to-pink-500/15" }
-                ].map((contact, i) => (
-                  <div key={i} className="group/contact" style={{ animation: `contact-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${i * 100}ms forwards`, opacity: 0 }}>
-                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${contact.gradient} backdrop-blur-md flex items-center justify-center mx-auto mb-2 text-emerald-300 group-hover/contact:scale-110 transition-all border-2 border-white/20 shadow-lg`}>
-                      {contact.icon}
-                    </div>
-                    <p className="text-xs md:text-sm text-gray-400 mb-1.5 font-semibold">{contact.title}</p>
-                    {contact.href ? (<a href={contact.href} className="text-emerald-300 hover:text-emerald-200 font-bold transition-colors text-xs md:text-sm">{contact.content}</a>) : (<p className="text-emerald-300 font-bold text-xs md:text-sm">{contact.content}</p>)}
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center pt-3">
-                <a href="tel:+919600840058" className="relative px-7 py-3 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-400 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-emerald-500/70 hover:scale-105 transition-all duration-500 text-sm md:text-base overflow-hidden group border border-white/20" style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards', opacity: 0 }}>
-                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <span className="relative z-10">Call for Free Quote</span>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 via-cyan-600/15 to-emerald-600/20 rounded-2xl blur-3xl opacity-70 animate-pulse-slow"></div>
+            <div className="relative bg-gradient-to-br from-white/[0.10] to-white/[0.03] backdrop-blur-xl rounded-2xl p-8 border-2 border-emerald-400/40 text-center space-y-4 shadow-2xl shadow-emerald-500/30">
+              <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-2xl">Ready to Protect Your Vehicle?</h2>
+              <p className="text-sm md:text-base text-gray-300 font-light">Join thousands who chose SafePark. Get started in minutes.</p>
+              
+              <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+                <a href="https://wa.me/919600840058" className="relative px-6 py-2.5 rounded-lg bg-gradient-to-r from-green-500 via-emerald-400 to-cyan-500 text-white font-bold hover:shadow-2xl hover:shadow-green-500/70 hover:scale-105 transition-all duration-500 text-sm overflow-hidden group border border-white/20" style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards', opacity: 0 }}>
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <span className="relative z-10 flex items-center justify-center gap-1.5"><MessageCircle className="w-4 h-4" /> WhatsApp Now</span>
                 </a>
-                <a href="https://wa.me/919600840058" className="px-7 py-3 rounded-xl border-2 border-emerald-400/70 bg-emerald-500/15 text-emerald-200 font-bold hover:bg-emerald-500/25 hover:border-emerald-300 hover:text-emerald-100 hover:shadow-lg hover:shadow-emerald-500/40 backdrop-blur-sm transition-all duration-300 text-sm md:text-base" style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards', opacity: 0 }}>
-                  WhatsApp Now
+
+                <a href="https://www.instagram.com/safe_park_india?igsh=MXQ5eGVuOWw1eWpzcg==" target="_blank" rel="noopener noreferrer" className="relative px-6 py-2.5 rounded-lg bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white font-bold hover:shadow-2xl hover:shadow-pink-500/70 hover:scale-105 transition-all duration-500 text-sm overflow-hidden group border border-white/20" style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards', opacity: 0 }}>
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-400 via-purple-400 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <span className="relative z-10 flex items-center justify-center gap-1.5"><Instagram className="w-4 h-4" /> Follow Us</span>
+                </a>
+
+                <a href="tel:+919600840058" className="px-6 py-2.5 rounded-lg border-2 border-emerald-400/70 bg-emerald-500/15 text-emerald-200 font-bold hover:bg-emerald-500/25 hover:border-emerald-300 hover:text-emerald-100 hover:shadow-lg hover:shadow-emerald-500/40 backdrop-blur-sm transition-all duration-300 text-sm" style={{ animation: 'button-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards', opacity: 0 }}>
+                  <span className="flex items-center justify-center gap-1.5"><Phone className="w-4 h-4" /> Call Now</span>
                 </a>
               </div>
             </div>
@@ -412,11 +398,11 @@ export default function HomePage() {
                   </div>
                   +91 9600840058
                 </a>
-                <a href="https://wa.me/919600840058" className="flex items-center gap-2.5 text-gray-400 hover:text-emerald-300 transition-colors text-xs md:text-sm group">
-                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-green-500/25 to-emerald-500/20 backdrop-blur-md flex items-center justify-center border-2 border-green-400/40 group-hover:scale-110 transition-transform">
-                    <MessageCircle className="w-3.5 h-3.5 flex-shrink-0" />
+                <a href="https://www.instagram.com/safe_park_india?igsh=MXQ5eGVuOWw1eWpzcg==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-gray-400 hover:text-pink-300 transition-colors text-xs md:text-sm group">
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-pink-500/25 to-purple-500/20 backdrop-blur-md flex items-center justify-center border-2 border-pink-400/40 group-hover:scale-110 transition-transform">
+                    <Instagram className="w-3.5 h-3.5 flex-shrink-0" />
                   </div>
-                  WhatsApp
+                  @safe_park_india
                 </a>
                 <div className="flex items-center gap-2.5 text-gray-400 text-xs md:text-sm">
                   <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-purple-500/25 to-pink-500/20 backdrop-blur-md flex items-center justify-center border-2 border-purple-400/40">
@@ -466,6 +452,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-
-
