@@ -1,6 +1,6 @@
 'use client';
 
-import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play, ChevronLeft, ChevronRight, Plus, Minus, Instagram } from 'lucide-react';
+import { Shield, Umbrella, Zap, UserCheck, Phone, MessageCircle, MapPin, Star, Award, ArrowRight, CheckCircle2, Play, ChevronLeft, ChevronRight, Plus, Minus, Instagram, Flame, Droplets, Bolt, Wind, Wrench, Sun, Droplet, Cloud, Cog, Gauge, Lightbulb } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface VisibilityState {
@@ -156,7 +156,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURES */}
+      {/* FEATURES - SIMPLE 4 CARDS */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/30 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.05),transparent_50%)] -z-10"></div>
         <div className="max-w-6xl mx-auto relative z-10">
@@ -198,7 +198,287 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* VALUE PROPS - BADGES FIXED */}
+      {/* 2x2 GRID FEATURES FROM FEATURES PAGE */}
+      <section className="pb-32 px-6 md:px-12 lg:px-20 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: <Flame className="w-10 h-10 text-red-400" />,
+                title: "Thermal Protection",
+                subtitle: "Heat & flame resistant",
+                desc: "Advanced thermal resistance up to 2000°F with flame-retardant coating.",
+                features: ["Heat resistant to 2000°F", "Flame retardant", "Structural integrity"]
+              },
+              {
+                icon: <Droplets className="w-10 h-10 text-blue-400" />,
+                title: "Weather Shield",
+                subtitle: "IPX7 waterproof",
+                desc: "Military-grade waterproof coating with advanced drainage system.",
+                features: ["100% waterproof", "Advanced drainage", "UV resistance"]
+              },
+              {
+                icon: <Bolt className="w-10 h-10 text-yellow-400" />,
+                title: "Impact Guard",
+                subtitle: "Military-grade fabric",
+                desc: "Oxford 600D fabric prevents scratches, dents, and damage.",
+                features: ["Scratch resistant", "Impact protected", "Tear-proof"]
+              },
+              {
+                icon: <Award className="w-10 h-10 text-emerald-400" />,
+                title: "Safety First",
+                subtitle: "Family approved",
+                desc: "Rounded edges and non-toxic materials for complete peace of mind.",
+                features: ["Child safe design", "Stable frame", "Non-toxic"]
+              }
+            ].map((feature, idx) => {
+              const featureId = `feature-2x2-${idx}`;
+              const isElementVisible = isVisible[featureId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={featureId}
+                  data-observe="true"
+                  className="group relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/15 rounded-xl p-6 transition-all duration-500 h-full flex flex-col group-hover:border-emerald-500/30 group-hover:bg-gradient-to-br group-hover:from-white/[0.12] group-hover:to-white/[0.05] group-hover:-translate-y-1"
+                  style={{
+                    opacity: isElementVisible ? 1 : 0,
+                    transform: isElementVisible ? 'translateY(0) scale(1)' : 'translateY(20px) scale(0.95)',
+                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`
+                  }}
+                >
+                  
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-white/20 to-white/5 flex items-center justify-center mb-4 group-hover:from-white/30 group-hover:to-white/10 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                    {feature.icon}
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-white mb-1">{feature.title}</h3>
+                  <p className="text-sm text-gray-400 mb-3">{feature.subtitle}</p>
+                  <p className="text-sm text-gray-300 leading-relaxed mb-5 flex-grow">{feature.desc}</p>
+                  
+                  <div className="space-y-2 pt-4 border-t border-white/10">
+                    {feature.features.map((item, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-gray-300 group-hover:text-gray-200 transition-colors">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* BREATHING SPACE */}
+      <div className="h-20 bg-gradient-to-b from-black via-slate-950/50 to-slate-950"></div>
+
+      {/* WHY SAFEPARK BEATS - COMPARISON TABLE */}
+      <section className="pb-32 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-slate-950 via-slate-900/20 to-black relative overflow-hidden">
+        
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-20 left-1/4 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl animate-pulse-slow"></div>
+          <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+        </div>
+
+        <div className="max-w-5xl mx-auto relative z-10">
+          
+          <div 
+            id="comparison-header"
+            data-observe="true"
+            className="text-center mb-16"
+            style={{
+              opacity: isVisible['comparison-header'] ? 1 : 0,
+              transform: isVisible['comparison-header'] ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)'
+            }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">Why SafePark Beats Traditional Car Sheds</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto mb-4 rounded-full"></div>
+            <p className="text-lg text-gray-400">Industry comparison—see the difference quality makes</p>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              { feature: "Portability", traditional: "Fixed", safepark: "Retractable" },
+              { feature: "Aesthetics", traditional: "Basic", safepark: "Stylish & Modern" },
+              { feature: "Installation", traditional: "Complex", safepark: "Quick & Easy" },
+              { feature: "Material Quality", traditional: "Low-grade", safepark: "Military-Grade" },
+              { feature: "Weather Protection", traditional: "Limited", safepark: "Complete Coverage" },
+              { feature: "Space Usage", traditional: "Permanent", safepark: "Collapsible" }
+            ].map((item, idx) => {
+              const comparisonId = `comparison-${idx}`;
+              const isComparisonVisible = isVisible[comparisonId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={comparisonId}
+                  data-observe="true"
+                  className="grid grid-cols-3 gap-4 p-5 rounded-lg bg-gradient-to-r from-white/[0.04] to-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all hover:from-white/[0.08] hover:to-white/[0.04] group/row"
+                  style={{
+                    opacity: isComparisonVisible ? 1 : 0,
+                    transform: isComparisonVisible ? 'translateX(0)' : 'translateX(-30px)',
+                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.08}s`
+                  }}
+                >
+                  <div className="font-semibold text-white text-sm md:text-base group-hover/row:text-emerald-300 transition-colors">{item.feature}</div>
+                  <div className="text-gray-400 flex items-center gap-2 justify-center text-xs md:text-sm">
+                    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-red-500/20 text-red-400 font-bold text-xs flex-shrink-0 group-hover/row:bg-red-500/40 transition-colors">✕</span> 
+                    <span className="group-hover/row:line-through transition-all">{item.traditional}</span>
+                  </div>
+                  <div className="text-emerald-300 font-semibold flex items-center gap-2 justify-end text-xs md:text-sm">
+                    <span className="text-emerald-400 font-bold">✓</span> 
+                    <span className="group-hover/row:text-emerald-200 transition-colors">{item.safepark}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* BREATHING SPACE */}
+      <div className="h-20 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
+
+      {/* WHY CAR OWNERS CHOOSE */}
+      <section className="pb-32 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
+        
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute -top-40 left-1/3 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl animate-float-1"></div>
+          <div className="absolute -bottom-40 right-1/3 w-80 h-80 bg-cyan-500/8 rounded-full blur-3xl animate-float-2"></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          
+          <div 
+            id="benefits-header"
+            data-observe="true"
+            className="text-center mb-16"
+            style={{
+              opacity: isVisible['benefits-header'] ? 1 : 0,
+              transform: isVisible['benefits-header'] ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)'
+            }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">Why Car Owners Choose SafePark</h2>
+            <div className="h-1 w-20 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto mb-4 rounded-full"></div>
+            <p className="text-lg text-gray-400">Real benefits from premium protection</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { 
+                title: ">90% Heat & UV Block", 
+                desc: "Protects paint, dashboard, and interiors from sun damage.",
+                icon: <Sun className="w-8 h-8 text-yellow-400" />,
+                color: "from-yellow-500/20"
+              },
+              { 
+                title: "Impact Resistant", 
+                desc: "Everyday hits won't harm your car. Tested for durability.",
+                icon: <Bolt className="w-8 h-8 text-orange-400" />,
+                color: "from-orange-500/20"
+              },
+              { 
+                title: "Water & Dust Proof", 
+                desc: "No more scratches, no more daily cleaning needed.",
+                icon: <Droplet className="w-8 h-8 text-blue-400" />,
+                color: "from-blue-500/20"
+              },
+              { 
+                title: "Wind Stability", 
+                desc: "Engineered to withstand rough weather conditions.",
+                icon: <Wind className="w-8 h-8 text-cyan-400" />,
+                color: "from-cyan-500/20"
+              },
+              { 
+                title: "Rust-Free Frame", 
+                desc: "Premium, durable, and stylish galvanized frame.",
+                icon: <Wrench className="w-8 h-8 text-red-400" />,
+                color: "from-red-500/20"
+              },
+              { 
+                title: "Retractable in 2-5 Seconds", 
+                desc: "Park, pull, and protect instantly. No complexity.",
+                icon: <Cog className="w-8 h-8 text-emerald-400" />,
+                color: "from-emerald-500/20"
+              }
+            ].map((benefit, idx) => {
+              const benefitId = `benefit-${idx}`;
+              const isBenefitVisible = isVisible[benefitId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={benefitId}
+                  data-observe="true"
+                  className="group relative p-6 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 hover:border-emerald-500/30 transition-all h-full hover:from-white/[0.12] hover:to-white/[0.04] cursor-pointer overflow-hidden"
+                  style={{
+                    opacity: isBenefitVisible ? 1 : 0,
+                    transform: isBenefitVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.9)',
+                    transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.12}s`
+                  }}
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} to-transparent blur-2xl group-hover:blur-3xl transition-all duration-500`}></div>
+                  </div>
+
+                  <div className="mb-4 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12 origin-center inline-block">
+                    {benefit.icon}
+                  </div>
+                  
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">{benefit.title}</h3>
+                  <p className="text-sm text-gray-300 group-hover:text-gray-200 transition-colors">{benefit.desc}</p>
+
+                  <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 w-0 group-hover:w-full transition-all duration-500"></div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* BREATHING SPACE */}
+      <div className="h-20 bg-gradient-to-b from-black to-black"></div>
+
+      {/* TRUST STATS */}
+      <section className="pb-24 px-6 md:px-12 lg:px-20 bg-black">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />, value: '4.9/5', label: 'Reviews' },
+              { icon: <Gauge className="w-6 h-6 text-emerald-400" />, value: '2000+', label: 'Cars Protected' },
+              { icon: <Award className="w-6 h-6 text-blue-400" />, value: 'India', label: 'Made Locally' },
+              { icon: <Phone className="w-6 h-6 text-cyan-400" />, value: '24/7', label: 'Support' }
+            ].map((stat, idx) => {
+              const statId = `stat-${idx}`;
+              const isStatVisible = isVisible[statId] || false;
+              
+              return (
+                <div 
+                  key={idx}
+                  id={statId}
+                  data-observe="true"
+                  className="text-center p-6 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/10 hover:border-emerald-500/30 transition-all hover:from-white/[0.12] hover:to-white/[0.04] group"
+                  style={{
+                    opacity: isStatVisible ? 1 : 0,
+                    transform: isStatVisible ? 'translateY(0)' : 'translateY(20px)',
+                    transition: `all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 0.1}s`
+                  }}
+                >
+                  <div className="flex justify-center mb-2 group-hover:scale-125 transition-transform duration-300">{stat.icon}</div>
+                  <div className="text-white font-bold text-xl group-hover:text-emerald-400 transition-colors">{stat.value}</div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* VALUE PROPS - BADGES */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(6,182,212,0.08),transparent_50%)] -z-10"></div>
         <div className="max-w-6xl mx-auto relative z-10">
@@ -226,7 +506,6 @@ export default function HomePage() {
                 <div key={idx} id={valueId} data-observe className={`group relative p-6 lg:p-8 rounded-2xl bg-gradient-to-br ${item.gradient} backdrop-blur-sm border-2 border-white/15 hover:border-emerald-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/30`} style={{ opacity: isValueVisible ? 1 : 0, transform: isValueVisible ? 'translateX(0) translateY(0)' : 'translateX(-20px) translateY(20px)', transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 150}ms` }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-white/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
-                  {/* Badge - NOW INSIDE & FULLY VISIBLE */}
                   <div className="flex justify-center mb-4">
                     <div className="px-4 py-1.5 rounded-full bg-emerald-500/30 border border-emerald-500/50 text-emerald-200 text-xs font-bold whitespace-nowrap shadow-lg">
                       {item.badge}
@@ -433,7 +712,6 @@ export default function HomePage() {
         @keyframes icon-spin { from { transform: rotate(-180deg); opacity: 0; } to { transform: rotate(0deg); opacity: 1; } }
         @keyframes badge-pop { from { opacity: 0; transform: scale(0) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
         @keyframes star-pop { from { opacity: 0; transform: scale(0) rotate(-180deg); } to { opacity: 1; transform: scale(1) rotate(0deg); } }
-        @keyframes contact-pop { from { opacity: 0; transform: scale(0) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
         @keyframes button-pulse { from { opacity: 0; transform: scale(0.8) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
         .animate-blob-1 { animation: blob-1 25s infinite ease-in-out; }
         .animate-blob-2 { animation: blob-2 30s infinite ease-in-out; }
@@ -447,7 +725,6 @@ export default function HomePage() {
         html { scroll-behavior: smooth; }
         @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
         a:focus-visible { outline: 2px solid #10b981; outline-offset: 2px; }
-        @media (max-width: 768px) { .text-4xl { font-size: 1.875rem; } .text-5xl { font-size: 2.25rem; } .text-6xl { font-size: 2.5rem; } }
       `}</style>
     </div>
   );
