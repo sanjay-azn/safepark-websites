@@ -75,15 +75,17 @@ export default function HomePage() {
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
 
       
-{/* HERO SECTION - UNIFIED NAVY/BLACK BACKGROUND */}
+{/* HERO SECTION - PREMIUM & CLASSIC (TESLA/APPLE STYLE) */}
 <section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center bg-black">
   <div className="absolute inset-0 -z-10 overflow-hidden">
-    {/* Minimal overlay - barely visible */}
-    <div className="absolute inset-0 bg-gradient-to-br from-slate-900/5 via-blue-950/3 to-black opacity-40"></div>
+    {/* Elegant depth layer - very subtle */}
+    <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-black to-black"></div>
     
-    {/* Very subtle blobs - almost invisible */}
-    <div className="absolute top-20 -right-60 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/2 via-cyan-500/1 to-transparent rounded-full blur-3xl animate-blob-1 opacity-5"></div>
-    <div className="absolute bottom-20 -left-60 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/2 via-emerald-500/1 to-transparent rounded-full blur-3xl animate-blob-2 opacity-5"></div>
+    {/* Premium lighting - left to right subtle glow */}
+    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/20 via-black to-slate-900/20 opacity-50"></div>
+    
+    {/* Ultra-subtle vignette effect (darkness at edges) */}
+    <div className="absolute inset-0 bg-radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%)"></div>
   </div>
 
   <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -95,7 +97,7 @@ export default function HomePage() {
           Premium Retractable Carport
         </div>
 
-        {/* HEADLINE - 2 LINES */}
+        {/* HEADLINE */}
         <h1 className="text-4xl md:text-5xl font-black leading-tight text-white animate-fade-in-up drop-shadow-xl" style={{ animationDelay: '0.1s' }}>
           Your Car Deserves<br className="hidden md:block" /> <span className="bg-gradient-to-r from-emerald-300 via-cyan-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(16,185,129,0.8)]">SafePark.</span>
         </h1>
@@ -128,6 +130,14 @@ export default function HomePage() {
       </div>
     </div>
   </div>
+
+  <style jsx>{`
+    @supports (background: radial-gradient(ellipse, transparent, rgba(0,0,0,0.3))) {
+      .absolute {
+        background-image: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+      }
+    }
+  `}</style>
 </section>
 
 {/* BREATHING SPACE */}
@@ -675,6 +685,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
