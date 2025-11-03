@@ -491,7 +491,7 @@ export default function HomePage() {
 
 
       {/* WHY CAR OWNERS CHOOSE */}
-      <section className="pb-32 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
+      <section className="pb-0 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-black via-slate-900/30 to-black relative overflow-hidden">
         
         <div className="absolute inset-0 -z-10">
           <div className="absolute -top-40 left-1/3 w-80 h-80 bg-emerald-500/8 rounded-full blur-3xl animate-float-1"></div>
@@ -640,7 +640,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-6 bg-gradient-to-b from-black via-slate-950/20 to-slate-950"></div>
+      <div className="h-0 bg-gradient-to-b from-black via-slate-950/20 to-slate-950"></div>
 
       {/* GALLERY */}
       <section id="gallery" className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/20 to-black">
@@ -690,7 +690,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE */}
-      <div className="h-6 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
+      <div className="h-0 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
 
       {/* FAQ */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative overflow-hidden bg-black">
@@ -842,28 +842,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
