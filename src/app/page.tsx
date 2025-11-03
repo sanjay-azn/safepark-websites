@@ -317,7 +317,7 @@ export default function HomePage() {
 
       {/* BREATHING SPACE */}
      {/* BREATHING SPACE */}
-    <div className="h-10 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
+    <div className="h-20 bg-gradient-to-b from-slate-950 via-black/50 to-black"></div>
 
 
       {/* WHY CAR OWNERS CHOOSE */}
@@ -419,7 +419,7 @@ export default function HomePage() {
       </section>
 
       {/* BREATHING SPACE - AFTER WHY CHOOSE */}
-      <div className="h-6 bg-gradient-to-b from-black to-black"></div>
+      <div className="h-12 bg-gradient-to-b from-black to-black"></div>
 
       {/* VALUE PROPS - BADGES */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-black">
@@ -672,6 +672,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
