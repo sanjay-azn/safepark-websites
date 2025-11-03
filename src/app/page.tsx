@@ -73,15 +73,17 @@ export default function HomePage() {
 
   return (
     <div className="scroll-smooth bg-black min-h-screen overflow-x-hidden">
-{/* HERO SECTION - MINIMAL DARK NAVY (LIKE 2ND IMAGE) */}
-<section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center bg-gradient-to-b from-slate-900 to-slate-950">
+
+      
+{/* HERO SECTION - UNIFIED NAVY/BLACK BACKGROUND */}
+<section className="py-32 lg:py-40 px-6 md:px-12 lg:px-20 relative overflow-hidden min-h-[650px] flex items-center bg-black">
   <div className="absolute inset-0 -z-10 overflow-hidden">
-    {/* Very subtle, barely visible gradients */}
-    <div className="absolute inset-0 bg-gradient-to-br from-slate-900/10 via-blue-950/5 to-slate-950/10 opacity-40"></div>
+    {/* Minimal overlay - barely visible */}
+    <div className="absolute inset-0 bg-gradient-to-br from-slate-900/5 via-blue-950/3 to-black opacity-40"></div>
     
-    {/* Minimal blobs - almost imperceptible */}
-    <div className="absolute top-20 -right-60 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/3 via-cyan-500/2 to-transparent rounded-full blur-3xl animate-blob-1 opacity-10"></div>
-    <div className="absolute bottom-20 -left-60 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/3 via-emerald-500/2 to-transparent rounded-full blur-3xl animate-blob-2 opacity-10"></div>
+    {/* Very subtle blobs - almost invisible */}
+    <div className="absolute top-20 -right-60 w-[500px] h-[500px] bg-gradient-to-br from-emerald-500/2 via-cyan-500/1 to-transparent rounded-full blur-3xl animate-blob-1 opacity-5"></div>
+    <div className="absolute bottom-20 -left-60 w-[500px] h-[500px] bg-gradient-to-tr from-cyan-500/2 via-emerald-500/1 to-transparent rounded-full blur-3xl animate-blob-2 opacity-5"></div>
   </div>
 
   <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -129,9 +131,7 @@ export default function HomePage() {
 </section>
 
 {/* BREATHING SPACE */}
-<div className="h-16 bg-gradient-to-b from-slate-950 via-slate-950/30 to-slate-950"></div>
-
-
+<div className="h-16 bg-gradient-to-b from-black via-slate-950/10 to-slate-950"></div>
 
       {/* FEATURES - SIMPLE 4 CARDS */}
       <section className="py-20 px-6 md:px-12 lg:px-20 relative bg-gradient-to-b from-slate-950 via-slate-900/30 to-black">
@@ -675,6 +675,7 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
 
