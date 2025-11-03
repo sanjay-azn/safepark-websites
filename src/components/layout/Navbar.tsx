@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -42,12 +43,22 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 md:space-x-4 flex-shrink-0">
-            <div className="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-bold text-lg">S</span>
+          {/* Logo - WITH IMAGE */}
+          <Link href="/" className="flex items-center space-x-2 md:space-x-3 flex-shrink-0 group">
+            {/* Logo Image */}
+            <div className="relative w-10 h-10 md:w-12 md:h-12 group-hover:scale-110 transition-transform duration-300">
+              <Image 
+                src="/logo.png" 
+                alt="SafePark Logo" 
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-emerald-400 font-bold text-lg md:text-2xl">SafePark</span>
+            {/* Logo Text */}
+            <span className="text-emerald-400 font-bold text-lg md:text-2xl group-hover:text-emerald-300 transition-colors duration-300">
+              SafePark
+            </span>
           </Link>
 
           {/* Desktop Navigation Links */}
