@@ -235,7 +235,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   {/* Badge - FULLY VISIBLE */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-5 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/50 via-cyan-500/45 to-emerald-500/50 backdrop-blur-md border-2 border-emerald-400/70 text-emerald-100 text-xs font-bold shadow-lg shadow-emerald-500/50 whitespace-nowrap z-20">
+                  <div className="absolute -top-4 right-6 px-3 py-1 rounded-full bg-emerald-500/25 border border-emerald-500/40 text-emerald-200 text-xs font-bold">
                     {item.badge}
                   </div>
 
@@ -467,4 +467,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 
