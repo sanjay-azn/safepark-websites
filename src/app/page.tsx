@@ -239,7 +239,6 @@ export default function HomePage() {
                     {item.badge}
                   </div>
 
-
                   <div className="space-y-3 lg:space-y-4 relative z-10 pt-6">
                     <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.iconBg} backdrop-blur-md flex items-center justify-center ${item.iconColor} group-hover:scale-110 transition-all duration-300 shadow-lg border-2 border-white/20`} style={{ animation: `icon-spin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) ${idx * 100}ms forwards`, opacity: 0 }}>
                       {item.icon}
@@ -467,5 +466,6 @@ export default function HomePage() {
     </div>
   );
 }
+
 
 
